@@ -11,7 +11,7 @@ public interface UserDAO {
     /**
      * 카드 변경
      * */
-    int userCardUpdate(UsersDTO userDto);
+    int userCardUpdate(String user_id, String card);
 
     /**
      * 개인 정보 조회

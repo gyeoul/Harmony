@@ -13,7 +13,7 @@ public interface TickectDAO {
     /**
      * 예매 취소
      */
-    int deletet(String user_id, int musical_id, String seatNum);
+    int ticketDelete(String user_id, int musical_id, String seatNum);
 
     /**
      * 예매 내역 조회

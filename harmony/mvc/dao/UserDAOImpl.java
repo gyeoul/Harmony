@@ -15,7 +15,7 @@ public class UserDAOImpl implements UserDAO {
      * 카드 변경
      * */
     @Override
-    public int userCardUpdate(UsersDTO userDto){
+    public int userCardUpdate(String user_id, String card){
         return 0;
     }
 
