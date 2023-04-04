@@ -2,16 +2,16 @@ package mvc.dao;
 
 import mvc.dto.UsersDTO;
 
-public class UserDAOImpl implements UserDAO {
-    private static UserDAO instance = new UserDAOImpl();
+public class UsersDAOImpl implements UsersDAO {
+    private static UsersDAO instance = new UsersDAOImpl();
 
     /**
      * 외부에서 객체생성 막음
      */
-    private UserDAOImpl() {
+    private UsersDAOImpl() {
     }
 
-    public static UserDAO getInstance() {
+    public static UsersDAO getInstance() {
         return instance;
     }
 
@@ -35,7 +35,7 @@ public class UserDAOImpl implements UserDAO {
      * 개인 정보 조회
      */
     @Override
-    public UsersDTO userSelect(String user_id){
+    public UsersDTO userSelect(String user_id) {
         return null;
     }
 
