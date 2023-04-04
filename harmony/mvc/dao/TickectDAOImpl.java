@@ -17,7 +17,7 @@ public class TickectDAOImpl implements TickectDAO{
      * 예매 취소
      */
     @Override
-    public int deletet(String user_id, int musical_id, String seatNum){
+    public int ticketDelete(String user_id, int musical_id, String seatNum){
         return 0;
     }
 
