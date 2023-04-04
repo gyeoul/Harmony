@@ -1,12 +1,13 @@
 package mvc.dao;
 
 import mvc.dto.UsersDTO;
+import mvc.exception.SearchWrongException;
 
-public interface UserDAO {
+public interface UsersDAO {
     /**
      * 회원 가입
      * */
-    int userInsert(UsersDTO userDto);
+    int userInsert(UsersDTO userDTO);
 
     /**
      * 카드 변경

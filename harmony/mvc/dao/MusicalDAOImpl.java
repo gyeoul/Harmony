@@ -5,6 +5,18 @@ import mvc.dto.MusicalDTO;
 import java.util.List;
 
 public class MusicalDAOImpl implements MusicalDAO {
+    private static MusicalDAO instance = new MusicalDAOImpl();
+
+    /**
+     * 외부에서 객체생성 막음
+     */
+    private MusicalDAOImpl() {
+    }
+
+    public static MusicalDAO getInstance() {
+        return instance;
+    }
+
     /**
      * 뮤지컬 목록 조회
      * */
