@@ -3,11 +3,23 @@ package mvc.dao;
 import mvc.dto.UsersDTO;
 
 public class UserDAOImpl implements UserDAO {
+    private static UserDAO instance = new UserDAOImpl();
+
+    /**
+     * 외부에서 객체생성 막음
+     */
+    private UserDAOImpl() {
+    }
+
+    public static UserDAO getInstance() {
+        return instance;
+    }
+
     /**
      * 회원 가입
      * */
     @Override
-    public int userInsert(UsersDTO userDto){
+    public int userInsert(UsersDTO userDTO){
         return 0;
     }
 
