@@ -4,7 +4,19 @@ import mvc.dto.TicketDTO;
 
 import java.util.List;
 
-public class TickectDAOImpl implements TickectDAO{
+public class TicketDAOImpl implements TicketDAO {
+    private static TicketDAO instance = new TicketDAOImpl();
+
+    /**
+     * 외부에서 객체생성 막음
+     */
+    private TicketDAOImpl() {
+    }
+
+    public static TicketDAO getInstance() {
+        return instance;
+    }
+
     /**
      * 예매 등록
      * */

@@ -4,7 +4,7 @@ import mvc.dto.TicketDTO;
 
 import java.util.List;
 
-public interface TickectDAO {
+public interface TicketDAO {
     /**
      * 예매 등록
      * */
