@@ -363,8 +363,10 @@ public class MenuView {
             int ticketID = sc.nextInt();
 
             TicketController.ticketDelete(ticketID, userID);
+        } catch (NumberFormatException e) {
+            System.out.println("예매 번호가 잘못되었습니다. 다시 시도해 주세요.");
         } catch (Exception e) {
-            System.out.println("");
+            System.out.println("예매 취소에 실패했습니다. 다시 시도해 주세요.");
         }
 	}
-}// class end
+} // class end
