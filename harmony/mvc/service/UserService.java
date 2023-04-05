@@ -19,4 +19,11 @@ public interface UserService {
      * 개인 정보 조회
      */
     UsersDTO userSelect(String user_id) throws SearchWrongException;
+
+	/**
+	 * 로그인
+	 */
+	void login(String user_id, String user_pw) throws DMLException;
+    
+    
 }

@@ -1,5 +1,11 @@
 package mvc.service;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import mvc.common.DBManager;
 import mvc.dao.UsersDAO;
 import mvc.dao.UsersDAOImpl;
 import mvc.dto.UsersDTO;
@@ -43,4 +49,14 @@ public class UserServiceImpl implements UserService{
     public UsersDTO userSelect(String user_id) throws SearchWrongException {
        return null;
     }
+    
+    
+    /**
+     * 로그인
+     */
+    @Override
+    public void login(String user_id, String user_pw) throws DMLException{
+    	int result = userDAO.login(user_id, user_pw);
+    	if(result == 0) throw new DMLException("회원 정보가 존재하지 않습니다.");
+	}
 }

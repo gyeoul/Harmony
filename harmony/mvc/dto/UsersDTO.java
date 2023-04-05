@@ -6,12 +6,12 @@ public class UsersDTO {
     private String email; // 이메일 | varchar(40)
     private String name; // 유저 이름 | varchar2(20)
     private int age; // 나이 | number
-    private char gender; // 성별
+    private String gender; // 성별 - char 타입의 데이터를 직접적으로 사용하기 위한 메소드를 java에서 지원하지 않기 때문에 어차피 String으로 재변환하는 처리를 거쳐야 한다.
     private String card; // 카드 - 결제 수단
 
     public UsersDTO (){}
 
-    public UsersDTO(String user_id, String user_pw, String email, String name, int age, char gender, String card) {
+    public UsersDTO(String user_id, String user_pw, String email, String name, int age, String gender, String card) {
         this.user_id = user_id;
         this.user_pw = user_pw;
         this.email = email;
@@ -61,11 +61,11 @@ public class UsersDTO {
         this.age = age;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
