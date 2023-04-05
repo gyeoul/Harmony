@@ -1,6 +1,10 @@
 package mvc.view;
 
 import mvc.dto.*;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class SuccessView {
@@ -109,19 +113,35 @@ public class SuccessView {
     }
 
     /**
-     * 예매 목록(티켓 예매 번호, 제목) 조회
+     * 예매 목록(티켓 예매 번호, 제목) 조회 - 취소 가능한(현재 날짜와 시간보다 뮤지컬 공연 날짜와 시간이 나중에 있는) 뮤지컬 목록만 조회
      **/
     public static void selectMyTicketMusicalTitlePrint(List<MusicalTicketDTO> musicalTicketDTOS) {
         System.out.println("\n================================ 예매 내역 ===================================");
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date nowDate = new Date(); // 현재 날짜
+
         for (MusicalTicketDTO musicalTicket : musicalTicketDTOS) {
-            System.out.println(musicalTicket.getTicketId() + ". " + musicalTicket.getTitle());
+            String musicalDate = musicalTicket.getDate(); // 뮤지컬 공연 날짜
+
+            Date musicalTicketDate = null;
+            try {
+                musicalTicketDate = dateFormat.parse(musicalDate); // 뮤지컬 공연 날짜 SimpleDateFormat 형식인 Date 타입으로 변환
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            int compare = musicalTicketDate.compareTo(nowDate); // day1.compareTo(day2)
+
+            if (compare >= 0) { // compare > 0 : day1 > day2  // compare = 0 : day1 = day2  // compare < 0 : day1 < day2
+                System.out.println(musicalTicket.getTicketId() + ". " + musicalTicket.getTitle());
+            }
         }
     }
 
     /**
      * 개인 정보 출력
-     * */
+     **/
     public static void selectUserInfoPrint(UsersDTO usersDTO){
         System.out.println("\n====================================================================================");
         System.out.print("                                    개인 정보");
