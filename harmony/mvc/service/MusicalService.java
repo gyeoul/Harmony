@@ -15,7 +15,7 @@ public interface MusicalService {
     /**
      * 뮤지컬 상세 조회
      */
-    MusicalDTO musicalDetailSelect(int musical_id) throws SearchWrongException;
+    MusicalDTO musicalDetailSelect(String title) throws SearchWrongException;
 
     /**
      * 해당 뮤지컬의 좌석 현황 조회

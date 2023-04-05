@@ -2,6 +2,7 @@ package mvc.view;
 
 import java.util.Scanner;
 
+import mvc.controller.MusicalController;
 import mvc.controller.UserController;
 import mvc.dto.UsersDTO;
 
@@ -162,7 +163,33 @@ public class MenuView {
      * 2. 뮤지컬 차트 조회
      * */
     public static void musicalSelectAll(){
+        MusicalController.musicalSelectAll();
 
+        System.out.print("상세 정보를 열람하고 싶은 뮤지컬의 제목을 입력해주세요: ");
+        String input = sc.nextLine();
+
+        try{
+            MusicalController.musicalDetailSelect(input);
+            System.out.println("\n==================================================================================");
+            System.out.println("    (1) 뮤지컬 목록으로 돌아가기    |    (2) 메인 메뉴로 돌아가기");
+            System.out.println("==================================================================================");
+            System.out.print("메뉴를 선택해주세요 >> ");
+            int choice = Integer.parseInt(sc.nextLine());
+            switch (choice) {
+                case 1: // 뮤지컬 목록으로 돌아가기
+                    musicalSelectAll();
+                    break;
+                case 2: // 메인 메뉴로 돌아가기
+                    menuChoice();
+                    break;
+
+                default:
+                    System.out.println("숫자만 입력해주세요.");
+            }
+
+        } catch (Exception e){
+            System.out.println("잘못된 입력입니다.");
+        }
     }
 
     /**

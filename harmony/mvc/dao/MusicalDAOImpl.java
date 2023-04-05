@@ -34,7 +34,7 @@ public class MusicalDAOImpl implements MusicalDAO {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select title from musical where musical_date >= sysdate order by musical_id, musical_date"; // 정렬 순서 - 상영일 지난 영화는 조회 X
+        String sql = "select distinct title from musical where musical_date >= sysdate"; // 정렬 - 상영일 지난 영화는 조회 X
 
         try{
             con = DBManager.getConnection();
@@ -59,18 +59,18 @@ public class MusicalDAOImpl implements MusicalDAO {
      * 뮤지컬 상세 조회
      */
     @Override
-    public MusicalDTO musicalDetailSelect(int musical_id){
+    public MusicalDTO musicalDetailSelect(String title){
         MusicalDTO musical = null;
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select * from musical where musical_id = ?";
+        String sql = "select * from musical where title = ?";
 
         try{
             con = DBManager.getConnection();
             ps = con.prepareStatement(sql);
 
-            ps.setInt(1, musical_id);
+            ps.setString(1, title);
             rs = ps.executeQuery();
 
             if(rs.next()){
@@ -80,7 +80,7 @@ public class MusicalDAOImpl implements MusicalDAO {
             }
         } catch(SQLException e){
             e.printStackTrace(); // 테스트 후 지울 것
-            throw new SearchWrongException(musical_id + "번 뮤지컬의 상세 정보 조회에 오류가 발생했습니다.");
+            throw new SearchWrongException(title + " 뮤지컬의 상세 정보 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
         }
