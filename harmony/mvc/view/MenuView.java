@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 import mvc.controller.MusicalController;
 import mvc.controller.TicketController;
+import mvc.controller.TicketingController;
 import mvc.controller.UserController;
+import mvc.dto.TicketDTO;
 import mvc.dto.UsersDTO;
 
 public class MenuView {
@@ -108,24 +110,24 @@ public class MenuView {
     public static void login(){
 			System.out.print("ID를 입력하시오 : ");
             userID = sc.nextLine();
-			
+
 			System.out.print("PassWord를 입력하시오 : ");
 			String pw = sc.nextLine();
-			
+
 			UserController.login(userID, pw);
 			menuChoice();
     }
-    
+
     public static void loginChoice() {
     	 System.out.println("로그인을 다시 시도하고 싶다면 '1', 회원가입을 하고 싶다면 '2'를 입력하세요.");
 
     	 int choiceNUM = Integer.parseInt(sc.nextLine());
     	 switch (choiceNUM) {
     	 	case 1:
-    	 		login(); // 로그인으로 이동 
-    	 		break; 
-    	 	case 2 : 
-    	 		joinMember(); // 회원가입으로 이동 
+    	 		login(); // 로그인으로 이동
+    	 		break;
+    	 	case 2 :
+    	 		joinMember(); // 회원가입으로 이동
     	 		break;
     	 	default:
     	 		System.out.println("잘못된 숫자를 입력하셨습니다, 다시 입력해주세요!");
@@ -139,25 +141,25 @@ public class MenuView {
     public static void joinMember(){
     	System.out.print("사용할 ID를 입력하시오 : ");
     	String id = sc.nextLine();
-    	
+
     	System.out.print("사용할 PassWord를 입력하시오 : ");
     	String pw = sc.nextLine();
-    	
+
     	System.out.print("등록할 Email을 입력하시오 : ");
     	String email = sc.nextLine();
-    	
+
     	System.out.print("자신의 이름을 입력하시오 : ");
     	String name = sc.nextLine();
-    	
+
     	System.out.print("자신의 나이를 입력하시오 : ");
     	int age = Integer.parseInt(sc.nextLine());
-    	
+
     	System.out.print("자신의 성별을 입력하시오 (남성인 경우 'M'/여성인 경우 'W') : ");
     	String gender = sc.nextLine();
-    	
+
     	System.out.print("사용할 카드의 카드번호를 입력하시오 : ");
     	String card = sc.nextLine();
-    	
+
     	UsersDTO user = new UsersDTO(id, pw, email, name, age, gender, card);
     	UserController.userInsert(user);
     }
@@ -167,6 +169,34 @@ public class MenuView {
      * */
     public static void ticketing(){
 
+        TicketDTO ticket = new TicketDTO();
+        ticket.setUserId(userID);
+
+        //영화 리스트 출력
+
+        MusicalController.musicalSelectAll();
+
+        System.out.print("관람하고 싶은 뮤지컬의 이름을 입력해주세요: ");
+        String input = sc.nextLine();
+
+        TicketingController.searchByTitle(input);
+        System.out.print("관람을 원하는 날짜의 번호를 입력해주세요: ");
+
+        int inp2 = Integer.parseInt(sc.nextLine());
+        ticket.setMusicalId(TicketingController.seatSearchByRownumWithTitle(inp2, input));
+        MusicalController.musicalSeatSelect(ticket.getMusicalId());
+        System.out.print("관람을 원하는 좌석을 입력해주세요: ");
+        ticket.setSeatNum(sc.nextLine());
+        System.out.println(ticket);
+        // 결제 진행
+        try {
+            TicketController.ticketInsert(ticket);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ticketing();
+        }
+//        UserController.userSelect();
+        menuChoice();
     }
 
 
@@ -278,19 +308,19 @@ public class MenuView {
             System.out.println("");
         }
     }
-    
-    
+
+
     /**
      * 카드 변경
      **/
     public static void userCardUpdate() {
-  
+
 		System.out.println("변경할 카드번호를 입력하시오 : ");
 		String card = sc.nextLine();
-		
+
 		UserController.userCardUpdate(userID, card);
 	}
-    
+
 
 } // class end
 
