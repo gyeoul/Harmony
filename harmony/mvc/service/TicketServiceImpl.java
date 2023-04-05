@@ -25,10 +25,11 @@ public class TicketServiceImpl implements TicketService{
      * */
     @Override
     public void ticketInsert(TicketDTO ticket)  {
+        ticketDAO.ticketInsert(ticket);
         try {
-            SuccessView.messagePrint(ticketDAO.ticketInsert(ticket) > 0 ? "성공" : "실패");
+            ticketDAO.ticketInsert(ticket);
         } catch (DMLException e){
-            FailView.errorMessage(e.getMessage());
+            throw new DMLException(ticket.getSeatNum()+"자리 예매 실패하였습니다.");
         }
     }
 
