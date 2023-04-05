@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import mvc.controller.MusicalController;
 import mvc.controller.UserController;
+import mvc.dto.UsersDTO;
 
 public class MenuView {
     static Scanner sc = new Scanner(System.in);
@@ -100,10 +101,10 @@ public class MenuView {
      * */
     public static void login(){
         try {
-			System.out.print("ID를 입력하시오: ");
+			System.out.print("ID를 입력하시오 : ");
 			String id = sc.nextLine();
 			
-			System.out.print("PassWord를 입력하시오: ");
+			System.out.print("PassWord를 입력하시오 : ");
 			String pw = sc.nextLine();
 			
 			UserController.login(id, pw);
@@ -120,7 +121,29 @@ public class MenuView {
      * KB_DBBoard_template에서 등록하는 부분 참고
      * */
     public static void joinMember(){
-
+    	System.out.print("사용할 ID를 입력하시오 : ");
+    	String id = sc.nextLine();
+    	
+    	System.out.print("사용할 PassWord를 입력하시오 : ");
+    	String pw = sc.nextLine();
+    	
+    	System.out.print("등록할 Email을 입력하시오 : ");
+    	String email = sc.nextLine();
+    	
+    	System.out.print("자신의 이름을 입력하시오 : ");
+    	String name = sc.nextLine();
+    	
+    	System.out.print("자신의 나이를 입력하시오 : ");
+    	int age = Integer.parseInt(sc.nextLine());
+    	
+    	System.out.print("자신의 성별을 입력하시오.(남성인 경우 'M'/여성인 경우 'W') : ");
+    	String gender = sc.nextLine();
+    	
+    	System.out.print("사용할 카드의 카드번호를 입력하시오 : ");
+    	String card = sc.nextLine();
+    	
+    	UsersDTO user = new UsersDTO(id, pw, email, name, age, gender, card);
+    	UserController.userInsert(user);
     }
 
     /**
