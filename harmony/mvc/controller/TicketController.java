@@ -29,9 +29,9 @@ public class TicketController {
     /**
      * 예매 취소
      */
-    public static void ticketDelete(int ticketID) {
+    public static void ticketDelete(int ticketID, String userID) {
         try{
-            ticketService.ticketDelete(ticketID);
+            ticketService.ticketDelete(ticketID, userID);
             SuccessView.messagePrint("예매 취소되었습니다");
         } catch (DMLException e) {
             FailView.errorMessage(e.getMessage());

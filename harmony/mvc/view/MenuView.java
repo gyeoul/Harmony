@@ -273,7 +273,7 @@ public class MenuView {
 //            TicketController.ticketSelectByUserId(userID); // 예매 목록(제목) 보여 주기
             int ticketID = sc.nextInt();
 
-            TicketController.ticketDelete(ticketID);
+            TicketController.ticketDelete(ticketID, userID);
         } catch (Exception e) {
             System.out.println("");
         }
