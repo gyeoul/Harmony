@@ -119,8 +119,8 @@ public class MenuView {
     public static void loginChoice() {
     	 System.out.println("로그인을 다시 시도하고 싶다면 '1', 회원가입을 하고 싶다면 '2'를 입력하세요.");
 
-    	 int choice_num = Integer.parseInt(sc.nextLine());
-    	 switch (choice_num) {
+    	 int choiceNUM = Integer.parseInt(sc.nextLine());
+    	 switch (choiceNUM) {
     	 	case 1:
     	 		login(); // 로그인으로 이동 
     	 		break; 

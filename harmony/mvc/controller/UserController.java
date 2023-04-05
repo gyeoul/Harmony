@@ -29,9 +29,9 @@ public class UserController {
     /**
      * 카드 변경
      * */
-    public static void userCardUpdate(String user_id, String card) {
+    public static void userCardUpdate(String userID, String card) {
         try {
-            userService.userCardUpdate(user_id, card); //void
+            userService.userCardUpdate(userID, card); //void
             SuccessView.messagePrint("카드 변경에 성공했습니다");
         } catch (DMLException e) {
             FailView.errorMessage(e.getMessage());
@@ -41,9 +41,9 @@ public class UserController {
     /**
      * 개인 정보 조회
      */
-    public static void userSelect(String user_id) {
+    public static void userSelect(String userID) {
         try {
-            UsersDTO dto = userService.userSelect(user_id);
+            UsersDTO dto = userService.userSelect(userID);
             SuccessView.selectByUserIdPrint(dto);
         } catch (SearchWrongException e) {
             FailView.errorMessage(e.getMessage());
@@ -53,9 +53,9 @@ public class UserController {
     /**
      * 로그인
      */
-    public static void login(String user_id, String user_pw) {
+    public static void login(String userID, String userPW) {
 		try {
-			userService.login(user_id, user_pw);
+			userService.login(userID, userPW);
 			SuccessView.messagePrint("로그인 되었습니다.");
 		} catch (DMLException e) {
 //			e.printStackTrace();
