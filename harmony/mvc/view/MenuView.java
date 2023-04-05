@@ -160,13 +160,15 @@ public class MenuView {
     public static void musicalSelectAll(){
         MusicalController.musicalSelectAll();
 
-        System.out.print("상세 정보를 열람하고 싶은 뮤지컬의 번호를 입력해주세요: ");
-        int input = sc.nextInt();
+        System.out.print("상세 정보를 열람하고 싶은 뮤지컬의 제목을 입력해주세요: ");
+        String input = sc.nextLine();
 
         try{
             MusicalController.musicalDetailSelect(input);
+
+
         } catch (NumberFormatException e){
-            System.out.println("목록에 없는 숫자가 입력되었습니다. 다시 입력해주세요.");
+            System.out.println("목록에 없는 제목이 입력되었습니다. 다시 입력해주세요.");
         }
     }
 

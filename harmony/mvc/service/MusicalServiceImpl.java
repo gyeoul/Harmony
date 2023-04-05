@@ -32,10 +32,10 @@ public class MusicalServiceImpl implements MusicalService{
     }
 
     @Override
-    public MusicalDTO musicalDetailSelect(int musical_id) throws SearchWrongException {
-        MusicalDTO musical = musicalDAO.musicalDetailSelect(musical_id);
+    public MusicalDTO musicalDetailSelect(String title) throws SearchWrongException {
+        MusicalDTO musical = musicalDAO.musicalDetailSelect(title);
         if(musical == null){
-            throw new SearchWrongException(musical_id + "에 해당하는 뮤지컬이 존재하지 않습니다.");
+            throw new SearchWrongException("입력에 해당하는 뮤지컬이 존재하지 않습니다.");
         }
 
         return musical;

@@ -79,15 +79,12 @@ public class MusicalDTO {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("MusicalDTO{");
-        sb.append("musical_id=").append(musical_id);
-        sb.append(", title='").append(title).append('\'');
-        sb.append(", actor='").append(actor).append('\'');
-        sb.append(", genre='").append(genre).append('\'');
-        sb.append(", date='").append(date).append('\'');
-        sb.append(", hall='").append(hall).append('\'');
-        sb.append(", summary='").append(summary).append('\'');
-        sb.append('}');
+        final StringBuffer sb = new StringBuffer("< 뮤지컬 " + title + " >");
+        sb.append("\n상영관 | " + hall);
+        sb.append("\n배우  | " + actor);
+        sb.append("\n장르  | " + genre);
+        sb.append("\n소개  | " + summary);
+        sb.append("");
         return sb.toString();
     }
 }
