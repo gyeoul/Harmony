@@ -6,21 +6,21 @@ import java.util.List;
 public class SuccessView {
     /**
      * 성공 메시지 출력
-     * */
+     **/
     public static void messagePrint(String message) {
         System.out.println(message);
     }
 
     /**
      * 성공한 유저 정보 출력
-     * */
+     **/
     public static void selectByUserIdPrint(UsersDTO userDTO) {
         System.out.println(userDTO);
     }
 
     /**
      * 뮤지컬 목록 출력
-     * */
+     **/
     public static void selectPrint(List<String> list) {
         System.out.println("\n====================================================================================");
         System.out.print("                                    뮤지컬 목록");
@@ -32,7 +32,7 @@ public class SuccessView {
 
     /**
      * 뮤지컬 상세 조회
-     * */
+     **/
     public static void selectMusicalDetailPrint(MusicalDTO musicalDTO) {
         System.out.println("\n====================================================================================");
         System.out.print("                                    상세 정보");
@@ -43,7 +43,7 @@ public class SuccessView {
 
     /**
      * 티켓 상세 출력
-     * */
+     **/
     public static void selectTicketDetailPrint(TicketDTO ticketDTO) {
         System.out.println("\n====================================================================================");
         System.out.printf("                                   %s 상세 조회", ticketDTO.getTicketId());
@@ -53,7 +53,7 @@ public class SuccessView {
 
     /**
      * 티켓 목록 출력
-     * */
+     **/
     public static void selectTicketListPrint(List<TicketDTO> ticketDTOS) {
         System.out.println("\n====================================================================================");
         System.out.print("                                    티켓 목록");
@@ -66,7 +66,7 @@ public class SuccessView {
     
     /**
      * 좌석 정보 출력 - 5 * 5 좌석표
-     * */
+     **/
     public static void selectSeatListPrint(List<SeatDTO> seatDTOS){
         System.out.println("\n====================================================================================");
         System.out.print("                                    좌석 정보");
@@ -89,6 +89,9 @@ public class SuccessView {
         }
     }
 
+    /**
+     * 나의 예매 목록 조회
+     **/
     public static void selectMyTicketListPrint(List<MusicalTicketDTO> musicalTicketDTOS) {
         System.out.println("\n====================================================================================");
         System.out.print("                                    예매 정보");
@@ -102,6 +105,17 @@ public class SuccessView {
             System.out.printf("%s | ", musicalTicket.getDate());
             System.out.printf("%s", musicalTicket.getIssue());
             System.out.println();
+        }
+    }
+
+    /**
+     * 예매 목록(티켓 예매 번호, 제목) 조회
+     **/
+    public static void selectMyTicketMusicalTitlePrint(List<MusicalTicketDTO> musicalTicketDTOS) {
+        System.out.println("\n================================ 예매 내역 ===================================");
+
+        for (MusicalTicketDTO musicalTicket : musicalTicketDTOS) {
+            System.out.println(musicalTicket.getTicketId() + ". " + musicalTicket.getTitle());
         }
     }
 

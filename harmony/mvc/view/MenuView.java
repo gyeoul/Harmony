@@ -15,7 +15,7 @@ public class MenuView {
 
     /**
      * 로그인/회원가입 선택
-     * */
+     **/
     public static void userCheck(){
         while (true) {
             System.out.print("로그인하시겠습니까?");
@@ -49,7 +49,7 @@ public class MenuView {
 
     /**
      * 메뉴 선택
-     */
+     **/
     public static void menuChoice() {
 
         while (true) {
@@ -102,14 +102,14 @@ public class MenuView {
     public static void login(){
 			System.out.print("ID를 입력하시오 >> ");
       userID = sc.nextLine();
-			
+
 			System.out.print("PassWord를 입력하시오 >> ");
 			String pw = sc.nextLine();
 
 			UserController.login(userID, pw);
 			menuChoice();
     }
-    
+
     /**
      * 로그인 실패시, 다시 로그인 시도 or 회원가입 둘중 하나를 선택
      **/
@@ -131,26 +131,26 @@ public class MenuView {
 
     /**
      * 회원가입
-     * */
+     **/
     public static void joinMember(){
     	System.out.print("사용할 ID를 입력하시오 >> ");
     	String id = sc.nextLine();
-   
+
     	System.out.print("사용할 PassWord를 입력하시오 >> ");
     	String pw = sc.nextLine();
-    	
+
     	System.out.print("등록할 Email을 입력하시오 >> ");
     	String email = sc.nextLine();
-    	
+
     	System.out.print("자신의 이름을 입력하시오 >> ");
     	String name = sc.nextLine();
-    	
+
     	System.out.print("자신의 나이를 입력하시오 >> ");
     	int age = Integer.parseInt(sc.nextLine());
-    	
+
     	System.out.print("자신의 성별을 입력하시오 (남성 'M'/여성 'W') >> ");
     	String gender = sc.nextLine();
-    	
+
     	UsersDTO user = new UsersDTO(id, pw, email, name, age, gender, null);
 
     	UserController.userInsert(user);
@@ -158,7 +158,7 @@ public class MenuView {
 
     /**
      * 1. 예매
-     * */
+     **/
     public static void ticketing(){
 
         TicketDTO ticket = new TicketDTO();
@@ -194,7 +194,7 @@ public class MenuView {
 
     /**
      * 2. 뮤지컬 차트 조회
-     * */
+     **/
     public static void musicalSelectAll(){
         MusicalController.musicalSelectAll();
 
@@ -225,14 +225,14 @@ public class MenuView {
 
     /**
      * 3.예매 내역 확인
-     * */
+     **/
     public static void ticketSelectByUserID(){
         TicketController.ticketSelectByMine(userID);
     }
 
     /**
      * 5. 마이페이지
-     * */
+     **/
     public static void userInfoUpdate(){
         while(true) {
             try {
@@ -322,9 +322,15 @@ public class MenuView {
      * 6. 예매 취소
      * */
     public static void ticketDelete(){
+        try {
+            TicketController.ticketSelectMusicalTitle(userID); // 예매 목록(티켓 예매 번호, 제목) 보여 주기
 
+            System.out.print("취소할 티켓의 예매 번호를 입력해 주세요. >> ");
+            int ticketID = sc.nextInt();
+
+            TicketController.ticketDelete(ticketID, userID);
+        } catch (Exception e) {
+            System.out.println("");
+        }
 	}
-
-
 }// class end
-

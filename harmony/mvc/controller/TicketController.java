@@ -28,7 +28,7 @@ public class TicketController {
 
     /**
      * 예매 취소
-     */
+     **/
     public static void ticketDelete(int ticketID, String userID) {
         try{
             ticketService.ticketDelete(ticketID, userID);
@@ -70,6 +70,18 @@ public class TicketController {
             List<MusicalTicketDTO> musicalTicketDTOList = ticketService.ticketSelectByMine(userID);
             SuccessView.selectMyTicketListPrint(musicalTicketDTOList);
         } catch (SearchWrongException e) {
+            FailView.errorMessage(e.getMessage());
+        }
+    }
+
+    /**
+     * 예매 목록(티켓 예매 번호, 제목) 조회
+     **/
+    public static void ticketSelectMusicalTitle(String userID) {
+        try {
+            List<MusicalTicketDTO> musicalTicketDTOList = ticketService.ticketSelectByMine(userID);
+            SuccessView.selectMyTicketMusicalTitlePrint(musicalTicketDTOList);
+         } catch (SearchWrongException e) {
             FailView.errorMessage(e.getMessage());
         }
     }
