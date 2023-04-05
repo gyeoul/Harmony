@@ -116,7 +116,9 @@ public class SuccessView {
      * 예매 목록(티켓 예매 번호, 제목) 조회 - 취소 가능한(현재 날짜와 시간보다 뮤지컬 공연 날짜와 시간이 나중에 있는) 뮤지컬 목록만 조회
      **/
     public static void selectMyTicketMusicalTitlePrint(List<MusicalTicketDTO> musicalTicketDTOS) {
-        System.out.println("\n================================ 예매 내역 ===================================");
+        System.out.println("\n====================================================================================");
+        System.out.print("                                    예매 내역");
+        System.out.println("\n====================================================================================");
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date nowDate = new Date(); // 현재 날짜
