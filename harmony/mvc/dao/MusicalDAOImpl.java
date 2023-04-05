@@ -34,7 +34,7 @@ public class MusicalDAOImpl implements MusicalDAO {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select distinct title from musical where musical_date >= sysdate"; // 정렬 - 상영일 지난 영화는 조회 X
+        String sql = "select distinct title from musical where musical_date >= sysdate order by TITLE"; // 정렬 - 상영일 지난 영화는 조회 X
 
         try{
             con = DBManager.getConnection();
@@ -167,9 +167,19 @@ public class MusicalDAOImpl implements MusicalDAO {
 
             ps.setString(1,title);
             rs = ps.executeQuery();
-
             while(rs.next()){
-                musicalList.add(new MusicalDTO());//TODO 생성자로 MusicalDTO 생성
+                musicalList.add(
+                        new MusicalDTO(
+                                rs.getInt(1),
+                                rs.getString(2),
+                                rs.getString(3),
+                                rs.getString(4),
+                                rs.getString(5),
+                                rs.getString(6),
+                                rs.getString(7),
+                                rs.getString(8)
+                                )
+                );
             }
         } catch (SQLException e) {
             e.printStackTrace(); // 테스트 후 지울 것
