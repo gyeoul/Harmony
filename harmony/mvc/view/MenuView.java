@@ -170,10 +170,25 @@ public class MenuView {
 
         try{
             MusicalController.musicalDetailSelect(input);
+            System.out.println("\n==================================================================================");
+            System.out.println("    (1) 뮤지컬 목록으로 돌아가기    |    (2) 메인 메뉴로 돌아가기");
+            System.out.println("==================================================================================");
+            System.out.print("메뉴를 선택해주세요 >> ");
+            int choice = Integer.parseInt(sc.nextLine());
+            switch (choice) {
+                case 1: // 뮤지컬 목록으로 돌아가기
+                    musicalSelectAll();
+                    break;
+                case 2: // 메인 메뉴로 돌아가기
+                    menuChoice();
+                    break;
 
+                default:
+                    System.out.println("숫자만 입력해주세요.");
+            }
 
-        } catch (NumberFormatException e){
-            System.out.println("목록에 없는 제목이 입력되었습니다. 다시 입력해주세요.");
+        } catch (Exception e){
+            System.out.println("잘못된 입력입니다.");
         }
     }
 
