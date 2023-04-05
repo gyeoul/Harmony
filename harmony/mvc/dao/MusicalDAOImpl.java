@@ -29,11 +29,11 @@ public class MusicalDAOImpl implements MusicalDAO {
      * */
     @Override
     public List<String> musicalSelectAll(){
-        List<String> musicalList = new ArrayList<>();
+        List<String> musicalList = new ArrayList<>(); // title들을 list에 담아 return
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select title from musical";
+        String sql = "select title from musical order by musical_id"; // 정렬 순서
 
         try{
             con = DBManager.getConnection();
@@ -50,6 +50,7 @@ public class MusicalDAOImpl implements MusicalDAO {
         } finally {
             DBManager.releaseConnection(con, ps, rs);
         }
+
         return musicalList;
     }
 
