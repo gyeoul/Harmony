@@ -2,6 +2,8 @@ package mvc.service;
 
 import mvc.dto.MusicalDTO;
 import java.util.List;
+
+import mvc.dto.SeatDTO;
 import mvc.exception.SearchWrongException;
 
 public interface MusicalService {
@@ -15,5 +17,8 @@ public interface MusicalService {
      */
     MusicalDTO musicalDetailSelect(int musical_id) throws SearchWrongException;
 
-
+    /**
+     * 해당 뮤지컬의 좌석 현황 조회
+     * */
+    public List<SeatDTO> musicalSeatSelect(int musical_id) throws SearchWrongException;
 }
