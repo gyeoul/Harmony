@@ -14,8 +14,8 @@ public class TicketDAOImpl implements TicketDAO {
     private static final TicketDAO instance = new TicketDAOImpl();
 
     /**
-     * 외부에서 객체생성 막음
-     */
+     * 외부에서 객체 생성 막음
+     **/
     private TicketDAOImpl() {
     }
 
@@ -56,13 +56,20 @@ public class TicketDAOImpl implements TicketDAO {
     public int ticketDelete(int ticketID) {
         Connection con = null;
         PreparedStatement ps = null;
-//        String sql = "delete from ticket where musical_id = ?"; // SQL 문 수정 필요
+        String sql = "delete from ticket where ticket_id = ?"; // SQL 문 수정 필요
+        TicketDTO ticketDTO = null;
         int result = 0;
 
         try {
+            ticketDTO = ticketSelectByTicketId(ticketID);
+            String seatNum = ticketDTO.getSeatNum(); // 해당 티켓의 좌석 번호
+            int musicalID = ticketDTO.getMusicalId(); // 해당 티켓(예매한 뮤지컬)의 뮤지컬 아이디
+
             con = DBManager.getConnection();
-//            ps = con.prepareStatement(sql);
-//            ps.setInt(1, musical_id);
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, ticketID);
+
+            cancelSeat(con, seatNum, musicalID); // 해당 티켓의 좌석 공석으로 전환
 
             result = ps.executeUpdate();
         } catch (SQLException e) {
@@ -134,6 +141,25 @@ public class TicketDAOImpl implements TicketDAO {
         } finally {
             DBManager.releaseConnection(con, ps, rs);
         }
+        return result;
+    }
+
+    private int cancelSeat(Connection con, String seatNum, int musicalID) throws SQLException { // 티켓의 좌석 공석으로 전환
+        PreparedStatement ps = null;
+        String sql = "update seat set sold = ? where (seatnum = ?) and (musical_id = ?)";
+        int result = 0;
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, "N");
+            ps.setString(2, seatNum);
+            ps.setInt(3, musicalID);
+
+            result = ps.executeUpdate();
+        } finally {
+            DBManager.releaseConnection(null, ps);
+        }
+
         return result;
     }
 }
