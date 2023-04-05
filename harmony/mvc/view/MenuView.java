@@ -383,7 +383,7 @@ public class MenuView {
             TicketController.ticketSelectMusicalTitle(userID); // 예매 목록(티켓 예매 번호, 제목) 보여 주기
 
             System.out.print("취소할 티켓의 예매 번호를 입력해 주세요. >> ");
-            int ticketID = sc.nextInt();
+            int ticketID = Integer.parseInt(sc.nextLine());
 
             TicketController.ticketDelete(ticketID, userID);
         } catch (NumberFormatException e) {
