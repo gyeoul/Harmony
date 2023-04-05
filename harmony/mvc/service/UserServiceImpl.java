@@ -27,11 +27,11 @@ public class UserServiceImpl implements UserService{
     }
 
     /**
-     * 카드 변경
+     * 카드 등록/수정
      * */
     @Override
-    public void userCardUpdate(String userID, String card) throws DMLException{
-        int result = userDAO.userCardUpdate(userID, card);
+    public void cardUpdateByUserID(String userID, String card) throws DMLException{
+        int result = userDAO.cardUpdateByUserID(userID, card);
         if(result == 0)
             throw new DMLException("카드 변경에 실패했습니다");
     }

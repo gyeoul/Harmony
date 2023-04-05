@@ -243,7 +243,7 @@ public class MenuView {
                 System.out.print("(2) 비밀번호 변경  | ");
                 System.out.print("(3) 이름 변경  | ");
                 System.out.print("(4) 카드 등록/수정  | ");
-                System.out.print("(5) 메인으로 돌아가기  ");
+                System.out.print("(5) 메인 메뉴로 돌아가기  ");
                 System.out.println("\n====================================================================================");
                 System.out.print("원하시는 메뉴를 입력하세요 >>  ");
 
@@ -310,12 +310,46 @@ public class MenuView {
     }
 
     /**
-     * 5-4. 카드 등록
+     * 5-4. 카드 등록/수정
      * */
     public static void userCardUpdate() {
-        System.out.println("변경할 카드번호를 입력하시오 : ");
+        System.out.println("\n====================================================================================");
+        System.out.print(" (1) 카드 등록    |    (2) 카드 수정   |  (3) 메인 메뉴로 돌아가기");
+        System.out.println("\n====================================================================================");
+        System.out.print("메뉴를 선택해주세요 >> ");
+        int choice = Integer.parseInt(sc.nextLine());
+        switch (choice) {
+            case 1: // 카드 등록 메뉴
+                cardInsertByUserID();
+                break;
+            case 2:  //카드 수정 메뉴
+                cardUpdateByUserID();
+                break;
+            case 3: // 메인 메뉴로 돌아가기
+                menuChoice();
+                break;
+            default:
+                System.out.println("숫자만 입력해주세요.");
+        }
+
+    }
+
+    /**
+     * 5-4-1. 카드 등록
+     * */
+    public static void cardInsertByUserID(){
+        System.out.print("등록할 카드번호를 입력하시오 >> ");
         String card = sc.nextLine();
-        UserController.userCardUpdate(userID, card);
+        UserController.cardUpdateByUserID(userID, card);
+    }
+
+    /**
+     * 5-4-2. 카드 수정
+     * */
+    public static void cardUpdateByUserID(){
+        System.out.print("변경할 카드번호를 입력하시오 >> ");
+        String card = sc.nextLine();
+        UserController.cardUpdateByUserID(userID, card);
     }
 
     /**

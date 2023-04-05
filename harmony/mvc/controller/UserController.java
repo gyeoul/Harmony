@@ -30,11 +30,11 @@ public class UserController {
     }
 
     /**
-     * 카드 변경
+     * 카드 등록/수정
      * */
-    public static void userCardUpdate(String userID, String card) {
+    public static void cardUpdateByUserID(String userID, String card) {
         try {
-            userService.userCardUpdate(userID, card); //void
+            userService.cardUpdateByUserID(userID, card);
             SuccessView.messagePrint("카드 변경에 성공했습니다");
         } catch (DMLException e) {
             FailView.errorMessage(e.getMessage());

@@ -50,7 +50,6 @@ public class UsersDAOImpl implements UsersDAO {
 			result = ps.executeUpdate();
 			
 		} catch (SQLException e) {
-//			e.printStackTrace();
 			throw new DMLException("등록하는데 오류가 발생하여 등록되지 않았습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps);
@@ -58,11 +57,11 @@ public class UsersDAOImpl implements UsersDAO {
     	return result;
     }
 
-    /**
-     * 카드 변경
-     * */
+	/**
+	 * 카드 등록/수정
+	 * */
     @Override
-    public int userCardUpdate(String userID, String card) throws DMLException{
+    public int cardUpdateByUserID(String userID, String card) throws DMLException{
     	Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -76,21 +75,11 @@ public class UsersDAOImpl implements UsersDAO {
 			result = ps.executeUpdate();
 
 		} catch (SQLException e) {
-//			e.printStackTrace();
-			throw new DMLException("카드번호 수정하는데 문제가 발생했습니다.");
+			throw new DMLException("카드에 문제가 발생했습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps);
 		}
     	return result;
-    }
-
-    /**
-     * 개인 정보 조회
-     */
-    @Override
-    public UsersDTO userSelect(String user_id) {
-
-    	return null;
     }
 
 	/**

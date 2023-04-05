@@ -11,16 +11,10 @@ public interface UsersDAO {
     int userInsert(UsersDTO userDTO) throws DMLException;
 
     /**
-     * 카드 변경
+     * 카드 등록/수정
      * */
-    int userCardUpdate(String userID, String card) throws DMLException;
+    int cardUpdateByUserID(String userID, String card) throws DMLException;
 
-    /**
-     * 개인 정보 조회
-     */
-    UsersDTO userSelect(String userID) ;
-    
-    
     /**
      * 로그인
      */
