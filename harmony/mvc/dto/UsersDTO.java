@@ -1,9 +1,9 @@
 package mvc.dto;
 
 public class UsersDTO {
-    private String user_id; // 유저 아이디 | varchar2(20) (PK)
-    private String user_pw; // 유저 비밀번호 | varchar2(20)
-    private String email; // 이메일 | varchar(40)
+    private String userID; // 유저 아이디 | varchar2(20) (PK)
+    private String userPW; // 유저 비밀번호 | varchar2(20)
+    private String email; // 이메일 | varchar2(40)
     private String name; // 유저 이름 | varchar2(20)
     private int age; // 나이 | number
     private String gender; // 성별 - char 타입의 데이터를 직접적으로 사용하기 위한 메소드를 java에서 지원하지 않기 때문에 어차피 String으로 재변환하는 처리를 거쳐야 한다.
@@ -11,9 +11,9 @@ public class UsersDTO {
 
     public UsersDTO (){}
 
-    public UsersDTO(String user_id, String user_pw, String email, String name, int age, String gender, String card) {
-        this.user_id = user_id;
-        this.user_pw = user_pw;
+    public UsersDTO(String userID, String userPW, String email, String name, int age, String gender, String card) {
+        this.userID = userID;
+        this.userPW = userPW;
         this.email = email;
         this.name = name;
         this.age = age;
@@ -21,20 +21,20 @@ public class UsersDTO {
         this.card = card;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public String getUser_pw() {
-        return user_pw;
+    public String getUserPW() {
+        return userPW;
     }
 
-    public void setUser_pw(String user_pw) {
-        this.user_pw = user_pw;
+    public void setUser_pw(String userPW) {
+        this.userPW = userPW;
     }
 
     public String getEmail() {
@@ -80,8 +80,8 @@ public class UsersDTO {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("UsersDTO{");
-        sb.append("user_id='").append(user_id).append('\'');
-        sb.append(", user_pw='").append(user_pw).append('\'');
+        sb.append("userID='").append(userID).append('\'');
+        sb.append(", userPW='").append(userPW).append('\'');
         sb.append(", email='").append(email).append('\'');
         sb.append(", name='").append(name).append('\'');
         sb.append(", age=").append(age);

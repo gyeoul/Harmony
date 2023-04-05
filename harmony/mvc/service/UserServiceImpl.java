@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService{
      * 카드 변경
      * */
     @Override
-    public void userCardUpdate(String user_id, String card) throws DMLException{
-        int result = userDAO.userCardUpdate(user_id, card);
+    public void userCardUpdate(String userID, String card) throws DMLException{
+        int result = userDAO.userCardUpdate(userID, card);
         if(result == 0)
             throw new DMLException("카드 변경에 실패했습니다");
     }
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService{
      * 개인 정보 조회
      */
     @Override
-    public UsersDTO userSelect(String user_id) throws SearchWrongException {
+    public UsersDTO userSelect(String userID) throws SearchWrongException {
        return null;
     }
     
@@ -55,8 +55,8 @@ public class UserServiceImpl implements UserService{
      * 로그인
      */
     @Override
-    public void login(String user_id, String user_pw) throws DMLException{
-    	int result = userDAO.login(user_id, user_pw);
+    public void login(String userID, String userPW) throws DMLException{
+    	int result = userDAO.login(userID, userPW);
     	if(result == 0) throw new DMLException("회원 정보가 존재하지 않습니다.");
 	}
 }
