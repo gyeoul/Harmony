@@ -7,6 +7,7 @@ import mvc.dto.UsersDTO;
 
 public class MenuView {
     static Scanner sc = new Scanner(System.in);
+    static String userID; //현재 사용자
 
     /**
      * 로그인/회원가입 선택
@@ -46,11 +47,12 @@ public class MenuView {
 
         while (true) {
             System.out.println("\n==================================================================================");
-            System.out.print(" (1) 예매\t | ");
-            System.out.print("(2) 뮤지컬 차트\t | ");
-            System.out.print("(3) 예매 내역 확인\t | ");
-            System.out.print("(4) 예매 취소\t | ");
-            System.out.print("(5) 종료 ");
+            System.out.print(" (1) 예매  | ");
+            System.out.print("(2) 뮤지컬 차트  | ");
+            System.out.print("(3) 예매 내역 확인  | ");
+            System.out.print("(4) 예매 취소  | ");
+            System.out.print("(5) 마이페이지 ");
+            System.out.print("(6) 종료 ");
             System.out.println("\n==================================================================================");
             System.out.print("메뉴를 선택해주세요 >> ");
             try {
@@ -68,7 +70,10 @@ public class MenuView {
                     case 4: //예매 취소
                         ticketDelete();
                         break;
-                    case 5: //종료
+                    case 5: //마이 페이지
+                        userInfoUpdate();
+                        break;
+                    case 6: //종료
                         System.out.println("다음에 또 오세요~ 로그아웃됩니다...");
                         System.exit(0);
                         break;
@@ -101,12 +106,12 @@ public class MenuView {
     public static void login(){
         try {
 			System.out.print("ID를 입력하시오 : ");
-			String id = sc.nextLine();
+            userID = sc.nextLine();
 			
 			System.out.print("PassWord를 입력하시오 : ");
 			String pw = sc.nextLine();
 			
-			UserController.login(id, pw);
+			UserController.login(userID, pw);
 		} catch (Exception e) {
 			System.out.println("로그인 실패! 다시 입력하시오!");
 			login();
@@ -168,7 +173,63 @@ public class MenuView {
     }
 
     /**
-     * 4. 예매 취소
+     * 5. 마이페이지
+     * */
+    public static void userInfoUpdate(){
+        while(true) {
+            try {
+                System.out.println("\n==================================================================================");
+                System.out.print(" (1) 비밀번호 변경  | ");
+                System.out.print("(2) 이름 변경  | ");
+                System.out.print("(3) 카드 등록/수정  | ");
+                System.out.print("(4) 메인으로 돌아가기  ");
+                System.out.println("\n==================================================================================");
+                System.out.print("원하시는 메뉴를 입력하세요 >>  ");
+
+                int choice = Integer.parseInt(sc.nextLine());
+                switch (choice) {
+                    case 1: //비밀번호 변경
+//                        userPWUpdateByUserID();
+                        break;
+                    case 2: //이름 변경
+                        break;
+                    case 3: // 카드 등록/수정
+                        break;
+                    case 4: //메인으로 돌아가기
+                        menuChoice();
+                        break;
+                    default:
+                        System.out.println("숫자만 입력해주세요.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("숫자만 입력해주세요.");
+            }
+
+        } //while end
+    }
+
+    /**
+     * 5-1. 비밀번호 변경
+     * */
+    /*
+    public static void userPWUpdateByUserID(){
+        try {
+            System.out.print("변경하실 비밀번호를 입력해주세요 >>");
+            String newPW = sc.nextLine();
+            System.out.print("다시 한번 입력해주세요 >>");
+            String checkPW = sc.nextLine();
+
+            if (newPW == checkPW){
+                UserController.UpdateUserPW(userID, newPW); //유저아이디와
+            }
+        }catch(Exception e){
+
+        }
+    }
+    */
+
+    /**
+     * 6. 예매 취소
      * */
     public static void ticketDelete(){
 
