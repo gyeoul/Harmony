@@ -76,7 +76,7 @@ public class MusicalDAOImpl implements MusicalDAO {
             if(rs.next()){
                 musical = new MusicalDTO(rs.getInt("musical_id"), rs.getString("title"),
                         rs.getString("actor"), rs.getString("genre"), rs.getString("musical_date"),
-                        rs.getString("hall"), rs.getString("summary"));
+                        rs.getString("hall"), rs.getString("summary"), rs.getString("production"));
             }
         } catch(SQLException e){
             e.printStackTrace(); // 테스트 후 지울 것
