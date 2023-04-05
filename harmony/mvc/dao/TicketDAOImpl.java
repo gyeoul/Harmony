@@ -3,6 +3,8 @@ package mvc.dao;
 import mvc.common.DBManager;
 import mvc.dto.MusicalTicketDTO;
 import mvc.dto.TicketDTO;
+import mvc.exception.DMLException;
+import mvc.exception.SearchWrongException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,6 +45,7 @@ public class TicketDAOImpl implements TicketDAO {
             updateSeat(con, ticket.getSeatNum(), ticket.getMusicalId(),'Y');
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new DMLException("뮤지컬 예매 중 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps);
         }
@@ -123,6 +126,7 @@ public class TicketDAOImpl implements TicketDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new SearchWrongException("예매 목록 조회 중 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
         }
