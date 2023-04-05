@@ -13,6 +13,11 @@ public interface MusicalService {
     List<String> musicalSelectAll() throws SearchWrongException;
 
     /**
+     * 뮤지컬 제목을 기준으로 목록 조회
+     * */
+    List<MusicalDTO> musicalSelectByTitle(String title) throws SearchWrongException;
+
+    /**
      * 뮤지컬 상세 조회
      */
     MusicalDTO musicalDetailSelect(String title) throws SearchWrongException;
