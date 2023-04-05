@@ -9,7 +9,7 @@ import mvc.view.FailView;
 import mvc.view.SuccessView;
 
 public class UserController {
-    private static UserService userService = UserServiceImpl.getInstance();
+    private static final UserService userService = UserServiceImpl.getInstance();
 
     /**
      * 회원 가입
