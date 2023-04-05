@@ -50,12 +50,11 @@ public class UsersDAOImpl implements UsersDAO {
 			result = ps.executeUpdate();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 			throw new DMLException("등록하는데 오류가 발생하여 등록되지 않았습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps);
 		}
-    	
     	return result;
     }
 
@@ -63,8 +62,26 @@ public class UsersDAOImpl implements UsersDAO {
      * 카드 변경
      * */
     @Override
-    public int userCardUpdate(String user_id, String card){
-        return 0;
+    public int userCardUpdate(String user_id, String card) throws DMLException{
+    	Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "update users set card = ? where user_id = ?";
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, card);
+			ps.setString(2, user_id);
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			throw new DMLException("카드번호 수정하는데 문제가 발생했습니다.");
+		} finally {
+			DBManager.releaseConnection(con, ps);
+		}
+    	return result;
     }
 
     /**
@@ -75,6 +92,9 @@ public class UsersDAOImpl implements UsersDAO {
         return null;
     }
 
+	/**
+	 * 로그인
+	 */
 	@Override
 	public int login(String user_id, String user_pw) throws DMLException{
 		Connection con = null;
@@ -95,7 +115,6 @@ public class UsersDAOImpl implements UsersDAO {
 		} finally {
 			DBManager.releaseConnection(con, ps);
 		}
-		
 		return result;
 	}
     

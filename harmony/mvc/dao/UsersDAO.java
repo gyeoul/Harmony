@@ -13,7 +13,7 @@ public interface UsersDAO {
     /**
      * 카드 변경
      * */
-    int userCardUpdate(String user_id, String card);
+    int userCardUpdate(String user_id, String card) throws DMLException;
 
     /**
      * 개인 정보 조회
