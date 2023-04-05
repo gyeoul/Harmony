@@ -8,10 +8,11 @@ public class MusicalDTO {
     private String date; // 상영일 | date
     private String hall; // 상영홀 | varchar2(20)
     private String summary; // 줄거리 | varchar2(255)
+    private String production; // 제작사 | varchar2(20)
 
     public MusicalDTO(){}
 
-    public MusicalDTO(int musical_id, String title, String actor, String genre, String date, String hall, String summary) {
+    public MusicalDTO(int musical_id, String title, String actor, String genre, String date, String hall, String summary, String production) {
         this.musical_id = musical_id;
         this.title = title;
         this.actor = actor;
@@ -19,6 +20,7 @@ public class MusicalDTO {
         this.date = date;
         this.hall = hall;
         this.summary = summary;
+        this.production = production;
     }
 
     public int getMusical_id() {
@@ -77,6 +79,10 @@ public class MusicalDTO {
         this.summary = summary;
     }
 
+    public String getProduction() { return production; }
+
+    public void setProduction(String production) { this.production = production; }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("< 뮤지컬 " + title + " >");
@@ -84,6 +90,7 @@ public class MusicalDTO {
         sb.append("\n배우  | " + actor);
         sb.append("\n장르  | " + genre);
         sb.append("\n소개  | " + summary);
+        sb.append("\n제작사 | " + production);
         sb.append("");
         return sb.toString();
     }
