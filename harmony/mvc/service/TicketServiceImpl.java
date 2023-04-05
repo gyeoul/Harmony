@@ -37,8 +37,8 @@ public class TicketServiceImpl implements TicketService{
      * 예매 취소
      */
     @Override
-    public void ticketDelete(int ticketID) throws DMLException {
-        int result = ticketDAO.ticketDelete(ticketID);
+    public void ticketDelete(int ticketID, String userID) throws DMLException {
+        int result = ticketDAO.ticketDelete(ticketID, userID);
 
         if (result == 0) {
             throw new DMLException("예매 취소 실패");

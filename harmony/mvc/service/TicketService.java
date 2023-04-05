@@ -16,7 +16,7 @@ public interface TicketService {
     /**
      * 예매 취소
      **/
-    void ticketDelete(int ticketID) throws DMLException;
+    void ticketDelete(int ticketID, String userID) throws DMLException;
 
     /**
      * 개별 유저 예매 내역 조회 - 유저가 예매한 티켓의 상세 정보

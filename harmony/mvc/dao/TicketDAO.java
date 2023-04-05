@@ -16,7 +16,7 @@ public interface TicketDAO {
      * 예매 취소
      * String user_id, int musical_id, String seatNum
      */
-    int ticketDelete(int ticketID);
+    int ticketDelete(int ticketID, String userID);
 
     /**
      * 예매 내역 조회
