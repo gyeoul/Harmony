@@ -16,7 +16,7 @@ public class TicketController {
 
     /**
      * 예매 등록
-     * */
+     **/
     public static void ticketInsert(TicketDTO ticket)  {
         try{
             ticketService.ticketInsert(ticket);
