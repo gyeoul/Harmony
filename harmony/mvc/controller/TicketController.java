@@ -32,7 +32,7 @@ public class TicketController {
     public static void ticketDelete(int ticketID, String userID) {
         try{
             ticketService.ticketDelete(ticketID, userID);
-            SuccessView.messagePrint("예매 취소되었습니다");
+            SuccessView.messagePrint("예매가 취소되었습니다");
         } catch (DMLException e) {
             FailView.errorMessage(e.getMessage());
         }
