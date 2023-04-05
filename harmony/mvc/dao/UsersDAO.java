@@ -13,17 +13,17 @@ public interface UsersDAO {
     /**
      * 카드 변경
      * */
-    int userCardUpdate(String user_id, String card) throws DMLException;
+    int userCardUpdate(String userID, String card) throws DMLException;
 
     /**
      * 개인 정보 조회
      */
-    UsersDTO userSelect(String user_id);
+    UsersDTO userSelect(String userID) ;
     
     
     /**
      * 로그인
      */
-    int login(String user_id, String user_pw) throws DMLException;
+    int login(String userID, String userPW) throws DMLException;
     
 }
