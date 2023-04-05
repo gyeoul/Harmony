@@ -44,4 +44,5 @@ public class DBManager {
         }
 
         releaseConnection(con, st);
- 
+    }
+}
