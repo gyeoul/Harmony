@@ -142,7 +142,7 @@ public class MenuView {
     	System.out.print("자신의 나이를 입력하시오 : ");
     	int age = Integer.parseInt(sc.nextLine());
     	
-    	System.out.print("자신의 성별을 입력하시오.(남성인 경우 'M'/여성인 경우 'W') : ");
+    	System.out.print("자신의 성별을 입력하시오 (남성인 경우 'M'/여성인 경우 'W') : ");
     	String gender = sc.nextLine();
     	
     	System.out.print("사용할 카드의 카드번호를 입력하시오 : ");
@@ -268,6 +268,21 @@ public class MenuView {
             System.out.println("");
         }
     }
+    
+    
+    /**
+     * 카드 변경
+     **/
+    public static void userCardUpdate() {
+    	System.out.print("자신의 ID를 입력하시오 : ");
+		String id = sc.nextLine();
+		
+		System.out.println("변경할 카드번호를 입력하시오 : ");
+		String card = sc.nextLine();
+		
+		UserController.userCardUpdate(id, card);
+	}
+    
 
 } // class end
 
