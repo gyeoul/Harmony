@@ -61,7 +61,7 @@ public class SuccessView {
     }
     
     /**
-     * 좌석 정보 출력
+     * 좌석 정보 출력 - 5 * 5 좌석표
      * */
     public static void selectSeatListPrint(List<SeatDTO> seatDTOS){
         System.out.println("\n================================ 좌석 정보 ===================================");
@@ -75,7 +75,7 @@ public class SuccessView {
                 if(seatNum.equals("Y")) sb.append("XX");
                 else if(seatNum.equals("X")) sb.append(seatNum);
 
-                sb.append("  |");
+                sb.append("  |  ");
             }
             System.out.println(sb.toString());
             System.out.println(":--------------------------------------------------:");

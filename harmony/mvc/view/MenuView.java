@@ -2,6 +2,7 @@ package mvc.view;
 
 import java.util.Scanner;
 
+import mvc.controller.MusicalController;
 import mvc.controller.UserController;
 
 public class MenuView {
@@ -134,7 +135,16 @@ public class MenuView {
      * 2. 뮤지컬 차트 조회
      * */
     public static void musicalSelectAll(){
+        MusicalController.musicalSelectAll();
 
+        System.out.print("상세 정보를 열람하고 싶은 뮤지컬의 번호를 입력해주세요: ");
+        int input = sc.nextInt();
+
+        try{
+            MusicalController.musicalDetailSelect(input);
+        } catch (NumberFormatException e){
+            System.out.println("목록에 없는 숫자가 입력되었습니다. 다시 입력해주세요.");
+        }
     }
 
     /**
