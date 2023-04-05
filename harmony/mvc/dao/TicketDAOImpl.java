@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TicketDAOImpl implements TicketDAO {
-    private static TicketDAO instance = new TicketDAOImpl();
+    private static final TicketDAO instance = new TicketDAOImpl();
 
     /**
      * 외부에서 객체생성 막음
@@ -43,6 +43,8 @@ public class TicketDAOImpl implements TicketDAO {
             result = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            DBManager.releaseConnection(con, ps);
         }
         return result;
     }
@@ -99,6 +101,8 @@ public class TicketDAOImpl implements TicketDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            DBManager.releaseConnection(con, ps, rs);
         }
         return result;
     }
@@ -127,6 +131,8 @@ public class TicketDAOImpl implements TicketDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            DBManager.releaseConnection(con, ps, rs);
         }
         return result;
     }
