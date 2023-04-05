@@ -6,8 +6,6 @@ import mvc.dto.MusicalTicketDTO;
 import mvc.dto.TicketDTO;
 import mvc.exception.DMLException;
 import mvc.exception.SearchWrongException;
-import mvc.view.FailView;
-import mvc.view.SuccessView;
 
 import java.util.List;
 
@@ -23,25 +21,25 @@ public class TicketServiceImpl implements TicketService{
 
     /**
      * 예매 등록
-     * */
+     **/
     @Override
     public void ticketInsert(TicketDTO ticket) throws DMLException {
         int result = ticketDAO.ticketInsert(ticket);
 
         if (result == 0) {
-            throw new DMLException("실패");
+            throw new DMLException("예매에 실패했습니다.");
         }
     }
 
     /**
      * 예매 취소
-     */
+     **/
     @Override
     public void ticketDelete(int ticketID, String userID) throws DMLException {
         int result = ticketDAO.ticketDelete(ticketID, userID);
 
         if (result == 0) {
-            throw new DMLException("예매 취소 실패");
+            throw new DMLException("예매 취소에 실패했습니다.");
         }
     }
 

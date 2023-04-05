@@ -213,7 +213,6 @@ public class MenuView {
         menuChoice();
     }
 
-
     /**
      * 2. 뮤지컬 차트 조회
      **/
@@ -344,7 +343,7 @@ public class MenuView {
             case 1: // 카드 등록 메뉴
                 cardInsertByUserID();
                 break;
-            case 2:  //카드 수정 메뉴
+            case 2:  // 카드 수정 메뉴
                 cardUpdateByUserID();
                 break;
             case 3: // 메인 메뉴로 돌아가기
@@ -353,7 +352,6 @@ public class MenuView {
             default:
                 System.out.println("숫자만 입력해 주세요.");
         }
-
     }
 
     /**
