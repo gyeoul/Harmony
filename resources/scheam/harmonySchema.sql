@@ -13,7 +13,7 @@ create table USERS
 )
 
 -- USERS DATA ADD
-    INSERT INTO USERS (user_id, user_pw, email, name, age, gender) VALUES ('park', '1234', 'park@gmail.com', 'park', 24, 'W');  -- 카드 등록이 안된 사용자
+INSERT INTO USERS (user_id, user_pw, email, name, age, gender) VALUES ('park', '1234', 'park@gmail.com', 'park', 24, 'W');  -- 카드 등록이 안된 사용자
 INSERT INTO USERS (user_id, user_pw, email, name, age, gender) VALUES ('jang', '1111', 'jang@hanmail.com', 'jang', 18, 'M');  -- 카드 등록이 안된 사용자
 INSERT INTO USERS VALUES ('jeon', '2222', 'jeon@gmail.com', 'jeon', 26, 'W', '1111222233334444');
 INSERT INTO USERS VALUES ('lee', '3333', 'lee@naver.com', 'lee', 22, 'M', '1234123412341234');
@@ -103,7 +103,7 @@ create table SEAT
         primary key (MUSICAL_ID, SEATNUM)
 )
 
-    -- SEAT DATA ADD
+-- SEAT DATA ADD
 -- musical_id 1
     INSERT INTO SEAT (seatnum, musical_id, price) VALUES ('A1', 1, '45000');
 INSERT INTO SEAT (seatnum, musical_id, price) VALUES ('A2', 1, '45000');
@@ -650,3 +650,4 @@ UPDATE SEAT SET SOLD = 'Y' WHERE MUSICAL_ID = 15 AND SEATNUM = 'B3';
 
 
 SELECT * FROM TICKET;
+
