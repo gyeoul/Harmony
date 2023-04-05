@@ -183,11 +183,9 @@ public class MenuView {
                 case 2: // 메인 메뉴로 돌아가기
                     menuChoice();
                     break;
-
                 default:
                     System.out.println("숫자만 입력해주세요.");
             }
-
         } catch (Exception e){
             System.out.println("잘못된 입력입니다.");
         }
