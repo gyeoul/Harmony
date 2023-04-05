@@ -46,4 +46,19 @@ public class UserController {
             FailView.errorMessage(e.getMessage());
         }
     }
+    
+    /**
+     * 로그인
+     */
+    public static void login(String user_id, String user_pw) {
+		try {
+			userService.login(user_id, user_pw);
+			SuccessView.messagePrint("로그인 되었습니다.");
+		} catch (DMLException e) {
+//			e.printStackTrace();
+			FailView.errorMessage(e.getMessage());
+		}
+	}
+    
+    
 }
