@@ -11,9 +11,9 @@ public interface UserService {
     void userInsert(UsersDTO userDto) throws DMLException;
 
     /**
-     * 카드 변경
+     * 카드 등록/수정
      * */
-    void userCardUpdate(String userID, String card) throws DMLException;
+    void cardUpdateByUserID(String userID, String card) throws DMLException;
 
     /**
      * 개인 정보 조회
