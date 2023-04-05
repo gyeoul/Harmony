@@ -1,13 +1,11 @@
 package mvc.view;
 
-import java.util.Scanner;
-
-import mvc.controller.MusicalController;
-import mvc.controller.TicketController;
-import mvc.controller.TicketingController;
-import mvc.controller.UserController;
+import mvc.controller.*;
 import mvc.dto.TicketDTO;
 import mvc.dto.UsersDTO;
+import mvc.exception.SearchWrongException;
+
+import java.util.Scanner;
 
 public class MenuView {
     static Scanner sc = new Scanner(System.in);
@@ -16,7 +14,7 @@ public class MenuView {
     /**
      * 로그인/회원가입 선택
      **/
-    public static void userCheck(){
+    public static void userCheck() {
         while (true) {
             System.out.print("로그인하시겠습니까?");
             System.out.println("\n====================================================================================");
@@ -98,68 +96,68 @@ public class MenuView {
 
     /**
      * 로그인
-     * */
-    public static void login(){
-			System.out.print("ID를 입력하시오 >> ");
-      userID = sc.nextLine();
+     */
+    public static void login() {
+        System.out.print("ID를 입력하시오 >> ");
+        userID = sc.nextLine();
 
-			System.out.print("PassWord를 입력하시오 >> ");
-			String pw = sc.nextLine();
+        System.out.print("PassWord를 입력하시오 >> ");
+        String pw = sc.nextLine();
 
-			UserController.login(userID, pw);
-			menuChoice();
+        UserController.login(userID, pw);
+        menuChoice();
     }
 
     /**
      * 로그인 실패시, 다시 로그인 시도 or 회원가입 둘중 하나를 선택
      **/
     public static void loginChoice() {
-    	 System.out.println(" (1) 로그인을 다시 시도  |  (2) 회원가입 ");
+        System.out.println(" (1) 로그인을 다시 시도  |  (2) 회원가입 ");
 
-    	 int choiceNUM = Integer.parseInt(sc.nextLine());
-    	 switch (choiceNUM) {
-    	 	case 1:
-    	 		login(); // 로그인으로 이동
-    	 		break;
-    	 	case 2 :
-    	 		joinMember(); // 회원가입으로 이동
-    	 		break;
-    	 	default:
-    	 		System.out.println("잘못된 숫자를 입력하셨습니다. 다시 입력해주세요!");
-    	 }
+        int choiceNUM = Integer.parseInt(sc.nextLine());
+        switch (choiceNUM) {
+            case 1:
+                login(); // 로그인으로 이동
+                break;
+            case 2:
+                joinMember(); // 회원가입으로 이동
+                break;
+            default:
+                System.out.println("잘못된 숫자를 입력하셨습니다. 다시 입력해주세요!");
+        }
     }
 
     /**
      * 회원가입
      **/
-    public static void joinMember(){
-    	System.out.print("사용할 ID를 입력하시오 >> ");
-    	String id = sc.nextLine();
+    public static void joinMember() {
+        System.out.print("사용할 ID를 입력하시오 >> ");
+        String id = sc.nextLine();
 
-    	System.out.print("사용할 PassWord를 입력하시오 >> ");
-    	String pw = sc.nextLine();
+        System.out.print("사용할 PassWord를 입력하시오 >> ");
+        String pw = sc.nextLine();
 
-    	System.out.print("등록할 Email을 입력하시오 >> ");
-    	String email = sc.nextLine();
+        System.out.print("등록할 Email을 입력하시오 >> ");
+        String email = sc.nextLine();
 
-    	System.out.print("자신의 이름을 입력하시오 >> ");
-    	String name = sc.nextLine();
+        System.out.print("자신의 이름을 입력하시오 >> ");
+        String name = sc.nextLine();
 
-    	System.out.print("자신의 나이를 입력하시오 >> ");
-    	int age = Integer.parseInt(sc.nextLine());
+        System.out.print("자신의 나이를 입력하시오 >> ");
+        int age = Integer.parseInt(sc.nextLine());
 
-    	System.out.print("자신의 성별을 입력하시오 (남성 'M'/여성 'W') >> ");
-    	String gender = sc.nextLine();
+        System.out.print("자신의 성별을 입력하시오 (남성 'M'/여성 'W') >> ");
+        String gender = sc.nextLine();
 
-    	UsersDTO user = new UsersDTO(id, pw, email, name, age, gender, null);
+        UsersDTO user = new UsersDTO(id, pw, email, name, age, gender, null);
 
-    	UserController.userInsert(user);
+        UserController.userInsert(user);
     }
 
     /**
      * 1. 예매
      **/
-    public static void ticketing(){
+    public static void ticketing() {
 
         TicketDTO ticket = new TicketDTO();
         ticket.setUserId(userID);
@@ -171,15 +169,40 @@ public class MenuView {
         System.out.print("관람하고 싶은 뮤지컬의 이름을 입력해주세요: ");
         String input = sc.nextLine();
 
-        TicketingController.searchByTitle(input);
+        try {
+            TicketingController.searchByTitle(input);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ticketing();
+        }
         System.out.print("관람을 원하는 날짜의 번호를 입력해주세요: ");
 
         int inp2 = Integer.parseInt(sc.nextLine());
+        try {
+            MusicalController.musicalSeatSelect(ticket.getMusicalId());
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ticketing();
+        }
         ticket.setMusicalId(TicketingController.seatSearchByRownumWithTitle(inp2, input));
-        MusicalController.musicalSeatSelect(ticket.getMusicalId());
+
         System.out.print("관람을 원하는 좌석을 입력해주세요: ");
-        ticket.setSeatNum(sc.nextLine());
-        System.out.println(ticket);
+        try {
+            ticket.setSeatNum(SeatController.checkSeat(sc.nextLine().toUpperCase()));
+        } catch (SearchWrongException e) {
+            System.out.println(e.getMessage());
+            ticketing();
+        }
+
+//        System.out.println(ticket);
+        try {
+            UserController.userCardCheck(userID);
+        } catch (SearchWrongException e) {
+            System.out.println(e.getMessage());
+            userCardUpdate();
+        }
+
         // 결제 진행
         try {
             TicketController.ticketInsert(ticket);
@@ -195,13 +218,13 @@ public class MenuView {
     /**
      * 2. 뮤지컬 차트 조회
      **/
-    public static void musicalSelectAll(){
+    public static void musicalSelectAll() {
         MusicalController.musicalSelectAll();
 
         System.out.print("상세 정보를 열람하고 싶은 뮤지컬의 제목을 입력해주세요 >> ");
         String input = sc.nextLine();
 
-        try{
+        try {
             MusicalController.musicalDetailSelect(input);
             System.out.println("\n====================================================================================");
             System.out.println("    (1) 뮤지컬 목록으로 돌아가기    |    (2) 메인 메뉴로 돌아가기");
@@ -218,7 +241,7 @@ public class MenuView {
                 default:
                     System.out.println("숫자만 입력해주세요.");
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("잘못된 입력입니다.");
         }
     }
@@ -226,15 +249,15 @@ public class MenuView {
     /**
      * 3.예매 내역 확인
      **/
-    public static void ticketSelectByUserID(){
+    public static void ticketSelectByUserID() {
         TicketController.ticketSelectByMine(userID);
     }
 
     /**
      * 5. 마이페이지
      **/
-    public static void userInfoUpdate(){
-        while(true) {
+    public static void userInfoUpdate() {
+        while (true) {
             try {
                 System.out.println("\n====================================================================================");
                 System.out.print("                                      마이페이지");
@@ -276,23 +299,23 @@ public class MenuView {
 
     /**
      * 5-1. 개인 정보 조회
-     * */
-    public static void userInfoSelectByUserID(){
+     */
+    public static void userInfoSelectByUserID() {
         UserController.userInfoSelectByUserID(userID);
     }
 
     /**
      * 5-2. 비밀번호 변경
-     * */
-    public static void userPWUpdateByUserID(){
+     */
+    public static void userPWUpdateByUserID() {
         System.out.print("새로운 비밀번호를 입력해주세요 >> ");
         String newPW = sc.nextLine();
         System.out.print("다시 한번 입력해주세요 >> ");
         String checkPW = sc.nextLine();
 
-        if (newPW.equals(checkPW)){
+        if (newPW.equals(checkPW)) {
             UserController.userPWUpdate(userID, newPW); //유저아이디와 비밀번호
-        }else {
+        } else {
             FailView.errorMessage("입력된 비밀번호가 다릅니다. 다시 입력해주세요");
             userPWUpdateByUserID();
         }
@@ -300,8 +323,8 @@ public class MenuView {
 
     /**
      * 5-3. 이름 변경
-     * */
-    public static void userNameUpdateByUserID(){
+     */
+    public static void userNameUpdateByUserID() {
         System.out.print("새로운 이름 입력해주세요 >>");
         String newName = sc.nextLine();
 
@@ -311,7 +334,7 @@ public class MenuView {
 
     /**
      * 5-4. 카드 등록/수정
-     * */
+     */
     public static void userCardUpdate() {
         System.out.println("\n====================================================================================");
         System.out.print(" (1) 카드 등록    |    (2) 카드 수정   |  (3) 메인 메뉴로 돌아가기");
@@ -336,8 +359,8 @@ public class MenuView {
 
     /**
      * 5-4-1. 카드 등록
-     * */
-    public static void cardInsertByUserID(){
+     */
+    public static void cardInsertByUserID() {
         System.out.print("등록할 카드번호를 입력하시오 >> ");
         String card = sc.nextLine();
         UserController.cardUpdateByUserID(userID, card);
@@ -345,8 +368,8 @@ public class MenuView {
 
     /**
      * 5-4-2. 카드 수정
-     * */
-    public static void cardUpdateByUserID(){
+     */
+    public static void cardUpdateByUserID() {
         System.out.print("변경할 카드번호를 입력하시오 >> ");
         String card = sc.nextLine();
         UserController.cardUpdateByUserID(userID, card);
@@ -354,8 +377,8 @@ public class MenuView {
 
     /**
      * 6. 예매 취소
-     * */
-    public static void ticketDelete(){
+     */
+    public static void ticketDelete() {
         try {
             TicketController.ticketSelectMusicalTitle(userID); // 예매 목록(티켓 예매 번호, 제목) 보여 주기
 
@@ -366,5 +389,5 @@ public class MenuView {
         } catch (Exception e) {
             System.out.println("");
         }
-	}
+    }
 }// class end
