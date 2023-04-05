@@ -65,8 +65,20 @@ public class SuccessView {
      * */
     public static void selectSeatListPrint(List<SeatDTO> seatDTOS){
         System.out.println("\n================================ 좌석 정보 ===================================");
-        for(SeatDTO seat : seatDTOS){
-            System.out.println(seat);
+        System.out.println(":--------------------------------------------------:");
+        for(int i=0; i<5; i++){
+            StringBuilder sb = new StringBuilder();
+            sb.append("|  ");
+            for(int j=0; j<5; j++){
+                int idx = 5 * i + j;
+                String seatNum = seatDTOS.get(idx).getSeatnum();
+                if(seatNum.equals("Y")) sb.append("XX");
+                else if(seatNum.equals("X")) sb.append(seatNum);
+
+                sb.append("  |");
+            }
+            System.out.println(sb.toString());
+            System.out.println(":--------------------------------------------------:");
         }
     }
 }
