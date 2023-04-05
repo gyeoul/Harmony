@@ -60,4 +60,5 @@ public class TicketController {
             FailView.errorMessage(e.getMessage());
         }
     }
+
 }
