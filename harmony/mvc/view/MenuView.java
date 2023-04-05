@@ -113,8 +113,7 @@ public class MenuView {
 			System.out.print("PassWord를 입력하시오 : ");
 			String pw = sc.nextLine();
 			
-<<<<<<< HEAD
-			UserController.login(id, pw);
+			UserController.login(userID, pw);
         } catch (Exception e) {
         	System.out.println("로그인 실패!");
         	System.out.println("로그인을 다시 시도하고 싶다면 '1', 회원가입을 하고 싶다면 '2'를 입력하세요.");
@@ -137,15 +136,7 @@ public class MenuView {
         }
 
         menuChoice();
-=======
-			UserController.login(userID, pw);
-		} catch (Exception e) {
-			System.out.println("로그인 실패! 다시 입력하시오!");
-			login();
-		}
-    	
-    	menuChoice();
->>>>>>> 165ae02a5dd119846d179c65a31646c833a3ac34
+
     }
 
     /**
@@ -300,13 +291,11 @@ public class MenuView {
      * 카드 변경
      **/
     public static void userCardUpdate() {
-    	System.out.print("자신의 ID를 입력하시오 : ");
-		String id = sc.nextLine();
-		
+  
 		System.out.println("변경할 카드번호를 입력하시오 : ");
 		String card = sc.nextLine();
 		
-		UserController.userCardUpdate(id, card);
+		UserController.userCardUpdate(userID, card);
 	}
     
 
