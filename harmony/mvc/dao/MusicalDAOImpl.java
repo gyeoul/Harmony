@@ -2,6 +2,7 @@ package mvc.dao;
 
 import mvc.common.DBManager;
 import mvc.dto.MusicalDTO;
+import mvc.dto.SeatDTO;
 import mvc.exception.SearchWrongException;
 
 import java.sql.Connection;
@@ -85,6 +86,14 @@ public class MusicalDAOImpl implements MusicalDAO {
         }
 
         return musical;
+    }
+
+    /**
+     * 해당 뮤지컬의 좌석 현황 조회
+     * */
+    @Override
+    public List<SeatDTO> musicalSeatSelect(int musical_id) {
+        return null;
     }
 
 }
