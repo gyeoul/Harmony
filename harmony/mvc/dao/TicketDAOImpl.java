@@ -30,7 +30,6 @@ public class TicketDAOImpl implements TicketDAO {
     public int ticketInsert(TicketDTO ticket) {
         Connection con = null;
         PreparedStatement ps = null;
-//        ResultSet rs = null;
         String sql = "insert into TICKET (TICKET_ID, USER_ID, SEATNUM, MUSICAL_ID, ISSUE) values (?,?,?,?,SYSDATE);";
         int result = 0;
         try {
@@ -40,6 +39,7 @@ public class TicketDAOImpl implements TicketDAO {
             ps.setString(2, ticket.getUserId());
             ps.setString(3, ticket.getSeatNum());
             ps.setInt(4, ticket.getMusicalId());
+            updateSeat(con, ticket.getSeatNum(), ticket.getMusicalId(),'Y');
             result = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,7 +69,7 @@ public class TicketDAOImpl implements TicketDAO {
             ps = con.prepareStatement(sql);
             ps.setInt(1, ticketID);
 
-            cancelSeat(con, seatNum, musicalID); // 해당 티켓의 좌석 공석으로 전환
+            updateSeat(con, seatNum, musicalID,'N'); // 해당 티켓의 좌석 공석으로 전환
 
             result = ps.executeUpdate();
         } catch (SQLException e) {
@@ -144,22 +144,20 @@ public class TicketDAOImpl implements TicketDAO {
         return result;
     }
 
-    private int cancelSeat(Connection con, String seatNum, int musicalID) throws SQLException { // 티켓의 좌석 공석으로 전환
+    private void updateSeat(Connection con, String seatNum, int musicalID, char setValue) throws SQLException { // 티켓의 좌석 공석으로 전환
         PreparedStatement ps = null;
         String sql = "update seat set sold = ? where (seatnum = ?) and (musical_id = ?)";
-        int result = 0;
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setString(1, "N");
+            ps.setString(1, Character.toString(setValue));
             ps.setString(2, seatNum);
             ps.setInt(3, musicalID);
 
-            result = ps.executeUpdate();
+            ps.executeUpdate();
         } finally {
             DBManager.releaseConnection(null, ps);
         }
 
-        return result;
     }
 }

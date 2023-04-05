@@ -12,7 +12,7 @@ import mvc.view.SuccessView;
 import java.util.List;
 
 public class TicketController {
-    private static TicketService ticketService = TicketServiceImpl.getInstance();
+    private static final TicketService ticketService = TicketServiceImpl.getInstance();
 
     /**
      * 예매 등록
@@ -44,7 +44,7 @@ public class TicketController {
     public static void ticketSelectById(int ticketID) {
         try{
             List<TicketDTO> ticketList = ticketService.ticketSelectById(ticketID);
-            SuccessView.selectTicketByIdPrint(ticketList);
+            SuccessView.selectTicketListPrint(ticketList);
         }catch(SearchWrongException e){
             FailView.errorMessage(e.getMessage());
         }
