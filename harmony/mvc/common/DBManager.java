@@ -3,12 +3,12 @@ package mvc.common;
 import java.sql.*;
 
 public class DBManager {
-    /*
-      로드
-      */
+    /**
+     * 로드
+     **/
     static {
         try {
-            Class.forName(DBProperties.DRVIER_NAME);
+            Class.forName(DBProperties.DRIVER_NAME);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -16,15 +16,14 @@ public class DBManager {
 
     /**
      * 연결
-     */
-
+     **/
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(DBProperties.URL, DBProperties.USER_ID, DBProperties.USER_PASS);
     }
 
     /**
-     * 닫기(DML전용)
-     */
+     * 닫기(DML 전용)
+     **/
     public static void releaseConnection(Connection con, Statement st) {
         try {
             if (st != null) st.close();
@@ -32,20 +31,18 @@ public class DBManager {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
-     * 닫기(select전용)
-     */
+     * 닫기(select 전용)
+     **/
     public static void releaseConnection(Connection con, Statement st, ResultSet rs) {
         try {
             if (rs != null) rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         releaseConnection(con, st);
     }
-
-
 }
