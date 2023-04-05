@@ -27,8 +27,36 @@ public class UsersDAOImpl implements UsersDAO {
      * 회원 가입
      * */
     @Override
-    public int userInsert(UsersDTO userDTO){
-        return 0;
+    public int userInsert(UsersDTO userDTO) throws DMLException{
+        Connection con = null;
+        PreparedStatement ps = null;
+        int result = 0;
+        StringBuilder sql = new StringBuilder();
+        sql.append("insert into users (user_id, user_pw, email, name, age, gender, card)")
+           .append("values(?, ?, ?, ?, ?, ?, ?)");
+        
+        try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql.toString());
+			
+			ps.setString(1, userDTO.getUser_id());
+			ps.setString(2, userDTO.getUser_pw());
+			ps.setString(3, userDTO.getEmail());
+			ps.setString(4, userDTO.getName());
+			ps.setInt(5, userDTO.getAge());
+			ps.setString(6, userDTO.getGender());
+			ps.setString(7, userDTO.getCard());
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DMLException("등록하는데 오류가 발생하여 등록되지 않았습니다.");
+		} finally {
+			DBManager.releaseConnection(con, ps);
+		}
+    	
+    	return result;
     }
 
     /**

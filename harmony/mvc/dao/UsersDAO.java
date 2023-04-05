@@ -8,7 +8,7 @@ public interface UsersDAO {
     /**
      * 회원 가입
      * */
-    int userInsert(UsersDTO userDTO);
+    int userInsert(UsersDTO userDTO) throws DMLException;
 
     /**
      * 카드 변경
