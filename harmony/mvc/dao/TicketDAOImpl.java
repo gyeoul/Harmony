@@ -1,6 +1,7 @@
 package mvc.dao;
 
 import mvc.common.DBManager;
+import mvc.dto.MusicalTicketDTO;
 import mvc.dto.TicketDTO;
 
 import java.sql.Connection;
@@ -137,7 +138,7 @@ public class TicketDAOImpl implements TicketDAO {
         ResultSet rs = null;
         String sql = "select * from TICKET where USER_ID = ?";
 
-        List<TicketDTO> ticketDTO = new ArrayList<>();
+        List<TicketDTO> ticketDTOList = new ArrayList<>();
 
         try {
             con = DBManager.getConnection();
@@ -146,7 +147,7 @@ public class TicketDAOImpl implements TicketDAO {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                ticketDTO.add(new TicketDTO(
+                ticketDTOList.add(new TicketDTO(
                         rs.getInt("TICKET_ID"),
                         rs.getString("USER_ID"),
                         rs.getString("SEATNUM"),
@@ -160,7 +161,52 @@ public class TicketDAOImpl implements TicketDAO {
             DBManager.releaseConnection(con, ps, rs);
         }
 
-        return ticketDTO;
+        return ticketDTOList;
+    }
+
+    /**
+     * 나의 예매 목록 조회
+     **/
+    @Override
+    public List<MusicalTicketDTO> ticketSelectByMine(String userID) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<MusicalTicketDTO> musicalTicketDTOList = new ArrayList<>();
+
+        StringBuilder sql = new StringBuilder();
+        sql.append("select t.user_id, t.ticket_id, t.musical_id, t.seatnum, t.issue, ");
+        sql.append("title, hall, musical_date ");
+        sql.append("from ticket t, musical m ");
+        sql.append("where (t.musical_id = m.musical_id) ");
+        sql.append("and user_id = ?");
+
+        try {
+            con = DBManager.getConnection();
+            ps = con.prepareStatement(sql.toString());
+            ps.setString(1, userID);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                musicalTicketDTOList.add(new MusicalTicketDTO(
+                        rs.getInt("ticket_id"),
+                        rs.getString("user_id"),
+                        rs.getString("seatnum"),
+                        rs.getInt("musical_id"),
+                        rs.getString("issue"),
+                        rs.getString("title"),
+                        rs.getString("musical_date"),
+                        rs.getString("hall")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.releaseConnection(con, ps, rs);
+        }
+
+        return musicalTicketDTOList;
     }
 
     private void updateSeat(Connection con, String seatNum, int musicalID, char setValue) throws SQLException { // 티켓의 좌석 공석으로 전환

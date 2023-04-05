@@ -91,15 +91,13 @@ public class MusicalTicketDTO {
 
     @Override
     public String toString() {
-        return "MusicalTicketDTO{" +
-                "ticketId=" + ticketId +
-                ", userId='" + userId + '\'' +
-                ", seatNum='" + seatNum + '\'' +
-                ", musicalId=" + musicalId +
-                ", issue='" + issue + '\'' +
-                ", title='" + title + '\'' +
-                ", date='" + date + '\'' +
-                ", hall='" + hall + '\'' +
-                '}';
+        final StringBuffer sb = new StringBuffer(ticketId);
+        sb.append(" | ").append(title);
+        sb.append(" | ").append(hall);
+        sb.append(" | ").append(seatNum);
+        sb.append(" | ").append(date);
+        sb.append(" | ").append(issue);
+
+        return sb.toString();
     }
 }

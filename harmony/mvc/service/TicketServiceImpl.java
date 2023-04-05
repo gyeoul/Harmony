@@ -2,6 +2,7 @@ package mvc.service;
 
 import mvc.dao.TicketDAO;
 import mvc.dao.TicketDAOImpl;
+import mvc.dto.MusicalTicketDTO;
 import mvc.dto.TicketDTO;
 import mvc.exception.DMLException;
 import mvc.exception.SearchWrongException;
@@ -70,5 +71,19 @@ public class TicketServiceImpl implements TicketService{
         }
 
         return ticketDTOList;
+    }
+
+    /**
+     * 나의 예매 목록 조회
+     **/
+    @Override
+    public List<MusicalTicketDTO> ticketSelectByMine(String userID) throws SearchWrongException {
+        List<MusicalTicketDTO> musicalTicketDTOList = ticketDAO.ticketSelectByMine(userID);
+
+        if (musicalTicketDTOList.size() == 0) {
+            throw new SearchWrongException("예매 정보가 없습니다.");
+        }
+
+        return musicalTicketDTOList;
     }
 }

@@ -1,5 +1,6 @@
 package mvc.dao;
 
+import mvc.dto.MusicalTicketDTO;
 import mvc.dto.TicketDTO;
 
 import java.util.List;
@@ -24,8 +25,11 @@ public interface TicketDAO {
 
     /**
      * 예매 내역 조회
-     * */
+     **/
     List<TicketDTO> ticketSelectByUserId(String userId);
 
-
+    /**
+     * 나의 예매 목록 조회
+     **/
+    List<MusicalTicketDTO> ticketSelectByMine(String userID);
 }

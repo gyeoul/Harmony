@@ -195,7 +195,7 @@ public class MenuView {
      * 3.예매 내역 확인
      * */
     public static void ticketSelectByUserID(){
-
+        TicketController.ticketSelectByMine(userID);
     }
 
     /**
