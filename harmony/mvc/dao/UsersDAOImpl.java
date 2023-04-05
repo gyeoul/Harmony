@@ -11,7 +11,7 @@ import mvc.exception.DMLException;
 import mvc.exception.SearchWrongException;
 
 public class UsersDAOImpl implements UsersDAO {
-    private static UsersDAO instance = new UsersDAOImpl();
+    private static final UsersDAO instance = new UsersDAOImpl();
 
     /**
      * 외부에서 객체생성 막음
