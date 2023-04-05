@@ -42,6 +42,7 @@ public class MenuView {
             }
         }
     }
+    
     /**
      * 메뉴 선택
      */
@@ -116,6 +117,9 @@ public class MenuView {
 			menuChoice();
     }
     
+    /**
+     * 로그인 실패시, 다시 로그인 시도 or 회원가입 둘중 하나를 선택
+     **/
     public static void loginChoice() {
     	 System.out.println("로그인을 다시 시도하고 싶다면 '1', 회원가입을 하고 싶다면 '2'를 입력하세요.");
 

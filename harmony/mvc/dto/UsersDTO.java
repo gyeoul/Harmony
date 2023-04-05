@@ -6,8 +6,8 @@ public class UsersDTO {
     private String email; // 이메일 | varchar2(40)
     private String name; // 유저 이름 | varchar2(20)
     private int age; // 나이 | number
-    private String gender; // 성별 - char 타입의 데이터를 직접적으로 사용하기 위한 메소드를 java에서 지원하지 않기 때문에 어차피 String으로 재변환하는 처리를 거쳐야 한다.
-    private String card; // 카드 - 결제 수단
+    private String gender; // 성별 | char(1) - char 타입의 데이터를 직접적으로 사용하기 위한 메소드를 java에서 지원X -> String으로 재변환 처리 거쳐야 함
+    private String card; // 카드 - 결제 수단 | varchar2(20)
 
     public UsersDTO (){}
 
