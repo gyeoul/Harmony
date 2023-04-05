@@ -31,7 +31,7 @@ public class TicketDAOImpl implements TicketDAO {
     public int ticketInsert(TicketDTO ticket) {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "insert into TICKET (TICKET_ID, USER_ID, SEATNUM, MUSICAL_ID, ISSUE) values (TICKET_ID_SEQ.nextval,?,?,?,SYSDATE);";
+        String sql = "insert into TICKET (TICKET_ID, USER_ID, SEATNUM, MUSICAL_ID, ISSUE) values (TICKET_ID_SEQ.nextval,?,?,?,SYSDATE)";
         int result = 0;
         try {
             con = DBManager.getConnection();
@@ -39,8 +39,8 @@ public class TicketDAOImpl implements TicketDAO {
             ps.setString(1, ticket.getUserId());
             ps.setString(2, ticket.getSeatNum());
             ps.setInt(3, ticket.getMusicalId());
-            updateSeat(con, ticket.getSeatNum(), ticket.getMusicalId(),'Y');
             result = ps.executeUpdate();
+            updateSeat(con, ticket.getSeatNum(), ticket.getMusicalId(),'Y');
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
