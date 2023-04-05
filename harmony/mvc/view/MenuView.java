@@ -113,6 +113,31 @@ public class MenuView {
 			System.out.print("PassWord를 입력하시오 : ");
 			String pw = sc.nextLine();
 			
+<<<<<<< HEAD
+			UserController.login(id, pw);
+        } catch (Exception e) {
+        	System.out.println("로그인 실패!");
+        	System.out.println("로그인을 다시 시도하고 싶다면 '1', 회원가입을 하고 싶다면 '2'를 입력하세요.");
+        	try {
+        		int choice_num = Integer.parseInt(sc.nextLine());
+        		switch(choice_num) {
+        		case 1 : 
+        			login(); // 로그인으로 이동
+        			break;
+        		case 2 : 
+        			joinMember(); // 회원가입으로 이동
+        			break;
+        		default :
+        			System.out.println("잘못된 숫자를 입력하셨습니다, 다시 입력해주세요!");
+        		}
+        	} catch (NumberFormatException e2) {
+        		System.out.println("숫자만 입력 가능합니다.");
+        	}
+
+        }
+
+        menuChoice();
+=======
 			UserController.login(userID, pw);
 		} catch (Exception e) {
 			System.out.println("로그인 실패! 다시 입력하시오!");
@@ -120,6 +145,7 @@ public class MenuView {
 		}
     	
     	menuChoice();
+>>>>>>> 165ae02a5dd119846d179c65a31646c833a3ac34
     }
 
     /**
