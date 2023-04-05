@@ -1,5 +1,6 @@
 package mvc.controller;
 
+import mvc.dto.MusicalTicketDTO;
 import mvc.dto.TicketDTO;
 import mvc.exception.DMLException;
 import mvc.exception.SearchWrongException;
@@ -61,4 +62,15 @@ public class TicketController {
         }
     }
 
+    /**
+     * 나의 예매 목록 조회
+     **/
+    public static void ticketSelectByMine(String userID) {
+        try {
+            List<MusicalTicketDTO> musicalTicketDTOList = ticketService.ticketSelectByMine(userID);
+            SuccessView.selectMyTicketListPrint(musicalTicketDTOList);
+        } catch (SearchWrongException e) {
+            FailView.errorMessage(e.getMessage());
+        }
+    }
 }
