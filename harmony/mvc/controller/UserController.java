@@ -11,6 +11,9 @@ import mvc.view.FailView;
 import mvc.view.MenuView;
 import mvc.view.SuccessView;
 
+import static mvc.view.MenuView.menuChoice;
+import static mvc.view.MenuView.userPWUpdateByUserID;
+
 public class UserController {
     private static final UserService userService = UserServiceImpl.getInstance();
 
@@ -41,9 +44,9 @@ public class UserController {
     /**
      * 개인 정보 조회
      */
-    public static void userSelect(String userID) {
+    public static void userSelect(String user_id) {
         try {
-            UsersDTO dto = userService.userSelect(userID);
+            UsersDTO dto = userService.userSelect(user_id);
             SuccessView.selectByUserIdPrint(dto);
         } catch (SearchWrongException e) {
             FailView.errorMessage(e.getMessage());
@@ -61,9 +64,47 @@ public class UserController {
 //			e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
 			MenuView.loginChoice();
-			
+
 		}
 	}
-    
+
+    /**
+     * 개인정보 조회
+     * */
+    public static void userInfoSelectByUserID(String userID){
+        try {
+            UsersDTO usersDTO = userService.userInfoSelectByUserID(userID);
+            SuccessView.selectUserInfoPrint(usersDTO);
+        } catch (DMLException e) {
+            FailView.errorMessage(e.getMessage());
+        }
+    }
+
+    /**
+     * 비밀번호 변경
+     * */
+    public static void userPWUpdate(String userID, String newPW) {
+        try {
+            userService.userPWUpdate(userID, newPW);
+            SuccessView.messagePrint("비밀번호 변경에 성공했습니다");
+            menuChoice();
+        } catch (DMLException e) {
+            FailView.errorMessage(e.getMessage());
+            userPWUpdateByUserID();
+        }
+    }
+
+    /**
+     * 이름 변경
+     * */
+    public static void userNameUpdate(String userID, String userName) {
+        try {
+            userService.userNameUpdate(userID, userName);
+            SuccessView.messagePrint("이름 변경에 성공했습니다");
+        } catch (DMLException e) {
+            FailView.errorMessage(e.getMessage());
+        }
+    }
+
     
 }
