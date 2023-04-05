@@ -34,7 +34,7 @@ public class MusicalDAOImpl implements MusicalDAO {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select title from musical order by musical_id"; // 정렬 순서
+        String sql = "select title from musical where musical_date >= sysdate order by musical_id, musical_date"; // 정렬 순서 - 상영일 지난 영화는 조회 X
 
         try{
             con = DBManager.getConnection();
@@ -75,12 +75,12 @@ public class MusicalDAOImpl implements MusicalDAO {
 
             if(rs.next()){
                 musical = new MusicalDTO(rs.getInt("musical_id"), rs.getString("title"),
-                        rs.getString("actor"), rs.getString("genre"), rs.getString("date"),
+                        rs.getString("actor"), rs.getString("genre"), rs.getString("musical_date"),
                         rs.getString("hall"), rs.getString("summary"));
             }
         } catch(SQLException e){
             e.printStackTrace(); // 테스트 후 지울 것
-            throw new SearchWrongException(musical_id + "에 해당되는 뮤지컬 상세 정보 조회에 오류가 발생했습니다.");
+            throw new SearchWrongException(musical_id + "번 뮤지컬의 상세 정보 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
         }
@@ -93,7 +93,31 @@ public class MusicalDAOImpl implements MusicalDAO {
      * */
     @Override
     public List<SeatDTO> musicalSeatSelect(int musical_id) {
-        return null;
+        List<SeatDTO> seatList = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select * from seat where musical_id = ?";
+
+        try{
+            con = DBManager.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, musical_id);
+            rs = ps.executeQuery();
+
+            while(rs.next()){
+                SeatDTO seat = new SeatDTO(rs.getString("seatnum"), rs.getInt("musical_id"),
+                        rs.getString("sold").toCharArray()[0], rs.getInt("price"));
+                seatList.add(seat);
+            }
+        } catch(SQLException e){
+            e.printStackTrace(); // 테스트 후 지울 것
+            throw new SearchWrongException(musical_id + "번 뮤지컬의 좌석 정보 조회에 오류가 발생했습니다.");
+        } finally {
+            DBManager.releaseConnection(con, ps, rs);
+        }
+
+        return seatList;
     }
 
 }
