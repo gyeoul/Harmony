@@ -322,10 +322,7 @@ public class MenuView {
      * 6. 예매 취소
      * */
     public static void ticketDelete(){
-		    System.out.println("변경할 카드번호를 입력하시오 : ");
-		    String card = sc.nextLine();
 
-		     UserController.userCardUpdate(userID, card);
 	}
 
 
