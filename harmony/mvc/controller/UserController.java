@@ -1,11 +1,14 @@
 package mvc.controller;
 
+import java.awt.Menu;
+
 import mvc.dto.UsersDTO;
 import mvc.exception.DMLException;
 import mvc.exception.SearchWrongException;
 import mvc.service.UserService;
 import mvc.service.UserServiceImpl;
 import mvc.view.FailView;
+import mvc.view.MenuView;
 import mvc.view.SuccessView;
 
 public class UserController {
@@ -57,6 +60,8 @@ public class UserController {
 		} catch (DMLException e) {
 //			e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
+			MenuView.loginChoice();
+			
 		}
 	}
     
