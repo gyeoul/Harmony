@@ -1,6 +1,5 @@
 package mvc.controller;
 
-
 import mvc.dto.TicketDTO;
 import mvc.exception.DMLException;
 import mvc.exception.SearchWrongException;
@@ -39,13 +38,25 @@ public class TicketController {
     }
 
     /**
-     * 예매 내역 조회
-     * */
-    public static void ticketSelectById(int ticketID) {
+     * 개별 유저 예매 내역 조회 - 유저가 예매한 티켓의 상세 정보
+     **/
+    public static void ticketSelectByTicketId(int ticketID) {
+        try {
+            TicketDTO ticketDTO = ticketService.ticketSelectByTicketId(ticketID);
+            SuccessView.selectTicketDetailPrint(ticketDTO);
+        } catch (SearchWrongException e) {
+            FailView.errorMessage(e.getMessage());
+        }
+    }
+
+    /**
+     * 개별 유저 예매 내역 조회 - 유저가 예매한 예매 내역 리스트
+     **/
+    public static void ticketSelectByUserId(String userID) {
         try{
-            List<TicketDTO> ticketList = ticketService.ticketSelectById(ticketID);
+            List<TicketDTO> ticketList = ticketService.ticketSelectByUserId(userID);
             SuccessView.selectTicketListPrint(ticketList);
-        }catch(SearchWrongException e){
+        } catch (SearchWrongException e){
             FailView.errorMessage(e.getMessage());
         }
     }

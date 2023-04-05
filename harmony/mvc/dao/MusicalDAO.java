@@ -14,11 +14,15 @@ public interface MusicalDAO {
     /**
      * 뮤지컬 상세 조회
      */
-    MusicalDTO musicalDetailSelect(int musical_id);
+    MusicalDTO musicalDetailSelect(String title);
 
 
     /**
      * 해당 뮤지컬의 좌석 현황 조회
      * */
     List<SeatDTO> musicalSeatSelect(int musical_id);
+
+    List<String> musicalTitleDistinctList();
+
+    List<MusicalDTO> musicalSelectByTitle(String title);
 }
