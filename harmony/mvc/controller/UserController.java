@@ -63,8 +63,7 @@ public class UserController {
 		} catch (DMLException e) {
 //			e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
-			MenuView.loginChoice();
-
+			MenuView.loginChoice(); // 로그인 실패하여 실패 후 선택창으로 이동
 		}
 	}
 

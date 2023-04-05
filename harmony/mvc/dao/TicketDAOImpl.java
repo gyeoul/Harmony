@@ -31,7 +31,7 @@ public class TicketDAOImpl implements TicketDAO {
     public int ticketInsert(TicketDTO ticket) {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "insert into TICKET (TICKET_ID, USER_ID, SEATNUM, MUSICAL_ID, ISSUE) values (TICKET_ID_SEQ.nextval,?,?,?,SYSDATE);";
+        String sql = "insert into TICKET (TICKET_ID, USER_ID, SEATNUM, MUSICAL_ID, ISSUE) values (TICKET_ID_SEQ.nextval,?,?,?,SYSDATE)";
         int result = 0;
         try {
             con = DBManager.getConnection();
@@ -39,8 +39,8 @@ public class TicketDAOImpl implements TicketDAO {
             ps.setString(1, ticket.getUserId());
             ps.setString(2, ticket.getSeatNum());
             ps.setInt(3, ticket.getMusicalId());
-            updateSeat(con, ticket.getSeatNum(), ticket.getMusicalId(),'Y');
             result = ps.executeUpdate();
+            updateSeat(con, ticket.getSeatNum(), ticket.getMusicalId(),'Y');
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -53,14 +53,15 @@ public class TicketDAOImpl implements TicketDAO {
      * 예매 취소
      **/
     @Override
-    public int ticketDelete(int ticketID) {
+    public int ticketDelete(int ticketID, String userID) {
         Connection con = null;
         PreparedStatement ps = null;
 
         StringBuilder sql = new StringBuilder();
         sql.append("delete from ticket ");
-        sql.append("where (ticket_id = ?) and ");
-        sql.append("(to_char((select musical_date ");
+        sql.append("where (user_id = ?) ");
+        sql.append("and (ticket_id = ?) ");
+        sql.append("and (to_char((select musical_date ");
         sql.append("from musical m, ticket t ");
         sql.append("where m.musical_id = t.musical_id ");
         sql.append("and ticket_id = ?), 'YYYY-MM-DD HH:MI:SS') ");
@@ -76,11 +77,13 @@ public class TicketDAOImpl implements TicketDAO {
 
             con = DBManager.getConnection();
             ps = con.prepareStatement(sql.toString());
-            ps.setInt(1, ticketID);
-
-            updateSeat(con, seatNum, musicalID,'N'); // 해당 티켓의 좌석 공석으로 전환
+            ps.setString(1, userID);
+            ps.setInt(2, ticketID);
+            ps.setInt(3, ticketID);
 
             result = ps.executeUpdate();
+
+            updateSeat(con, seatNum, musicalID,'N'); // 해당 티켓의 좌석 공석으로 전환
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

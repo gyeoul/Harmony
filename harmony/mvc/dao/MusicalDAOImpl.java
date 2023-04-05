@@ -34,7 +34,7 @@ public class MusicalDAOImpl implements MusicalDAO {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select distinct title from musical where musical_date >= sysdate"; // 정렬 - 상영일 지난 영화는 조회 X
+        String sql = "select distinct title from musical where musical_date >= sysdate order by TITLE"; // 정렬 - 상영일 지난 영화는 조회 X
 
         try{
             con = DBManager.getConnection();
@@ -46,7 +46,7 @@ public class MusicalDAOImpl implements MusicalDAO {
                 musicalList.add(title);
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // 테스트 후 지울 것
+            e.printStackTrace(); // TODO 테스트 후 지울 것
             throw new SearchWrongException("뮤지컬 목록 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
@@ -79,7 +79,7 @@ public class MusicalDAOImpl implements MusicalDAO {
                         rs.getString("hall"), rs.getString("summary"), rs.getString("production"));
             }
         } catch(SQLException e){
-            e.printStackTrace(); // 테스트 후 지울 것
+            e.printStackTrace(); // TODO 테스트 후 지울 것
             throw new SearchWrongException(title + " 뮤지컬의 상세 정보 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
@@ -111,7 +111,7 @@ public class MusicalDAOImpl implements MusicalDAO {
                 seatList.add(seat);
             }
         } catch(SQLException e){
-            e.printStackTrace(); // 테스트 후 지울 것
+            e.printStackTrace(); // TODO 테스트 후 지울 것
             throw new SearchWrongException(musical_id + "번 뮤지컬의 좌석 정보 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
@@ -141,7 +141,7 @@ public class MusicalDAOImpl implements MusicalDAO {
                 result.add(rs.getString(1));
             }
         } catch(SQLException e){
-            e.printStackTrace(); // 테스트 후 지울 것
+            e.printStackTrace(); // TODO 테스트 후 지울 것
             throw new SearchWrongException("뮤지컬 리스트 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
@@ -167,12 +167,22 @@ public class MusicalDAOImpl implements MusicalDAO {
 
             ps.setString(1,title);
             rs = ps.executeQuery();
-
             while(rs.next()){
-                musicalList.add(new MusicalDTO());//TODO 생성자로 MusicalDTO 생성
+                musicalList.add(
+                        new MusicalDTO(
+                                rs.getInt(1),
+                                rs.getString(2),
+                                rs.getString(3),
+                                rs.getString(4),
+                                rs.getString(5),
+                                rs.getString(6),
+                                rs.getString(7),
+                                rs.getString(8)
+                                )
+                );
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // 테스트 후 지울 것
+            e.printStackTrace(); // TODO 테스트 후 지울 것
             throw new SearchWrongException("뮤지컬 목록 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
@@ -180,5 +190,4 @@ public class MusicalDAOImpl implements MusicalDAO {
 
         return musicalList;
     }
-
 }

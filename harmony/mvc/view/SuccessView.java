@@ -72,19 +72,20 @@ public class SuccessView {
         System.out.print("                                    좌석 정보");
         System.out.println("\n====================================================================================");
         System.out.println(":--------------------------------------------------:");
+
         for(int i=0; i<5; i++){
             StringBuilder sb = new StringBuilder();
             sb.append("|  ");
             for(int j=0; j<5; j++){
                 int idx = 5 * i + j;
-                String seatNum = seatDTOS.get(idx).getSeatnum();
-                if(seatNum.equals("Y")) sb.append("XX");
-                else if(seatNum.equals("X")) sb.append(seatNum);
+                char sold = seatDTOS.get(idx).getSold();
+                if(sold == 'Y') sb.append("XX");
+                else if(sold == 'N') sb.append(seatDTOS.get(idx).getSeatnum());
 
                 sb.append("  |  ");
             }
             System.out.println(sb.toString());
-            System.out.println(":--------------------------------------------------:");
+            System.out.println(":----------------------------------:");
         }
     }
 
