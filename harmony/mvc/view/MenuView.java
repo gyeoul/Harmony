@@ -106,7 +106,6 @@ public class MenuView {
      * KB_DBBoard_template에서 글번호 검색하는 부분 참고
      * */
     public static void login(){
-        try {
 			System.out.print("ID를 입력하시오 : ");
             userID = sc.nextLine();
 			
@@ -114,12 +113,23 @@ public class MenuView {
 			String pw = sc.nextLine();
 			
 			UserController.login(userID, pw);
-		} catch (Exception e) {
-			System.out.println("로그인 실패! 다시 입력하시오!");
-			login();
-		}
-    	
-    	menuChoice();
+			menuChoice();
+    }
+    
+    public static void loginChoice() {
+    	 System.out.println("로그인을 다시 시도하고 싶다면 '1', 회원가입을 하고 싶다면 '2'를 입력하세요.");
+
+    	 int choice_num = Integer.parseInt(sc.nextLine());
+    	 switch (choice_num) {
+    	 	case 1:
+    	 		login(); // 로그인으로 이동 
+    	 		break; 
+    	 	case 2 : 
+    	 		joinMember(); // 회원가입으로 이동 
+    	 		break;
+    	 	default:
+    	 		System.out.println("잘못된 숫자를 입력하셨습니다, 다시 입력해주세요!");
+    	 }
     }
 
     /**
@@ -142,7 +152,7 @@ public class MenuView {
     	System.out.print("자신의 나이를 입력하시오 : ");
     	int age = Integer.parseInt(sc.nextLine());
     	
-    	System.out.print("자신의 성별을 입력하시오.(남성인 경우 'M'/여성인 경우 'W') : ");
+    	System.out.print("자신의 성별을 입력하시오 (남성인 경우 'M'/여성인 경우 'W') : ");
     	String gender = sc.nextLine();
     	
     	System.out.print("사용할 카드의 카드번호를 입력하시오 : ");
@@ -268,6 +278,19 @@ public class MenuView {
             System.out.println("");
         }
     }
+    
+    
+    /**
+     * 카드 변경
+     **/
+    public static void userCardUpdate() {
+  
+		System.out.println("변경할 카드번호를 입력하시오 : ");
+		String card = sc.nextLine();
+		
+		UserController.userCardUpdate(userID, card);
+	}
+    
 
 } // class end
 

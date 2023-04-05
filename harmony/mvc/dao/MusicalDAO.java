@@ -21,4 +21,8 @@ public interface MusicalDAO {
      * 해당 뮤지컬의 좌석 현황 조회
      * */
     List<SeatDTO> musicalSeatSelect(int musical_id);
+
+    List<String> musicalTitleDistinctList();
+
+    List<MusicalDTO> musicalSelectByTitle(String title);
 }

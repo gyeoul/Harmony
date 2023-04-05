@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MusicalDAOImpl implements MusicalDAO {
-    private static MusicalDAO instance = new MusicalDAOImpl();
+    private static final MusicalDAO instance = new MusicalDAOImpl();
 
     /**
      * 외부에서 객체생성 막음
@@ -118,6 +118,67 @@ public class MusicalDAOImpl implements MusicalDAO {
         }
 
         return seatList;
+    }
+
+
+    /**
+     * 중복을 제외한 뮤지컬 이름 조회
+     * */
+    @Override
+    public List<String> musicalTitleDistinctList() {
+        List<String> result = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select DISTINCT TITLE from MUSICAL";
+
+        try{
+            con = DBManager.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while(rs.next()){
+                result.add(rs.getString(1));
+            }
+        } catch(SQLException e){
+            e.printStackTrace(); // 테스트 후 지울 것
+            throw new SearchWrongException("뮤지컬 리스트 조회에 오류가 발생했습니다.");
+        } finally {
+            DBManager.releaseConnection(con, ps, rs);
+        }
+
+        return result;
+    }
+
+    /**
+     * 뮤지컬 목록 조회
+     * */
+    @Override
+    public List<MusicalDTO> musicalSelectByTitle(String title){
+        List<MusicalDTO> musicalList = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select * from musical where musical_date >= sysdate AND TITLE=?";
+
+        try{
+            con = DBManager.getConnection();
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1,title);
+            rs = ps.executeQuery();
+
+            while(rs.next()){
+                musicalList.add(new MusicalDTO());//TODO 생성자로 MusicalDTO 생성
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // 테스트 후 지울 것
+            throw new SearchWrongException("뮤지컬 목록 조회에 오류가 발생했습니다.");
+        } finally {
+            DBManager.releaseConnection(con, ps, rs);
+        }
+
+        return musicalList;
     }
 
 }
