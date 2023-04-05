@@ -2,6 +2,7 @@ package mvc.view;
 
 import java.util.Scanner;
 
+import mvc.controller.TicketController;
 import mvc.controller.UserController;
 import mvc.dto.UsersDTO;
 
@@ -230,10 +231,18 @@ public class MenuView {
 
     /**
      * 6. 예매 취소
-     * */
+     **/
     public static void ticketDelete(){
+        try {
+            System.out.print("취소할 티켓의 예매 번호를 입력해 주세요.");
+//            TicketController.ticketSelectByUserId(userID); // 예매 목록(제목) 보여 주기
+            int ticketID = sc.nextInt();
 
+            TicketController.ticketDelete(ticketID);
+        } catch (Exception e) {
+            System.out.println("");
+        }
     }
 
-}// class end
+} // class end
 
