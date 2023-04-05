@@ -20,11 +20,12 @@ public interface TicketDAO {
     /**
      * 예매 내역 조회
      * */
-    List<TicketDTO> ticketSelectAll();
+    TicketDTO ticketSelectByTicketId(int ticketID);
 
     /**
-     * 개별 유저 예매 내역 조회
+     * 예매 내역 조회
      * */
-    List<TicketDTO> ticketSelectById(int ticketID);
+    List<TicketDTO> ticketSelectByUserId(String userId);
+
 
 }

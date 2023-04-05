@@ -1,6 +1,8 @@
 package mvc.dao;
 
 import mvc.dto.MusicalDTO;
+import mvc.dto.SeatDTO;
+
 import java.util.List;
 
 public interface MusicalDAO {
@@ -14,4 +16,9 @@ public interface MusicalDAO {
      */
     MusicalDTO musicalDetailSelect(int musical_id);
 
+
+    /**
+     * 해당 뮤지컬의 좌석 현황 조회
+     * */
+    List<SeatDTO> musicalSeatSelect(int musical_id);
 }
