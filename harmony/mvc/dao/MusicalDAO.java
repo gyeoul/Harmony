@@ -7,7 +7,7 @@ public interface MusicalDAO {
     /**
      * 뮤지컬 목록 조회(뮤지컬의 제목 조회)
      * */
-    List<Integer> musicalSelectAll();
+    List<String> musicalSelectAll();
 
     /**
      * 뮤지컬 상세 조회
