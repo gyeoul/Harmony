@@ -46,7 +46,7 @@ public class MusicalDAOImpl implements MusicalDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace(); // 테스트 후 지울 것
-            throw new SearchWrongException("뮤지컬 목록 조회에 예외가 발생했습니다.");
+            throw new SearchWrongException("뮤지컬 목록 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
         }
