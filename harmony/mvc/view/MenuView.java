@@ -15,7 +15,7 @@ public class MenuView {
 
     /**
      * 로그인/회원가입 선택
-     * */
+     **/
     public static void userCheck(){
         while (true) {
             System.out.println("로그인하시겠습니까?");
@@ -47,7 +47,7 @@ public class MenuView {
     
     /**
      * 메뉴 선택
-     */
+     **/
     public static void menuChoice() {
 
         while (true) {
@@ -94,7 +94,7 @@ public class MenuView {
 
     /**
      * try/catch 이용해서 작성
-     * */
+     **/
 
     /**
      * 로그인
@@ -140,7 +140,7 @@ public class MenuView {
     /**
      * 회원가입
      * KB_DBBoard_template에서 등록하는 부분 참고
-     * */
+     **/
     public static void joinMember(){
     	System.out.print("사용할 ID를 입력하시오 : ");
     	String id = sc.nextLine();
@@ -169,7 +169,7 @@ public class MenuView {
 
     /**
      * 1. 예매
-     * */
+     **/
     public static void ticketing(){
 
         TicketDTO ticket = new TicketDTO();
@@ -205,7 +205,7 @@ public class MenuView {
 
     /**
      * 2. 뮤지컬 차트 조회
-     * */
+     **/
     public static void musicalSelectAll(){
         MusicalController.musicalSelectAll();
 
@@ -236,14 +236,14 @@ public class MenuView {
 
     /**
      * 3.예매 내역 확인
-     * */
+     **/
     public static void ticketSelectByUserID(){
         TicketController.ticketSelectByMine(userID);
     }
 
     /**
      * 5. 마이페이지
-     * */
+     **/
     public static void userInfoUpdate(){
         while(true) {
             try {
@@ -279,7 +279,7 @@ public class MenuView {
 
     /**
      * 5-1. 비밀번호 변경
-     * */
+     **/
     /*
     public static void userPWUpdateByUserID(){
         try {
@@ -302,8 +302,9 @@ public class MenuView {
      **/
     public static void ticketDelete(){
         try {
-            System.out.print("취소할 티켓의 예매 번호를 입력해 주세요.");
-//            TicketController.ticketSelectByUserId(userID); // 예매 목록(제목) 보여 주기
+            TicketController.ticketSelectMusicalTitle(userID); // 예매 목록(티켓 예매 번호, 제목) 보여 주기
+
+            System.out.print("취소할 티켓의 예매 번호를 입력해 주세요. >> ");
             int ticketID = sc.nextInt();
 
             TicketController.ticketDelete(ticketID, userID);
@@ -311,7 +312,6 @@ public class MenuView {
             System.out.println("");
         }
     }
-
 
     /**
      * 카드 변경
@@ -323,7 +323,4 @@ public class MenuView {
 
 		UserController.userCardUpdate(userID, card);
 	}
-
-
 } // class end
-
