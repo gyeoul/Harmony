@@ -18,11 +18,6 @@ public interface TicketDAO {
     int ticketDelete(int ticketID);
 
     /**
-     * 예매 내역 조회
-     * */
-    List<TicketDTO> ticketSelectAll();
-
-    /**
      * 개별 유저 예매 내역 조회
      * */
     List<TicketDTO> ticketSelectById(int ticketID);
