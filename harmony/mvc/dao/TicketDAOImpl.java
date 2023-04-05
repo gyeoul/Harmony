@@ -91,22 +91,25 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     /**
-     * 개별 유저 예매 내역 조회
+     * 개별 유저 예매 내역 조회 - 유저가 예매한 티켓의 상세 정보
      **/
     @Override
     public TicketDTO ticketSelectByTicketId(int ticketID) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select * from TICKET where TICKET_ID=?";
-        TicketDTO result = null;
+        String sql = "select * from TICKET where TICKET_ID = ?";
+
+        TicketDTO ticketDTO = null;
+
         try {
             con = DBManager.getConnection();
             ps = con.prepareStatement(sql);
             ps.setInt(1, ticketID);
             rs = ps.executeQuery();
+
             if (rs.next()) {
-                result = new TicketDTO(
+                ticketDTO = new TicketDTO(
                         rs.getInt("TICKET_ID"),
                         rs.getString("USER_ID"),
                         rs.getString("SEATNUM"),
@@ -120,23 +123,30 @@ public class TicketDAOImpl implements TicketDAO {
         } finally {
             DBManager.releaseConnection(con, ps, rs);
         }
-        return result;
+
+        return ticketDTO;
     }
 
+    /**
+     * 개별 유저 예매 내역 조회 - 유저가 예매한 예매 내역 리스트
+     **/
     @Override
-    public List<TicketDTO> ticketSelectByUserId(String userId) {
+    public List<TicketDTO> ticketSelectByUserId(String userID) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select * from TICKET where USER_ID=?";
-        List<TicketDTO> result = new ArrayList<>();
+        String sql = "select * from TICKET where USER_ID = ?";
+
+        List<TicketDTO> ticketDTO = new ArrayList<>();
+
         try {
             con = DBManager.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, userId);
+            ps.setString(1, userID);
             rs = ps.executeQuery();
-            if (rs.next()) {
-                result.add(new TicketDTO(
+
+            while (rs.next()) {
+                ticketDTO.add(new TicketDTO(
                         rs.getInt("TICKET_ID"),
                         rs.getString("USER_ID"),
                         rs.getString("SEATNUM"),
@@ -144,13 +154,13 @@ public class TicketDAOImpl implements TicketDAO {
                         rs.getString("ISSUE")
                 ));
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             DBManager.releaseConnection(con, ps, rs);
         }
-        return result;
+
+        return ticketDTO;
     }
 
     private void updateSeat(Connection con, String seatNum, int musicalID, char setValue) throws SQLException { // 티켓의 좌석 공석으로 전환

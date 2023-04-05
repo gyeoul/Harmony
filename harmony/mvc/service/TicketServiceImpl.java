@@ -45,7 +45,7 @@ public class TicketServiceImpl implements TicketService{
     }
 
     /**
-     * 개별 유저 예매 내역 조회
+     * 개별 유저 예매 내역 조회 - 유저가 예매한 티켓의 상세 정보
      **/
     @Override
     public TicketDTO ticketSelectByTicketId(int ticketID){
@@ -58,6 +58,9 @@ public class TicketServiceImpl implements TicketService{
         return ticketDTO;
     }
 
+    /**
+     * 개별 유저 예매 내역 조회 - 유저가 예매한 예매 내역 리스트
+     **/
     @Override
     public List<TicketDTO> ticketSelectByUserId(String userId) throws SearchWrongException {
         List<TicketDTO> ticketDTOList = ticketDAO.ticketSelectByUserId(userId);

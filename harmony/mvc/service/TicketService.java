@@ -18,10 +18,12 @@ public interface TicketService {
     void ticketDelete(int ticketID) throws DMLException;
 
     /**
-     * 개별 유저 예매 내역 조회
+     * 개별 유저 예매 내역 조회 - 유저가 예매한 티켓의 상세 정보
      **/
     TicketDTO ticketSelectByTicketId(int ticketID) throws SearchWrongException;
 
-
-    List<TicketDTO> ticketSelectByUserId(String userId) throws SearchWrongException;
+    /**
+     * 개별 유저 예매 내역 조회 - 유저가 예매한 예매 내역 리스트
+     **/
+    List<TicketDTO> ticketSelectByUserId(String userID) throws SearchWrongException;
 }
