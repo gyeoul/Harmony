@@ -41,7 +41,7 @@ public class TicketServiceImpl implements TicketService{
         int result = ticketDAO.ticketDelete(ticketID, userID);
 
         if (result == 0) {
-            throw new DMLException("예매 취소 실패");
+            throw new DMLException("예매 취소에 실패했습니다.");
         }
     }
 
