@@ -68,9 +68,9 @@ public class SuccessView {
             sb.append("|  ");
             for(int j=0; j<5; j++){
                 int idx = 5 * i + j;
-                String seatNum = seatDTOS.get(idx).getSeatnum();
-                if(seatNum.equals("Y")) sb.append("XX");
-                else if(seatNum.equals("X")) sb.append(seatNum);
+                char sold = seatDTOS.get(idx).getSold();
+                if(sold == 'Y') sb.append("XX");
+                else if(sold == 'N') sb.append(seatDTOS.get(idx).getSeatnum());
 
                 sb.append("  |  ");
             }
