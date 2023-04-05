@@ -1,5 +1,6 @@
 package mvc.service;
 
+import mvc.dto.MusicalTicketDTO;
 import mvc.dto.TicketDTO;
 import mvc.exception.DMLException;
 import mvc.exception.SearchWrongException;
@@ -26,4 +27,9 @@ public interface TicketService {
      * 개별 유저 예매 내역 조회 - 유저가 예매한 예매 내역 리스트
      **/
     List<TicketDTO> ticketSelectByUserId(String userID) throws SearchWrongException;
+
+    /**
+     * 나의 예매 목록 조회
+     **/
+    List<MusicalTicketDTO> ticketSelectByMine(String userID) throws SearchWrongException;
 }
