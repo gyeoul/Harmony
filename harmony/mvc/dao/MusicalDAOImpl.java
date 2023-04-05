@@ -21,7 +21,7 @@ public class MusicalDAOImpl implements MusicalDAO {
      * 뮤지컬 목록 조회
      * */
     @Override
-    public List<Integer> musicalSelectAll(){
+    public List<String> musicalSelectAll(){
         return null;
     }
 
