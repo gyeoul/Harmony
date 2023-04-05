@@ -28,7 +28,7 @@ public class SuccessView {
     public static void selectPrint(List<String> list) {
         System.out.println("\n================================ 뮤지컬 목록 ===================================");
         for(String title  : list) {
-            System.out.println(title);
+            System.out.println(" ▶ " + title);
         }
     }
 
@@ -36,7 +36,7 @@ public class SuccessView {
      * 뮤지컬 상세 조회
      * */
     public static void selectMusicalDetailPrint(MusicalDTO musicalDTO) {
-        System.out.printf("\n============================= %s 상세 조회 ================================\n", musicalDTO.getTitle());
+        System.out.printf("\n============================= 상세 정보 ================================\n");
         System.out.println(musicalDTO);
     }
 
@@ -61,7 +61,7 @@ public class SuccessView {
     }
     
     /**
-     * 좌석 정보 출력
+     * 좌석 정보 출력 - 5 * 5 좌석표
      * */
     public static void selectSeatListPrint(List<SeatDTO> seatDTOS){
         System.out.println("\n================================ 좌석 정보 ===================================");
@@ -75,7 +75,7 @@ public class SuccessView {
                 if(seatNum.equals("Y")) sb.append("XX");
                 else if(seatNum.equals("X")) sb.append(seatNum);
 
-                sb.append("  |");
+                sb.append("  |  ");
             }
             System.out.println(sb.toString());
             System.out.println(":--------------------------------------------------:");

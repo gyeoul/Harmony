@@ -14,7 +14,7 @@ public interface MusicalDAO {
     /**
      * 뮤지컬 상세 조회
      */
-    MusicalDTO musicalDetailSelect(int musical_id);
+    MusicalDTO musicalDetailSelect(String title);
 
 
     /**
