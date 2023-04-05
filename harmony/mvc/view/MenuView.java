@@ -11,7 +11,7 @@ public class MenuView {
     public static void userCheck(){
         while (true) {
             System.out.println("로그인하시겠습니까?");
-            System.out.print("(1) 로그인 정보 입력  | ");
+            System.out.print("(1) 로그인  | ");
             System.out.print("(2) 회원가입  | ");
             System.out.println("(3) 종료 ");
             System.out.print("메뉴를 선택해주세요 >> ");
