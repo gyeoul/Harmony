@@ -13,7 +13,7 @@ public class TicketDAOImpl implements TicketDAO {
 
     /**
      * 외부에서 객체생성 막음
-     **/
+     */
     private TicketDAOImpl() {
     }
 
@@ -25,8 +25,24 @@ public class TicketDAOImpl implements TicketDAO {
      * 예매 등록
      **/
     @Override
-    public int ticketInsert(TicketDTO ticket){
-        return 0;
+    public int ticketInsert(TicketDTO ticket) {
+        Connection con = null;
+        PreparedStatement ps = null;
+//        ResultSet rs = null;
+        String sql = "insert into TICKET (TICKET_ID, USER_ID, SEATNUM, MUSICAL_ID, ISSUE) values (?,?,?,?,SYSDATE);";
+        int result = 0;
+        try {
+            con = DBManager.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, ticket.getTicketId());
+            ps.setString(2, ticket.getUserId());
+            ps.setString(3, ticket.getSeatNum());
+            ps.setInt(4, ticket.getMusicalId());
+            result = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     /**
@@ -52,14 +68,6 @@ public class TicketDAOImpl implements TicketDAO {
         }
 
         return result;
-    }
-
-    /**
-     * 예매 내역 조회
-     **/
-    @Override
-    public List<TicketDTO> ticketSelectAll(){
-        return null;
     }
 
     /**
