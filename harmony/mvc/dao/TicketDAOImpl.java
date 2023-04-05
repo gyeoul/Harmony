@@ -59,8 +59,12 @@ public class TicketDAOImpl implements TicketDAO {
 
         StringBuilder sql = new StringBuilder();
         sql.append("delete from ticket ");
-        sql.append("where (ticket_id = ?) ");
-        sql.append("and (TO_CHAR(issue, 'YYYY-MM-DD HH:MI:SS') >= TO_CHAR(sysdate - 1/24/3, 'YYYY-MM-DD HH:MI:SS'))"); // 뮤지컬 공연 시간 20 분 전까지만 취소 가능
+        sql.append("where (ticket_id = ?) and ");
+        sql.append("(to_char((select musical_date ");
+        sql.append("from musical m, ticket t ");
+        sql.append("where m.musical_id = t.musical_id ");
+        sql.append("and ticket_id = ?), 'YYYY-MM-DD HH:MI:SS') ");
+        sql.append(">= to_char(sysdate - 1/24/3, 'YYYY-MM-DD HH:MI:SS'))"); // 뮤지컬 공연 시간 20 분 전까지만 취소 가능
 
         TicketDTO ticketDTO = null;
         int result = 0;
