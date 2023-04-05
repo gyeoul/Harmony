@@ -13,17 +13,17 @@ public interface UserService {
     /**
      * 카드 변경
      * */
-    void userCardUpdate(String user_id, String card) throws DMLException;
+    void userCardUpdate(String userID, String card) throws DMLException;
 
     /**
      * 개인 정보 조회
      */
-    UsersDTO userSelect(String user_id) throws SearchWrongException;
+    UsersDTO userSelect(String userID) throws SearchWrongException;
 
 	/**
 	 * 로그인
 	 */
-	void login(String user_id, String user_pw) throws DMLException;
+	void login(String userID, String userPW) throws DMLException;
     
     
 }

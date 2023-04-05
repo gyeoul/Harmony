@@ -39,8 +39,8 @@ public class UsersDAOImpl implements UsersDAO {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql.toString());
 			
-			ps.setString(1, userDTO.getUser_id());
-			ps.setString(2, userDTO.getUser_pw());
+			ps.setString(1, userDTO.getUserID());
+			ps.setString(2, userDTO.getUserPW());
 			ps.setString(3, userDTO.getEmail());
 			ps.setString(4, userDTO.getName());
 			ps.setInt(5, userDTO.getAge());
@@ -62,7 +62,7 @@ public class UsersDAOImpl implements UsersDAO {
      * 카드 변경
      * */
     @Override
-    public int userCardUpdate(String user_id, String card) throws DMLException{
+    public int userCardUpdate(String userID, String card) throws DMLException{
     	Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -71,7 +71,7 @@ public class UsersDAOImpl implements UsersDAO {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, card);
-			ps.setString(2, user_id);
+			ps.setString(2, userID);
 			
 			result = ps.executeUpdate();
 			
@@ -89,14 +89,15 @@ public class UsersDAOImpl implements UsersDAO {
      */
     @Override
     public UsersDTO userSelect(String user_id) {
-        return null;
+        
+    	return null;
     }
 
 	/**
 	 * 로그인
 	 */
 	@Override
-	public int login(String user_id, String user_pw) throws DMLException{
+	public int login(String userID, String userPW) throws DMLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -104,10 +105,10 @@ public class UsersDAOImpl implements UsersDAO {
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, user_id);
+			ps.setString(1, userID);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				if(rs.getString(1).equals(user_pw)) 
+				if(rs.getString(1).equals(userPW)) 
 					return 1; // 로그인 성공 
 			}
 			return 0; // 비밀번호 불일치
