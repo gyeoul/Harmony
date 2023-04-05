@@ -57,15 +57,15 @@ public class UserController {
      * 로그인
      */
     public static void login(String userID, String userPW) {
-		try {
-			userService.login(userID, userPW);
-			SuccessView.messagePrint("로그인 되었습니다.");
-		} catch (DMLException e) {
+        try {
+            userService.login(userID, userPW);
+            SuccessView.messagePrint("로그인 되었습니다.");
+        } catch (DMLException e) {
 //			e.printStackTrace();
-			FailView.errorMessage(e.getMessage());
-			MenuView.loginChoice(); // 로그인 실패하여 실패 후 선택창으로 이동
-		}
-	}
+            FailView.errorMessage(e.getMessage());
+            MenuView.loginChoice(); // 로그인 실패하여 실패 후 선택창으로 이동
+        }
+    }
 
     /**
      * 개인정보 조회
@@ -105,5 +105,13 @@ public class UserController {
         }
     }
 
-    
+    /**
+     * 카드 확인
+     */
+    public static void userCardCheck(String userID){
+            UsersDTO usersDTO = userService.userInfoSelectByUserID(userID);
+            if(usersDTO.getCard()==null)throw new SearchWrongException("카드 정보가 존재하지 않습니다. 카드 등록 후 다시 시도해주세요.");
+    }
+
+
 }
