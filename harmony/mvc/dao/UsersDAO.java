@@ -25,5 +25,21 @@ public interface UsersDAO {
      * 로그인
      */
     int login(String userID, String userPW) throws DMLException;
-    
+
+    /**
+     * 개인 정보 조회
+     * */
+    UsersDTO userInfoSelectByUserID(String userID) throws SearchWrongException;
+
+    /**
+     * 비밀번호 변경
+     * */
+    int userPWUpdate(String userID, String newPW) throws DMLException;
+
+    /**
+     * 이름 변경
+     * */
+    int userNameUpdate(String userID, String newName) throws DMLException;
+
+
 }

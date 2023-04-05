@@ -46,7 +46,7 @@ public class MusicalDAOImpl implements MusicalDAO {
                 musicalList.add(title);
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // 테스트 후 지울 것
+            e.printStackTrace(); // TODO 테스트 후 지울 것
             throw new SearchWrongException("뮤지컬 목록 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
@@ -79,7 +79,7 @@ public class MusicalDAOImpl implements MusicalDAO {
                         rs.getString("hall"), rs.getString("summary"), rs.getString("production"));
             }
         } catch(SQLException e){
-            e.printStackTrace(); // 테스트 후 지울 것
+            e.printStackTrace(); // TODO 테스트 후 지울 것
             throw new SearchWrongException(title + " 뮤지컬의 상세 정보 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
@@ -111,7 +111,7 @@ public class MusicalDAOImpl implements MusicalDAO {
                 seatList.add(seat);
             }
         } catch(SQLException e){
-            e.printStackTrace(); // 테스트 후 지울 것
+            e.printStackTrace(); // TODO 테스트 후 지울 것
             throw new SearchWrongException(musical_id + "번 뮤지컬의 좌석 정보 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
@@ -141,7 +141,7 @@ public class MusicalDAOImpl implements MusicalDAO {
                 result.add(rs.getString(1));
             }
         } catch(SQLException e){
-            e.printStackTrace(); // 테스트 후 지울 것
+            e.printStackTrace(); // TODO 테스트 후 지울 것
             throw new SearchWrongException("뮤지컬 리스트 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
@@ -182,7 +182,7 @@ public class MusicalDAOImpl implements MusicalDAO {
                 );
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // 테스트 후 지울 것
+            e.printStackTrace(); // TODO 테스트 후 지울 것
             throw new SearchWrongException("뮤지컬 목록 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
@@ -190,5 +190,4 @@ public class MusicalDAOImpl implements MusicalDAO {
 
         return musicalList;
     }
-
 }
