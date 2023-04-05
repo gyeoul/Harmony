@@ -30,9 +30,9 @@ public class MusicalController {
     /**
      * 뮤지컬 상세 조회
      * */
-    public static void musicalDetailSelect(int musical_id) {
+    public static void musicalDetailSelect(String title) {
         try {
-            MusicalDTO dto = musicalService.musicalDetailSelect(musical_id);
+            MusicalDTO dto = musicalService.musicalDetailSelect(title);
             SuccessView.selectMusicalDetailPrint(dto);
         } catch (SearchWrongException e) {
             FailView.errorMessage(e.getMessage());

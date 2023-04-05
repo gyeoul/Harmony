@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MusicalDAOImpl implements MusicalDAO {
-    private static MusicalDAO instance = new MusicalDAOImpl();
+    private static final MusicalDAO instance = new MusicalDAOImpl();
 
     /**
      * 외부에서 객체생성 막음
@@ -34,7 +34,7 @@ public class MusicalDAOImpl implements MusicalDAO {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select title from musical where musical_date >= sysdate order by musical_id, musical_date"; // 정렬 순서 - 상영일 지난 영화는 조회 X
+        String sql = "select distinct title from musical where musical_date >= sysdate"; // 정렬 - 상영일 지난 영화는 조회 X
 
         try{
             con = DBManager.getConnection();
@@ -59,28 +59,28 @@ public class MusicalDAOImpl implements MusicalDAO {
      * 뮤지컬 상세 조회
      */
     @Override
-    public MusicalDTO musicalDetailSelect(int musical_id){
+    public MusicalDTO musicalDetailSelect(String title){
         MusicalDTO musical = null;
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select * from musical where musical_id = ?";
+        String sql = "select * from musical where title = ?";
 
         try{
             con = DBManager.getConnection();
             ps = con.prepareStatement(sql);
 
-            ps.setInt(1, musical_id);
+            ps.setString(1, title);
             rs = ps.executeQuery();
 
             if(rs.next()){
                 musical = new MusicalDTO(rs.getInt("musical_id"), rs.getString("title"),
                         rs.getString("actor"), rs.getString("genre"), rs.getString("musical_date"),
-                        rs.getString("hall"), rs.getString("summary"));
+                        rs.getString("hall"), rs.getString("summary"), rs.getString("production"));
             }
         } catch(SQLException e){
             e.printStackTrace(); // 테스트 후 지울 것
-            throw new SearchWrongException(musical_id + "번 뮤지컬의 상세 정보 조회에 오류가 발생했습니다.");
+            throw new SearchWrongException(title + " 뮤지컬의 상세 정보 조회에 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
         }
@@ -118,6 +118,67 @@ public class MusicalDAOImpl implements MusicalDAO {
         }
 
         return seatList;
+    }
+
+
+    /**
+     * 중복을 제외한 뮤지컬 이름 조회
+     * */
+    @Override
+    public List<String> musicalTitleDistinctList() {
+        List<String> result = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select DISTINCT TITLE from MUSICAL";
+
+        try{
+            con = DBManager.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while(rs.next()){
+                result.add(rs.getString(1));
+            }
+        } catch(SQLException e){
+            e.printStackTrace(); // 테스트 후 지울 것
+            throw new SearchWrongException("뮤지컬 리스트 조회에 오류가 발생했습니다.");
+        } finally {
+            DBManager.releaseConnection(con, ps, rs);
+        }
+
+        return result;
+    }
+
+    /**
+     * 뮤지컬 목록 조회
+     * */
+    @Override
+    public List<MusicalDTO> musicalSelectByTitle(String title){
+        List<MusicalDTO> musicalList = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select * from musical where musical_date >= sysdate AND TITLE=?";
+
+        try{
+            con = DBManager.getConnection();
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1,title);
+            rs = ps.executeQuery();
+
+            while(rs.next()){
+                musicalList.add(new MusicalDTO());//TODO 생성자로 MusicalDTO 생성
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // 테스트 후 지울 것
+            throw new SearchWrongException("뮤지컬 목록 조회에 오류가 발생했습니다.");
+        } finally {
+            DBManager.releaseConnection(con, ps, rs);
+        }
+
+        return musicalList;
     }
 
 }
