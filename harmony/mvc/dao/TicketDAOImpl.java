@@ -56,7 +56,12 @@ public class TicketDAOImpl implements TicketDAO {
     public int ticketDelete(int ticketID) {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "delete from ticket where ticket_id = ?"; // SQL 문 수정 필요
+
+        StringBuilder sql = new StringBuilder();
+        sql.append("delete from ticket ");
+        sql.append("where (ticket_id = ?) ");
+        sql.append("and (TO_CHAR(issue, 'YYYY-MM-DD HH:MI:SS') >= TO_CHAR(sysdate - 1/24/3, 'YYYY-MM-DD HH:MI:SS'))"); // 뮤지컬 공연 시간 20 분 전까지만 취소 가능
+
         TicketDTO ticketDTO = null;
         int result = 0;
 
@@ -66,7 +71,7 @@ public class TicketDAOImpl implements TicketDAO {
             int musicalID = ticketDTO.getMusicalId(); // 해당 티켓(예매한 뮤지컬)의 뮤지컬 아이디
 
             con = DBManager.getConnection();
-            ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql.toString());
             ps.setInt(1, ticketID);
 
             cancelSeat(con, seatNum, musicalID); // 해당 티켓의 좌석 공석으로 전환
@@ -144,10 +149,12 @@ public class TicketDAOImpl implements TicketDAO {
         return result;
     }
 
-    private int cancelSeat(Connection con, String seatNum, int musicalID) throws SQLException { // 티켓의 좌석 공석으로 전환
+    /**
+     * 티켓의 좌석 공석으로 전환
+     **/
+    private void cancelSeat(Connection con, String seatNum, int musicalID) throws SQLException {
         PreparedStatement ps = null;
         String sql = "update seat set sold = ? where (seatnum = ?) and (musical_id = ?)";
-        int result = 0;
 
         try {
             ps = con.prepareStatement(sql);
@@ -155,11 +162,9 @@ public class TicketDAOImpl implements TicketDAO {
             ps.setString(2, seatNum);
             ps.setInt(3, musicalID);
 
-            result = ps.executeUpdate();
+            ps.executeUpdate();
         } finally {
             DBManager.releaseConnection(null, ps);
         }
-
-        return result;
     }
 }
