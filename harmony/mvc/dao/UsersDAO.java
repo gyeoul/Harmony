@@ -1,6 +1,7 @@
 package mvc.dao;
 
 import mvc.dto.UsersDTO;
+import mvc.exception.DMLException;
 import mvc.exception.SearchWrongException;
 
 public interface UsersDAO {
@@ -18,5 +19,11 @@ public interface UsersDAO {
      * 개인 정보 조회
      */
     UsersDTO userSelect(String user_id);
-
+    
+    
+    /**
+     * 로그인
+     */
+    int login(String user_id, String user_pw) throws DMLException;
+    
 }

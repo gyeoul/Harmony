@@ -2,6 +2,8 @@ package mvc.view;
 
 import java.util.Scanner;
 
+import mvc.controller.UserController;
+
 public class MenuView {
     static Scanner sc = new Scanner(System.in);
 
@@ -96,7 +98,20 @@ public class MenuView {
      * KB_DBBoard_template에서 글번호 검색하는 부분 참고
      * */
     public static void login(){
-        menuChoice();
+        try {
+			System.out.print("ID를 입력하시오: ");
+			String id = sc.nextLine();
+			
+			System.out.print("PassWord를 입력하시오: ");
+			String pw = sc.nextLine();
+			
+			UserController.login(id, pw);
+		} catch (Exception e) {
+			System.out.println("로그인 실패! 다시 입력하시오!");
+			login();
+		}
+    	
+    	menuChoice();
     }
 
     /**
