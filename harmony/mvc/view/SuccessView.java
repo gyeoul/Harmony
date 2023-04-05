@@ -1,6 +1,7 @@
 package mvc.view;
 
 import mvc.dto.MusicalDTO;
+import mvc.dto.SeatDTO;
 import mvc.dto.TicketDTO;
 import mvc.dto.UsersDTO;
 
@@ -56,6 +57,16 @@ public class SuccessView {
         for (TicketDTO ticket :
                 ticketDTOS) {
             System.out.println(ticket);
+        }
+    }
+    
+    /**
+     * 좌석 정보 출력
+     * */
+    public static void selectSeatListPrint(List<SeatDTO> seatDTOS){
+        System.out.println("\n================================ 좌석 정보 ===================================");
+        for(SeatDTO seat : seatDTOS){
+            System.out.println(seat);
         }
     }
 }
