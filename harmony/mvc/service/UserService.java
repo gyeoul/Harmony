@@ -24,6 +24,19 @@ public interface UserService {
 	 * 로그인
 	 */
 	void login(String userID, String userPW) throws DMLException;
-    
-    
+
+    /**
+     * 개인 정보 조회
+     * */
+    UsersDTO userInfoSelectByUserID(String userID) throws SearchWrongException;
+
+    /**
+     * 비밀번호 변경
+     * */
+    void userPWUpdate(String userID, String newPW) throws DMLException;
+
+    /**
+     * 유저 이름 변경
+     * */
+    void userNameUpdate(String userID, String newName)throws DMLException;
 }

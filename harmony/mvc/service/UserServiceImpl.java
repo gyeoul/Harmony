@@ -1,11 +1,5 @@
 package mvc.service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import mvc.common.DBManager;
 import mvc.dao.UsersDAO;
 import mvc.dao.UsersDAOImpl;
 import mvc.dto.UsersDTO;
@@ -59,4 +53,36 @@ public class UserServiceImpl implements UserService{
     	int result = userDAO.login(userID, userPW);
     	if(result == 0) throw new DMLException("회원 정보가 존재하지 않습니다.");
 	}
+
+    /**
+     * 개인 정보 조회
+     * */
+    @Override
+    public UsersDTO userInfoSelectByUserID(String userID) throws SearchWrongException{
+        UsersDTO usersDTO = userDAO.userInfoSelectByUserID(userID);
+        if(usersDTO == null)
+            throw new SearchWrongException("정보가 없습니다.");
+        return usersDTO;
+    }
+
+    /**
+     * 비밀번호 변경
+     * */
+    @Override
+    public void userPWUpdate(String userID, String newPW) throws DMLException{
+        int result = userDAO.userPWUpdate(userID, newPW);
+        if(result == 0)
+            throw new DMLException("비밀번호 변경에 실패했습니다");
+    }
+
+    /**
+     * 이름 변경
+     * */
+    @Override
+    public void userNameUpdate(String userID, String newName) throws DMLException{
+        int result = userDAO.userPWUpdate(userID, newName);
+        if(result == 0)
+            throw new DMLException("이름 변경에 실패했습니다");
+    }
+
 }
