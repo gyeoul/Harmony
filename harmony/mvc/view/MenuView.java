@@ -250,6 +250,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 박상희
      * 3.예매 내역 확인
      * 작성자 : 이지은
      **/
@@ -321,7 +322,7 @@ public class MenuView {
         String checkPW = sc.nextLine();
 
         if (newPW.equals(checkPW)) {
-            UserController.userPWUpdate(userID, newPW); // 유저아이디와 비밀번호
+            UserController.userPWUpdate(userID, newPW); // 유저 아이디와 비밀번호
         } else {
             FailView.errorMessage("입력된 비밀번호가 다릅니다. 다시 입력해 주세요");
             userPWUpdateByUserID();
@@ -386,11 +387,12 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 박상희
      * 6. 예매 취소
      **/
     public static void ticketDelete() {
         try {
-            TicketController.ticketSelectMusicalTitle(userID); // 예매 목록(티켓 예매 번호, 제목) 보여 주기
+            TicketController.ticketSelectMusicalTitle(userID); // 취소 가능한 예매 목록(티켓 예매 번호, 제목) 조회
 
             System.out.print("취소할 티켓의 예매 번호를 입력해 주세요. >> ");
             int ticketID = Integer.parseInt(sc.nextLine());
