@@ -10,11 +10,15 @@ import java.util.List;
 public interface TicketService {
     /**
      * 예매 등록
+     * @param ticket 구매할 티켓값이 입력된 TicketDTO
+     * @throws DMLException insert 오류
      **/
     void ticketInsert(TicketDTO ticket) throws DMLException;
 
     /**
      * 예매 취소
+     * @param ticketID
+     * @param userID
      **/
     void ticketDelete(int ticketID, String userID) throws DMLException;
 
