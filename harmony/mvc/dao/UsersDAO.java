@@ -6,6 +6,7 @@ import mvc.exception.SearchWrongException;
 
 /**
  * 유저와 관련된 데이터에 접근하기 위한 DAO 객체
+ * 작성자 : 이지은, 박찬욱
  */
 public interface UsersDAO {
     /**

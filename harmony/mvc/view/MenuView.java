@@ -159,6 +159,7 @@ public class MenuView {
 
     /**
      * 1. 예매
+     * 작성자 : 박창현
      **/
     public static void ticketing() {
 
@@ -176,6 +177,7 @@ public class MenuView {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             ticketing();
+            return;
         }
         System.out.print("관람을 원하는 날짜의 번호를 입력해 주세요 >> ");
 
@@ -186,6 +188,7 @@ public class MenuView {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             ticketing();
+            return;
         }
 
         System.out.print("관람을 원하는 좌석을 입력해 주세요 >> ");
@@ -194,6 +197,7 @@ public class MenuView {
         } catch (SearchWrongException e) {
             System.out.println(e.getMessage());
             ticketing();
+            return;
         }
 
 //        System.out.println(ticket);
@@ -203,7 +207,6 @@ public class MenuView {
             System.out.println(e.getMessage());
             userCardUpdate();
         }
-
         // 결제 진행
         try {
             TicketController.ticketInsert(ticket);
@@ -248,6 +251,7 @@ public class MenuView {
 
     /**
      * 3.예매 내역 확인
+     * 작성자 : 이지은
      **/
     public static void ticketSelectByUserID() {
         TicketController.ticketSelectByMine(userID);
@@ -255,6 +259,7 @@ public class MenuView {
 
     /**
      * 5. 마이페이지
+     * 작성자 : 이지은
      **/
     public static void userInfoUpdate() {
         while (true) {
@@ -299,6 +304,7 @@ public class MenuView {
 
     /**
      * 5-1. 개인 정보 조회
+     * 작성자 : 이지은
      **/
     public static void userInfoSelectByUserID() {
         UserController.userInfoSelectByUserID(userID);
@@ -306,6 +312,7 @@ public class MenuView {
 
     /**
      * 5-2. 비밀번호 변경
+     * 작성자 :
      **/
     public static void userPWUpdateByUserID() {
         System.out.print("새로운 비밀번호를 입력해 주세요 >> ");
@@ -323,6 +330,7 @@ public class MenuView {
 
     /**
      * 5-3. 이름 변경
+     * 작성자 : 이지은, 박찬욱
      **/
     public static void userNameUpdateByUserID() {
         System.out.print("새로운 이름 입력해 주세요 >>");
@@ -334,6 +342,7 @@ public class MenuView {
 
     /**
      * 5-4. 카드 등록/수정
+     * 작성자 : 이지은
      **/
     public static void userCardUpdate() {
         System.out.println("\n====================================================================================");
@@ -358,6 +367,7 @@ public class MenuView {
 
     /**
      * 5-4-1. 카드 등록
+     * 작성자 : 이지은
      **/
     public static void cardInsertByUserID() {
         System.out.print("등록할 카드번호를 입력하시오 >> ");
@@ -367,7 +377,7 @@ public class MenuView {
 
     /**
      * 5-4-2. 카드 수정
-     * 작성자 : 박찬욱
+     * 작성자 : 이지은, 박찬욱
      **/
     public static void cardUpdateByUserID() {
         System.out.print("변경할 카드번호를 입력하시오 >> ");
