@@ -16,6 +16,7 @@ public class TicketController {
 
     /**
      * 예매 등록
+     * 작성자: 이지은
      **/
     public static void ticketInsert(TicketDTO ticket)  {
         try{

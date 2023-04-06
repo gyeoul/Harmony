@@ -5,6 +5,7 @@ import mvc.exception.SearchWrongException;
 public class SeatController {
 
     /**
+     * 작성자: 박창현
      * 자리 검사
      */
     public static String checkSeat(String seat) {
