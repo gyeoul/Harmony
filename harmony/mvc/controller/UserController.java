@@ -58,6 +58,7 @@ public class UserController {
 
     /**
      * 개인정보 조회
+     * 작성자: 이지은
      * */
     public static void userInfoSelectByUserID(String userID){
         try {
@@ -70,6 +71,7 @@ public class UserController {
 
     /**
      * 비밀번호 변경
+     * 작성자: 이지은
      * */
     public static void userPWUpdate(String userID, String newPW) {
         try {
@@ -84,6 +86,7 @@ public class UserController {
 
     /**
      * 이름 변경
+     * 작성자: 이지은
      * */
     public static void userNameUpdateByUserID(String userID, String userName) {
         try {
@@ -96,6 +99,7 @@ public class UserController {
 
     /**
      * 카드 확인
+     * 작성자: 빅창현
      */
     public static void userCardCheck(String userID){
             UsersDTO usersDTO = userService.userInfoSelectByUserID(userID);
