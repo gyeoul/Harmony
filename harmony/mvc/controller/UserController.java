@@ -17,6 +17,7 @@ public class UserController {
 
     /**
      * 회원 가입
+     * 작성자 : 박찬욱
      * */
     public static void userInsert(UsersDTO userDto){
         try {
@@ -29,6 +30,7 @@ public class UserController {
 
     /**
      * 카드 등록/수정
+     * 작성자 : 박찬욱
      * */
     public static void cardUpdateByUserID(String userID, String card) {
         try {
@@ -41,6 +43,7 @@ public class UserController {
 
     /**
      * 로그인
+     * 작성자 : 박찬욱
      */
     public static void login(String userID, String userPW) {
         try {

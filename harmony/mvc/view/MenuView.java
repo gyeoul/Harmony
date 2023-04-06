@@ -95,6 +95,7 @@ public class MenuView {
 
     /**
      * 로그인
+     * 작성자 : 박찬욱
      **/
     public static void login() {
         System.out.print("ID를 입력하시오 >> ");
@@ -109,6 +110,7 @@ public class MenuView {
 
     /**
      * 로그인 실패 시, 다시 로그인 시도 or 회원가입 둘 중 하나를 선택
+     * 작성자 : 박찬욱
      **/
     public static void loginChoice() {
         System.out.println("\n====================================================================================");
@@ -129,6 +131,7 @@ public class MenuView {
 
     /**
      * 회원가입
+     * 작성자 : 박찬욱
      **/
     public static void joinMember() {
         System.out.print("사용할 ID를 입력하시오 >> ");
@@ -364,6 +367,7 @@ public class MenuView {
 
     /**
      * 5-4-2. 카드 수정
+     * 작성자 : 박찬욱
      **/
     public static void cardUpdateByUserID() {
         System.out.print("변경할 카드번호를 입력하시오 >> ");
