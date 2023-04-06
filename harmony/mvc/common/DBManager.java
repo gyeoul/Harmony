@@ -2,6 +2,9 @@ package mvc.common;
 
 import java.sql.*;
 
+/**
+ * 데이터베이스에 접근하기 위한 객체를 관리하는 클래스
+ */
 public class DBManager {
     /*
      * 데이터베이스 드라이버 로드

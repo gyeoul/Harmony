@@ -7,6 +7,9 @@ import mvc.exception.SearchWrongException;
 
 import java.util.List;
 
+/**
+ * 티켓을 생성, 조회, 수정, 삭제하는 서비스
+ */
 public interface TicketService {
     /**
      * 예매 등록
@@ -42,7 +45,7 @@ public interface TicketService {
     /**
      * 나의 예매 목록 조회
      * @param userID 검색하려는 유저의 userID:String 입력
-     * @return 조회한 뮤지컬과 티켓의 정보를 MusicalTicketDTO에 담아 목록을 반환
+     * @return 조회한 뮤지컬과 티켓의 정보를 MusicalTicketDTO에 담아 목록을 반티켓
      * @throws SearchWrongException SELECT 쿼리문 실패 Exception
      */
     List<MusicalTicketDTO> ticketSelectByMine(String userID) throws SearchWrongException;

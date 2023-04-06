@@ -5,6 +5,9 @@ import mvc.dto.SeatDTO;
 
 import java.util.List;
 
+/**
+ * 뮤지컬과 관련된 데이터에 접근하기 위한 DAO 객체
+ */
 public interface MusicalDAO {
     /**
      * 뮤지컬 목록 조회(뮤지컬의 제목 조회)
