@@ -18,8 +18,8 @@ public interface TicketDAO {
 
     /**
      * 예매 취소
-     * @param ticketID 예매 취소를 시도하는 ticketID
-     * @param userID 예매 취소를 시도하는 userID
+     * @param ticketID 예매 취소를 시도하는 ticketID 입력
+     * @param userID 예매 취소를 시도하는 userID 입력
      * @return 쿼리문의 결과를 int로 반환
      * @throws DMLException DML 쿼리문 실패 Exception
      */

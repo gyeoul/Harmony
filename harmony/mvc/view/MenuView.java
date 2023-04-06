@@ -8,7 +8,7 @@ import mvc.exception.SearchWrongException;
 import java.util.Scanner;
 
 public class MenuView {
-    static Scanner sc = new Scanner(System.in);
+    static final Scanner sc = new Scanner(System.in);
     static String userID; // 현재 사용자
 
     /**
