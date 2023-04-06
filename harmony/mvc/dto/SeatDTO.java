@@ -49,7 +49,7 @@ public class SeatDTO {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("SeatDTO{");
+        final StringBuilder sb = new StringBuilder("SeatDTO{");
         sb.append("seatnum='").append(seatnum).append('\'');
         sb.append(", musical_id=").append(musical_id);
         sb.append(", sold=").append(sold);

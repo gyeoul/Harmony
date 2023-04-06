@@ -79,7 +79,7 @@ public class UsersDTO {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("UsersDTO{");
+        final StringBuilder sb = new StringBuilder("UsersDTO{");
         sb.append("userID='").append(userID).append('\'');
         sb.append(", userPW='").append(userPW).append('\'');
         sb.append(", email='").append(email).append('\'');

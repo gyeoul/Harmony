@@ -70,7 +70,7 @@ public class TicketDAOImpl implements TicketDAO {
         sql.append("and ticket_id = ?), 'YYYY-MM-DD HH:MI:SS') ");
         sql.append(">= to_char(sysdate - 1/24/3, 'YYYY-MM-DD HH:MI:SS'))"); // 뮤지컬 공연 시간 20 분 전까지만 취소 가능
 
-        TicketDTO ticketDTO = null;
+        TicketDTO ticketDTO;
         int result = 0;
 
         try {

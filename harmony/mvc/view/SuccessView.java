@@ -88,7 +88,7 @@ public class SuccessView {
 
                 sb.append("  |  ");
             }
-            System.out.println(sb.toString());
+            System.out.println(sb);
             System.out.println(":----------------------------------:");
         }
     }
@@ -156,7 +156,7 @@ public class SuccessView {
         System.out.println(" 이메일 : " + usersDTO.getEmail());
         System.out.println(" 나 이 : " + usersDTO.getAge());
         System.out.print(" 성 별 : ");
-        System.out.println(usersDTO.getGender()=="W" ? "여자" : "남자");
+        System.out.println(usersDTO.getGender().equals("W") ? "여자" : "남자");
         System.out.print(" 카 드 : ");
         System.out.println(usersDTO.getCard()==null ? "카드 정보가 없습니다." : usersDTO.getCard());
     }

@@ -91,7 +91,7 @@ public class MusicalTicketDTO {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer(ticketId);
+        final StringBuilder sb = new StringBuilder(ticketId);
         sb.append(" | ").append(title);
         sb.append(" | ").append(hall);
         sb.append(" | ").append(seatNum);
