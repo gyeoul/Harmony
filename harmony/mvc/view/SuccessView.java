@@ -69,7 +69,7 @@ public class SuccessView {
     }
     
     /**
-     * 좌석 정보 출력 - 5 * 5 좌석표
+     * 좌석 정보 출력 - 5 * 5 좌석에 좌석 번호와 예매 가능 여부 표시
      **/
     public static void selectSeatListPrint(List<SeatDTO> seatDTOS){
         System.out.println("\n====================================================================================");
