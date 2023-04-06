@@ -7,9 +7,9 @@ import mvc.exception.DMLException;
 import mvc.exception.SearchWrongException;
 
 public class UserServiceImpl implements UserService{
-    private static UserService instance = new UserServiceImpl();
+    private static final UserService instance = new UserServiceImpl();
 
-    private UsersDAO userDAO = UsersDAOImpl.getInstance();  //가져와서 사용
+    private final UsersDAO userDAO = UsersDAOImpl.getInstance();  //가져와서 사용
 
     private UserServiceImpl() {}
     public static UserService getInstance() {
@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService{
      * 이름 변경
      * */
     @Override
-    public void userNameUpdate(String userID, String newName) throws DMLException{
+    public void userNameUpdateByUserID(String userID, String newName) throws DMLException{
         int result = userDAO.userPWUpdate(userID, newName);
         if(result == 0)
             throw new DMLException("이름 변경에 실패했습니다");
