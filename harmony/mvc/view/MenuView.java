@@ -244,6 +244,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 박상희
      * 3.예매 내역 확인
      **/
     public static void ticketSelectByUserID() {
@@ -372,6 +373,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 박상희
      * 6. 예매 취소
      **/
     public static void ticketDelete() {

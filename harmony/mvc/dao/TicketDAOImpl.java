@@ -59,6 +59,7 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     /**
+     * 작성자 : 박상희
      * 예매 취소
      **/
     @Override
@@ -103,6 +104,7 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     /**
+     * 작성자 : 박상희, 박창현
      * 개별 유저 예매 내역 조회 - 유저가 예매한 티켓의 상세 정보
      **/
     @Override
@@ -140,6 +142,7 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     /**
+     * 작성자 : 박상희, 박창현
      * 개별 유저 예매 내역 조회 - 유저가 예매한 예매 내역 리스트
      **/
     @Override
@@ -176,6 +179,7 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     /**
+     * 작성자 : 박상희
      * 나의 예매 목록 조회
      **/
     @Override
@@ -220,6 +224,9 @@ public class TicketDAOImpl implements TicketDAO {
         return musicalTicketDTOList;
     }
 
+    /**
+     * 작성자 : 박상희, 박창현
+     */
     private void updateSeat(Connection con, String seatNum, int musicalID, char setValue) throws SQLException { // 티켓의 좌석 공석으로 전환
         PreparedStatement ps = null;
         String sql = "update seat set sold = ? where (seatnum = ?) and (musical_id = ?)";
