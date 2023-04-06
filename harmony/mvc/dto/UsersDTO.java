@@ -3,6 +3,7 @@ package mvc.dto;
 /**
  * 유저의 정보를 저장하는 객체
  * userID:String, userPW:String, email:String, name:String, age:int,gender:String, card:String
+ * 작성자 : 전상희
  */
 public class UsersDTO {
     /**

@@ -31,6 +31,7 @@ public class UsersDAOImpl implements UsersDAO {
 
     /**
      * 회원 가입
+     * 작성자: 박찬욱
      */
     @Override
     public int userInsert(UsersDTO userDTO) throws DMLException {

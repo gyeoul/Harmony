@@ -3,6 +3,7 @@ package mvc.dto;
 /**
  * 뮤지컬의 정보를 저장하는 객체
  * musical_id:int, title:String, actor:String, genre:String, date:String, hall:String, summary:String, production:String
+ * 작성자 : 전상희
  */
 public class MusicalDTO {
     /**

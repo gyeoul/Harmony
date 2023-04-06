@@ -3,6 +3,7 @@ package mvc.dto;
 /**
  * 뮤지컬과 티켓의 조인 결과를 저장하는 객체
  * ticketId:int, userId:String, seatNum:String, musicalId:int, issue:String, title:String, date:String, hall:String
+ * 작성자 : 박상희
  */
 public class MusicalTicketDTO {
     /**

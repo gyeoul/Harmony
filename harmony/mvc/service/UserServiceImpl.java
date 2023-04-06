@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 카드 등록/수정
-     * 작성자 :
+     * 작성자 : 이지은, 박찬욱
      */
     @Override
     public void cardUpdateByUserID(String userID, String card) throws DMLException {
@@ -51,6 +51,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 로그인
+     * 작성자 : 박찬욱
      */
     @Override
     public void login(String userID, String userPW) throws DMLException {
@@ -71,6 +72,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 비밀번호 변경
+     * 작성자 : 이지은
      */
     @Override
     public void userPWUpdate(String userID, String newPW) throws DMLException {
@@ -81,6 +83,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 이름 변경
+     * 작성자 : 이지은
      */
     @Override
     public void userNameUpdateByUserID(String userID, String newName) throws DMLException {

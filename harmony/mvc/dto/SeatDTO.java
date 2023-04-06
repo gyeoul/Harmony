@@ -3,6 +3,7 @@ package mvc.dto;
 /**
  * 좌석의 정보를 저장하는 객체
  * seatnum:String, musical_id:int, sold:char, price:int
+ * 작성자 : 전상희
  */
 public class SeatDTO {
     /**
