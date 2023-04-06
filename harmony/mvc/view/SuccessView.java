@@ -103,15 +103,18 @@ public class SuccessView {
         System.out.print(" |     제목    |     공연장    |     좌석    |        공연일        |        예매일      ");
         System.out.println("\n====================================================================================");
         for (MusicalTicketDTO musicalTicket : musicalTicketDTOS) {
-            System.out.printf("%-11s | ", musicalTicket.getTitle());
-            System.out.printf("%-10s | ", musicalTicket.getHall());
-            System.out.printf("%-10s | ", musicalTicket.getSeatNum());
-            System.out.printf("%s | ", musicalTicket.getDate());
+            System.out.printf("%11s", musicalTicket.getTitle());
+            System.out.print(" | ");
+            System.out.printf("%11s", musicalTicket.getHall());
+            System.out.print(" | ");
+            System.out.printf("%10s", musicalTicket.getSeatNum());
+            System.out.print(" | ");
+            System.out.printf("%s", musicalTicket.getDate());
+            System.out.print(" | ");
             System.out.printf("%s", musicalTicket.getIssue());
             System.out.println();
         }
     }
-
     /**
      * 예매 목록(티켓 예매 번호, 제목) 조회 - 취소 가능한(현재 날짜와 시간보다 뮤지컬 공연 날짜와 시간이 나중에 있는) 뮤지컬 목록만 조회
      **/
