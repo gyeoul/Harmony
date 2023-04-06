@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * 뮤지컬과 관련된 데이터에 접근하기 위한 DAO 객체
+ * 작성자 : 이지은, 전상희
  */
 public interface MusicalDAO {
     /**

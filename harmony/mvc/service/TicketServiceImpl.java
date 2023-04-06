@@ -32,6 +32,7 @@ public class TicketServiceImpl implements TicketService {
 
     /**
      * 예매 등록
+     * 작성자 : 박창현
      **/
     @Override
     public void ticketInsert(TicketDTO ticket) throws DMLException {
