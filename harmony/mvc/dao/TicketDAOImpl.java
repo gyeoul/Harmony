@@ -51,7 +51,6 @@ public class TicketDAOImpl implements TicketDAO {
             result = ps.executeUpdate();
             updateSeat(con, ticket.getSeatNum(), ticket.getMusicalId(), 'Y');
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new DMLException("뮤지컬 예매 중 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps);
@@ -95,7 +94,7 @@ public class TicketDAOImpl implements TicketDAO {
 
             updateSeat(con, seatNum, musicalID, 'N'); // 해당 티켓의 좌석 공석으로 전환
         } catch (SQLException e) {
-            e.printStackTrace();
+            throws new DMLException("예매 취소 중 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps);
         }
@@ -132,7 +131,6 @@ public class TicketDAOImpl implements TicketDAO {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new SearchWrongException("예매 목록 조회 중 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
@@ -169,7 +167,7 @@ public class TicketDAOImpl implements TicketDAO {
                 ));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new SearchWrongException("예매 목록 조회 중 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
         }
@@ -214,7 +212,7 @@ public class TicketDAOImpl implements TicketDAO {
                 ));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new SearchWrongException("예매 목록 조회 중 예외가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps, rs);
         }
