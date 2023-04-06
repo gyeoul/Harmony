@@ -16,7 +16,6 @@ public class MenuView {
      **/
     public static void userCheck() {
         while (true) {
-            System.out.print("로그인하시겠습니까?");
             System.out.println("\n====================================================================================");
             System.out.print(" (1) 로그인   |  ");
             System.out.print("(2) 회원가입   |  ");
@@ -112,8 +111,9 @@ public class MenuView {
      * 로그인 실패 시, 다시 로그인 시도 or 회원가입 둘 중 하나를 선택
      **/
     public static void loginChoice() {
-        System.out.println(" (1) 로그인을 다시 시도  |  (2) 회원가입 ");
-
+        System.out.println("\n====================================================================================");
+        System.out.print(" (1) 로그인을 다시 시도  |  (2) 회원가입 ");
+        System.out.println("\n====================================================================================");
         int choiceNUM = Integer.parseInt(sc.nextLine());
         switch (choiceNUM) {
             case 1:
@@ -165,7 +165,7 @@ public class MenuView {
         //영화 리스트 출력
         MusicalController.musicalSelectAll();
 
-        System.out.print("관람하고 싶은 뮤지컬의 이름을 입력해 주세요 : ");
+        System.out.print("관람하고 싶은 뮤지컬의 이름을 입력해 주세요 >> ");
         String input = sc.nextLine();
 
         try {
@@ -174,7 +174,7 @@ public class MenuView {
             System.out.println(e.getMessage());
             ticketing();
         }
-        System.out.print("관람을 원하는 날짜의 번호를 입력해 주세요 : ");
+        System.out.print("관람을 원하는 날짜의 번호를 입력해 주세요 >> ");
 
         int inp2 = Integer.parseInt(sc.nextLine());
         ticket.setMusicalId(TicketingController.seatSearchByRownumWithTitle(inp2, input));
@@ -185,7 +185,7 @@ public class MenuView {
             ticketing();
         }
 
-        System.out.print("관람을 원하는 좌석을 입력해 주세요 : ");
+        System.out.print("관람을 원하는 좌석을 입력해 주세요 >> ");
         try {
             ticket.setSeatNum(SeatController.checkSeat(sc.nextLine().toUpperCase()));
         } catch (SearchWrongException e) {
@@ -224,7 +224,7 @@ public class MenuView {
         try {
             MusicalController.musicalDetailSelect(input);
             System.out.println("\n====================================================================================");
-            System.out.println("    (1) 뮤지컬 목록으로 돌아가기    |    (2) 메인 메뉴로 돌아가기");
+            System.out.println(" (1) 뮤지컬 목록으로 돌아가기    |    (2) 메인 메뉴로 돌아가기");
             System.out.println("====================================================================================");
             System.out.print("메뉴를 선택해 주세요 >> ");
             int choice = Integer.parseInt(sc.nextLine());
