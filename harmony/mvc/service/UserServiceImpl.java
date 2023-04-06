@@ -61,6 +61,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 개인 정보 조회
+     * 작성자 : 이지은
      */
     @Override
     public UsersDTO userInfoSelectByUserID(String userID) throws SearchWrongException {
