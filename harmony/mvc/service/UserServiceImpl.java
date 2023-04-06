@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService{
      * */
     @Override
     public void userNameUpdateByUserID(String userID, String newName) throws DMLException{
-        int result = userDAO.userPWUpdate(userID, newName);
+        int result = userDAO.userNameUpdate(userID, newName);
         if(result == 0)
             throw new DMLException("이름 변경에 실패했습니다");
     }
