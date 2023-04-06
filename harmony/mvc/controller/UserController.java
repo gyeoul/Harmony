@@ -40,18 +40,6 @@ public class UserController {
     }
 
     /**
-     * 개인 정보 조회
-     */
-    public static void userSelect(String user_id) {
-        try {
-            UsersDTO dto = userService.userSelect(user_id);
-            SuccessView.selectByUserIdPrint(dto);
-        } catch (SearchWrongException e) {
-            FailView.errorMessage(e.getMessage());
-        }
-    }
-
-    /**
      * 로그인
      */
     public static void login(String userID, String userPW) {

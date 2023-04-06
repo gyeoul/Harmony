@@ -35,15 +35,6 @@ public class UserServiceImpl implements UserService{
         if(result == 0)
             throw new DMLException("카드 변경에 실패했습니다");
     }
-
-    /**
-     * 개인 정보 조회
-     */
-    @Override
-    public UsersDTO userSelect(String userID) throws SearchWrongException {
-       return null;
-    }
-    
     
     /**
      * 로그인
@@ -80,7 +71,7 @@ public class UserServiceImpl implements UserService{
      * */
     @Override
     public void userNameUpdateByUserID(String userID, String newName) throws DMLException{
-        int result = userDAO.userPWUpdate(userID, newName);
+        int result = userDAO.userNameUpdate(userID, newName);
         if(result == 0)
             throw new DMLException("이름 변경에 실패했습니다");
     }
