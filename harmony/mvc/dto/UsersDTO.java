@@ -26,8 +26,9 @@ public class UsersDTO {
      */
     private int age;
     /**
-     * 성별 | char(1) - char 타입의 데이터를 직접적으로 사용하기 위한 메소드를 java에서 지원X -> String으로 재변환 처리 거쳐야 함
+     * 성별 | char(1)
      */
+    //char 타입의 데이터를 직접적으로 사용하기 위한 메소드를 java에서 지원X -> String으로 재변환 처리 거쳐야 함
     private String gender;
     /**
      * 카드 - 결제 수단 | varchar2(20)

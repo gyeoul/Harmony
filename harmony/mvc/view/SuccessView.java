@@ -13,6 +13,7 @@ import java.util.List;
 public class SuccessView {
     /**
      * 성공 메시지 출력
+     * 작성자 : 이지은
      **/
     public static void messagePrint(String message) {
         System.out.println(message);
@@ -20,6 +21,7 @@ public class SuccessView {
 
     /**
      * 성공한 유저 정보 출력
+     * 작성자 : 이지은
      **/
     public static void selectByUserIdPrint(UsersDTO userDTO) {
         System.out.println(userDTO);
@@ -27,6 +29,7 @@ public class SuccessView {
 
     /**
      * 뮤지컬 목록 출력
+     * 작성자 : 이지은
      **/
     public static void selectPrint(List<String> list) {
         System.out.println("\n====================================================================================");
@@ -39,6 +42,7 @@ public class SuccessView {
 
     /**
      * 뮤지컬 상세 조회
+     * 작성자 : 이지은
      **/
     public static void selectMusicalDetailPrint(MusicalDTO musicalDTO) {
         System.out.println("\n====================================================================================");
@@ -50,6 +54,7 @@ public class SuccessView {
 
     /**
      * 티켓 상세 출력
+     * 작성자 : 이지은
      **/
     public static void selectTicketDetailPrint(TicketDTO ticketDTO) {
         System.out.println("\n====================================================================================");
@@ -60,6 +65,7 @@ public class SuccessView {
 
     /**
      * 티켓 목록 출력
+     * 작성자 : 이지은
      **/
     public static void selectTicketListPrint(List<TicketDTO> ticketDTOS) {
         System.out.println("\n====================================================================================");
@@ -97,6 +103,7 @@ public class SuccessView {
 
     /**
      * 나의 예매 목록 조회
+     * 작성자 : 박상희 이지은
      **/
     public static void selectMyTicketListPrint(List<MusicalTicketDTO> musicalTicketDTOS) {
         System.out.println("\n====================================================================================");
@@ -119,6 +126,7 @@ public class SuccessView {
     }
     /**
      * 예매 목록(티켓 예매 번호, 제목) 조회 - 취소 가능한(현재 날짜와 시간보다 뮤지컬 공연 날짜와 시간이 나중에 있는) 뮤지컬 목록만 조회
+     * 작성자 : 박상희
      **/
     public static void selectMyTicketMusicalTitlePrint(List<MusicalTicketDTO> musicalTicketDTOS) {
         System.out.println("\n====================================================================================");
@@ -148,6 +156,7 @@ public class SuccessView {
 
     /**
      * 개인 정보 출력
+     * 작성자 : 이지은
      **/
     public static void selectUserInfoPrint(UsersDTO usersDTO){
         System.out.println("\n====================================================================================");
