@@ -326,7 +326,7 @@ public class MenuView {
         System.out.print("새로운 이름 입력해 주세요 >>");
         String newName = sc.nextLine();
 
-        UserController.userNameUpdate(userID, newName); // 유저 아이디와 새로운 유저 이름
+        UserController.userNameUpdateByUserID(userID, newName); // 유저 아이디와 새로운 유저 이름
         menuChoice();
     }
 

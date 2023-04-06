@@ -1,7 +1,5 @@
 package mvc.controller;
 
-import java.awt.Menu;
-
 import mvc.dto.UsersDTO;
 import mvc.exception.DMLException;
 import mvc.exception.SearchWrongException;
@@ -52,7 +50,7 @@ public class UserController {
             FailView.errorMessage(e.getMessage());
         }
     }
-    
+
     /**
      * 로그인
      */
@@ -96,9 +94,9 @@ public class UserController {
     /**
      * 이름 변경
      * */
-    public static void userNameUpdate(String userID, String userName) {
+    public static void userNameUpdateByUserID(String userID, String userName) {
         try {
-            userService.userNameUpdate(userID, userName);
+            userService.userNameUpdateByUserID(userID, userName);
             SuccessView.messagePrint("이름 변경에 성공했습니다");
         } catch (DMLException e) {
             FailView.errorMessage(e.getMessage());

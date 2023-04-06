@@ -38,5 +38,5 @@ public interface UserService {
     /**
      * 유저 이름 변경
      * */
-    void userNameUpdate(String userID, String newName)throws DMLException;
+    void userNameUpdateByUserID(String userID, String newName)throws DMLException;
 }
