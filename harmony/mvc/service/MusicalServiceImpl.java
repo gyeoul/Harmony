@@ -8,6 +8,9 @@ import mvc.exception.SearchWrongException;
 
 import java.util.List;
 
+/**
+ * 작성자 : 전상희, 박창현
+ * */
 public class MusicalServiceImpl implements MusicalService {
     /**
      * 싱글톤 객체 생성
