@@ -8,7 +8,7 @@ import mvc.exception.SearchWrongException;
 import java.util.Scanner;
 
 public class MenuView {
-    static final Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
     static String userID; // 현재 사용자
 
     /**
@@ -177,14 +177,13 @@ public class MenuView {
         System.out.print("관람을 원하는 날짜의 번호를 입력해 주세요 : ");
 
         int inp2 = Integer.parseInt(sc.nextLine());
+        ticket.setMusicalId(TicketingController.seatSearchByRownumWithTitle(inp2, input));
         try {
             MusicalController.musicalSeatSelect(ticket.getMusicalId());
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
             ticketing();
         }
-        ticket.setMusicalId(TicketingController.seatSearchByRownumWithTitle(inp2, input));
 
         System.out.print("관람을 원하는 좌석을 입력해 주세요 : ");
         try {
