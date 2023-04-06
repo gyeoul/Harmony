@@ -8,6 +8,7 @@ import mvc.exception.SearchWrongException;
 import java.util.List;
 
 /**
+ * 작성자 : 박상희, 박창현
  * 티켓을 생성, 조회, 수정, 삭제하는 서비스
  */
 public interface TicketService {

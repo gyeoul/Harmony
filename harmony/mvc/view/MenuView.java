@@ -333,7 +333,7 @@ public class MenuView {
     }
 
     /**
-     * 작성자 : 이지은, 박찬욱
+     * 작성자 : 박찬욱, 이지은
      * 5-3. 이름 변경
      **/
     public static void userNameUpdateByUserID() {
@@ -345,7 +345,7 @@ public class MenuView {
     }
 
     /**
-     * 작성자 : 이지은, 박찬욱
+     * 작성자 : 박찬욱, 이지은
      * 5-4. 카드 등록/수정
      **/
     public static void userCardUpdate() {
@@ -380,7 +380,7 @@ public class MenuView {
     }
 
     /**
-     * 작성자 : 이지은, 박찬욱
+     * 작성자 : 박찬욱, 이지은
      * 5-4-2. 카드 수정
      **/
     public static void cardUpdateByUserID() {

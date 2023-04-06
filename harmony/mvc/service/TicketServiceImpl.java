@@ -9,6 +9,9 @@ import mvc.exception.SearchWrongException;
 
 import java.util.List;
 
+/**
+ * 작성자 : 박상희, 박창현
+ **/
 public class TicketServiceImpl implements TicketService {
     /**
      * 싱글톤 객체 생성
@@ -31,8 +34,8 @@ public class TicketServiceImpl implements TicketService {
     }
 
     /**
-     * 예매 등록
      * 작성자 : 박창현
+     * 예매 등록
      **/
     @Override
     public void ticketInsert(TicketDTO ticket) throws DMLException {
@@ -44,8 +47,8 @@ public class TicketServiceImpl implements TicketService {
     }
 
     /**
-     * 예매 취소
      * 작성자 : 박상희
+     * 예매 취소
      **/
     @Override
     public void ticketDelete(int ticketID, String userID) throws DMLException {
@@ -57,8 +60,8 @@ public class TicketServiceImpl implements TicketService {
     }
 
     /**
-     * 개별 유저 예매 내역 조회 - 유저가 예매한 티켓의 상세 정보
      * 작성자 : 박상희, 박창현
+     * 개별 유저 예매 내역 조회 - 유저가 예매한 티켓의 상세 정보
      **/
     @Override
     public TicketDTO ticketSelectByTicketId(int ticketID) {
@@ -72,8 +75,8 @@ public class TicketServiceImpl implements TicketService {
     }
 
     /**
-     * 개별 유저 예매 내역 조회 - 유저가 예매한 예매 내역 리스트
      * 작성자 : 박상희, 박창현
+     * 개별 유저 예매 내역 조회 - 유저가 예매한 예매 내역 리스트
      **/
     @Override
     public List<TicketDTO> ticketSelectByUserId(String userId) throws SearchWrongException {
@@ -87,8 +90,8 @@ public class TicketServiceImpl implements TicketService {
     }
 
     /**
-     * 나의 예매 목록 조회
      * 작성자 : 박상희
+     * 나의 예매 목록 조회
      **/
     @Override
     public List<MusicalTicketDTO> ticketSelectByMine(String userID) throws SearchWrongException {
