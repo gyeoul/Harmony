@@ -7,6 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 컨트롤러에서 요청한 작업이 성공했을 경우 메시지를 출력하는 뷰 클래스
+ */
 public class SuccessView {
     /**
      * 성공 메시지 출력

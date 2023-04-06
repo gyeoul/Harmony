@@ -1,12 +1,29 @@
 package mvc.dto;
 
+/**
+ * 좌석의 정보를 저장하는 객체
+ * seatnum:String, musical_id:int, sold:char, price:int
+ */
 public class SeatDTO {
-    private String seatnum; // 자리 번호 | char(2) (PK - TICKET)
-    private int musical_id; // 뮤지컬 아이디 | number (PK - TICKET | FK - MUSICAL)
-    private char sold; // 예약 여부 | char
-    private int price; // 가격 | number
+    /**
+     * 자리 번호 | char(2) (PK - TICKET)
+     */
+    private String seatnum;
+    /**
+     * 뮤지컬 아이디 | number (PK - TICKET | FK - MUSICAL)
+     */
+    private int musical_id;
+    /**
+     * 예약 여부 | char
+     */
+    private char sold;
+    /**
+     * 가격 | number
+     */
+    private int price;
 
-    public SeatDTO(){}
+    public SeatDTO() {
+    }
 
     public SeatDTO(String seatnum, int musical_id, char sold, int price) {
         this.seatnum = seatnum;

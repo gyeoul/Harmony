@@ -1,16 +1,45 @@
 package mvc.dto;
 
+/**
+ * 뮤지컬의 정보를 저장하는 객체
+ * musical_id:int, title:String, actor:String, genre:String, date:String, hall:String, summary:String, production:String
+ */
 public class MusicalDTO {
-    private int musical_id; // 뮤지컬 아이디 | number (PK)
-    private String title; // 제목 | varchar2(20)
-    private String actor; // 배우 | varchar2(80)
-    private String genre; // 장르 | varchar2(80)
-    private String date; // 상영일 | date
-    private String hall; // 상영홀 | varchar2(20)
-    private String summary; // 줄거리 | varchar2(255)
-    private String production; // 제작사 | varchar2(20)
+    /**
+     * 뮤지컬 아이디 | number (PK)
+     */
+    private int musical_id;
+    /**
+     * 제목 | varchar2(20)
+     */
+    private String title;
+    /**
+     * 배우 | varchar2(80)
+     */
+    private String actor;
+    /**
+     * 장르 | varchar2(80)
+     */
+    private String genre;
+    /**
+     * 상영일 | date
+     */
+    private String date;
+    /**
+     * 상영홀 | varchar2(20)
+     */
+    private String hall;
+    /**
+     * 줄거리 | varchar2(255)
+     */
+    private String summary;
+    /**
+     * 제작사 | varchar2(20)
+     */
+    private String production;
 
-    public MusicalDTO(){}
+    public MusicalDTO() {
+    }
 
     public MusicalDTO(int musical_id, String title, String actor, String genre, String date, String hall, String summary, String production) {
         this.musical_id = musical_id;
@@ -79,9 +108,13 @@ public class MusicalDTO {
         this.summary = summary;
     }
 
-    public String getProduction() { return production; }
+    public String getProduction() {
+        return production;
+    }
 
-    public void setProduction(String production) { this.production = production; }
+    public void setProduction(String production) {
+        this.production = production;
+    }
 
     @Override
     public String toString() {
