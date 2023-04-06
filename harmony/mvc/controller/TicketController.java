@@ -15,6 +15,7 @@ public class TicketController {
     private static final TicketService ticketService = TicketServiceImpl.getInstance();
 
     /**
+     * 작성자 : 박창현
      * 예매 등록
      **/
     public static void ticketInsert(TicketDTO ticket)  {
