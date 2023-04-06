@@ -60,6 +60,7 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     /**
+     * 작성자 : 박상희
      * 예매 취소
      **/
     @Override
@@ -105,7 +106,6 @@ public class TicketDAOImpl implements TicketDAO {
 
     /**
      * 개별 유저 예매 내역 조회 - 유저가 예매한 티켓의 상세 정보
-     * 작성자 : 박창현, 박상희
      **/
     @Override
     public TicketDTO ticketSelectByTicketId(int ticketID) {
@@ -142,6 +142,7 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     /**
+     * 작성자 : 박상희, 박창현
      * 개별 유저 예매 내역 조회 - 유저가 예매한 예매 내역 리스트
      **/
     @Override

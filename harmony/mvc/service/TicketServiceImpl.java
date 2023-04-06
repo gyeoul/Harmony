@@ -31,6 +31,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     /**
+     * 작성자 : 박창현
      * 예매 등록
      * 작성자 : 박창현
      **/
@@ -44,6 +45,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     /**
+     * 작성자 : 박상희
      * 예매 취소
      **/
     @Override
@@ -56,6 +58,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     /**
+     * 작성자 : 박상희, 박창현
      * 개별 유저 예매 내역 조회 - 유저가 예매한 티켓의 상세 정보
      * 작성자 : 박상희
      **/
@@ -71,6 +74,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     /**
+     * 작성자 : 박상희, 박창현
      * 개별 유저 예매 내역 조회 - 유저가 예매한 예매 내역 리스트
      **/
     @Override
@@ -85,6 +89,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     /**
+     * 작성자 : 박상희
      * 나의 예매 목록 조회
      * 작성자 : 박상희
      **/

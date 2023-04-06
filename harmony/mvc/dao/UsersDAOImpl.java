@@ -31,7 +31,7 @@ public class UsersDAOImpl implements UsersDAO {
 
     /**
      * 회원 가입
-     * 작성자: 박찬욱
+     * 작성자 : 박찬욱
      */
     @Override
     public int userInsert(UsersDTO userDTO) throws DMLException {
@@ -66,6 +66,7 @@ public class UsersDAOImpl implements UsersDAO {
 
     /**
      * 카드 등록/수정
+     * 작성자 : 박찬욱
      */
     @Override
     public int cardUpdateByUserID(String userID, String card) throws DMLException {
@@ -91,6 +92,7 @@ public class UsersDAOImpl implements UsersDAO {
 
     /**
      * 로그인
+     * 작성자 : 박찬욱
      **/
     @Override
     public int login(String userID, String userPW) throws DMLException {
