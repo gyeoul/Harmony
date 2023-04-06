@@ -1,15 +1,41 @@
 package mvc.dto;
 
+/**
+ * 유저의 정보를 저장하는 객체
+ * userID:String, userPW:String, email:String, name:String, age:int,gender:String, card:String
+ */
 public class UsersDTO {
-    private String userID; // 유저 아이디 | varchar2(20) (PK)
-    private String userPW; // 유저 비밀번호 | varchar2(20)
-    private String email; // 이메일 | varchar2(40)
-    private String name; // 유저 이름 | varchar2(20)
-    private int age; // 나이 | number
-    private String gender; // 성별 | char(1) - char 타입의 데이터를 직접적으로 사용하기 위한 메소드를 java에서 지원X -> String으로 재변환 처리 거쳐야 함
-    private String card; // 카드 - 결제 수단 | varchar2(20)
+    /**
+     * 유저 아이디 | varchar2(20) (PK)
+     */
+    private String userID;
+    /**
+     * 유저 비밀번호 | varchar2(20)
+     */
+    private String userPW;
+    /**
+     * 이메일 | varchar2(40)
+     */
+    private String email;
+    /**
+     * 유저 이름 | varchar2(20)
+     */
+    private String name;
+    /**
+     * 나이 | number
+     */
+    private int age;
+    /**
+     * 성별 | char(1) - char 타입의 데이터를 직접적으로 사용하기 위한 메소드를 java에서 지원X -> String으로 재변환 처리 거쳐야 함
+     */
+    private String gender;
+    /**
+     * 카드 - 결제 수단 | varchar2(20)
+     */
+    private String card;
 
-    public UsersDTO (){}
+    public UsersDTO() {
+    }
 
     public UsersDTO(String userID, String userPW, String email, String name, int age, String gender, String card) {
         this.userID = userID;
@@ -69,7 +95,7 @@ public class UsersDTO {
         this.gender = gender;
     }
 
-    public String getCard(){
+    public String getCard() {
         return card;
     }
 

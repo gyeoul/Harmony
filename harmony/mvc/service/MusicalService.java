@@ -6,6 +6,9 @@ import java.util.List;
 import mvc.dto.SeatDTO;
 import mvc.exception.SearchWrongException;
 
+/**
+ * 뮤지컬을 조회하는 서비스
+ */
 public interface MusicalService {
     /**
      * 뮤지컬 목록 조회(뮤지컬의 제목 조회)
