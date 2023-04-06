@@ -120,36 +120,6 @@ public class MusicalDAOImpl implements MusicalDAO {
         return seatList;
     }
 
-
-    /**
-     * 중복을 제외한 뮤지컬 이름 조회
-     * */
-    @Override
-    public List<String> musicalTitleDistinctList() {
-        List<String> result = new ArrayList<>();
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql = "select DISTINCT TITLE from MUSICAL";
-
-        try{
-            con = DBManager.getConnection();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-
-            while(rs.next()){
-                result.add(rs.getString(1));
-            }
-        } catch(SQLException e){
-            e.printStackTrace(); // TODO 테스트 후 지울 것
-            throw new SearchWrongException("뮤지컬 리스트 조회에 오류가 발생했습니다.");
-        } finally {
-            DBManager.releaseConnection(con, ps, rs);
-        }
-
-        return result;
-    }
-
     /**
      * 뮤지컬 목록 조회
      * */
