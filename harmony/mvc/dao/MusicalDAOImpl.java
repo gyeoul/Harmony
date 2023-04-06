@@ -32,6 +32,7 @@ public class MusicalDAOImpl implements MusicalDAO {
     }
 
     /**
+     * 작성자 : 전상희
      * 뮤지컬 목록 조회
      * */
     @Override
@@ -61,6 +62,7 @@ public class MusicalDAOImpl implements MusicalDAO {
     }
 
     /**
+     * 작성자 : 전상희
      * 뮤지컬 상세 조회
      */
     @Override
@@ -93,6 +95,7 @@ public class MusicalDAOImpl implements MusicalDAO {
     }
 
     /**
+     * 작성자 : 전상희
      * 해당 뮤지컬의 좌석 현황 조회
      * */
     @Override
@@ -127,6 +130,7 @@ public class MusicalDAOImpl implements MusicalDAO {
     }
 
     /**
+     * 작성자 : 박창현
      * 뮤지컬 목록 조회
      * */
     @Override
