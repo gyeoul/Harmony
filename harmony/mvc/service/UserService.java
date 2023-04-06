@@ -4,6 +4,9 @@ import mvc.dto.UsersDTO;
 import mvc.exception.DMLException;
 import mvc.exception.SearchWrongException;
 
+/**
+ * 유저를 생성, 조회, 수정, 삭제하는 서비스
+ */
 public interface UserService {
     /**
      * 회원 가입

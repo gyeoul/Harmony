@@ -1,11 +1,30 @@
 package mvc.dto;
 
+/**
+ * 티켓의 정보를 저장하는 객체
+ * ticketId:int, userId:String, seatNum:String, musicalId:int, issue:String
+ */
 public class TicketDTO {
-    private int ticketId; // 티켓 아이디 | number
-    private String userId; // 유저 아이디 | varchar2(20) (FK - USERS)
-    private String seatNum; // 자리 번호 | char(2) (FK - SEAT)
-    private int musicalId; // 뮤지컬 아이디 | number (FK - SEAT)
-    private String issue; // 예매일 | date
+    /**
+     * 티켓 아이디 | number
+     */
+    private int ticketId;
+    /**
+     * 유저 아이디 | varchar2(20) (FK - USERS)
+     */
+    private String userId;
+    /**
+     * 자리 번호 | char(2) (FK - SEAT)
+     */
+    private String seatNum;
+    /**
+     * 뮤지컬 아이디 | number (FK - SEAT)
+     */
+    private int musicalId;
+    /**
+     * 예매일 | date
+     */
+    private String issue;
 
     public TicketDTO() {
     }
