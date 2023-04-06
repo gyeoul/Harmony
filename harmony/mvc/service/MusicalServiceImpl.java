@@ -18,7 +18,9 @@ public class MusicalServiceImpl implements MusicalService{
         return instance;
     }
 
-
+    /**
+     * 뮤지컬 차트 조회 - 현재 예매 가능한 뮤지컬 목록
+     * */
     @Override
     public List<String> musicalSelectAll() throws SearchWrongException {
         List<String> musicalList = musicalDAO.musicalSelectAll();
@@ -28,8 +30,6 @@ public class MusicalServiceImpl implements MusicalService{
         return musicalList;
 
     }
-
-
 
 
     @Override
@@ -42,7 +42,9 @@ public class MusicalServiceImpl implements MusicalService{
 
     }
 
-
+    /**
+     * 뮤지컬의 상세 정보 조회
+     * */
     @Override
     public MusicalDTO musicalDetailSelect(String title) throws SearchWrongException {
         MusicalDTO musical = musicalDAO.musicalDetailSelect(title);
@@ -53,6 +55,9 @@ public class MusicalServiceImpl implements MusicalService{
         return musical;
     }
 
+    /**
+     * 좌석 현황 조회 - 선택한 뮤지컬의 현재 좌석 정보 조회
+     * */
     @Override
     public List<SeatDTO> musicalSeatSelect(int musical_id) throws SearchWrongException {
         List<SeatDTO> seatList = musicalDAO.musicalSeatSelect(musical_id);
