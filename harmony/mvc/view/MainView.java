@@ -1,5 +1,8 @@
 package mvc.view;
 
+/**
+ * 작성자 : 이지은
+ * */
 public class MainView {
     public static void main(String[] args) {
         System.out.println("\n====================================================================================");

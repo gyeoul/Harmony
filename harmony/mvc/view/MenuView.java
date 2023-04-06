@@ -12,6 +12,7 @@ public class MenuView {
     static String userID; // 현재 사용자
 
     /**
+     * 작성자 : 이지은
      * 로그인/회원가입 선택
      **/
     public static void userCheck() {
@@ -45,6 +46,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 이지은
      * 메뉴 선택
      **/
     public static void menuChoice() {
@@ -94,6 +96,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 박찬욱
      * 로그인
      **/
     public static void login() {
@@ -108,6 +111,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 박찬욱
      * 로그인 실패 시, 다시 로그인 시도 or 회원가입 둘 중 하나를 선택
      **/
     public static void loginChoice() {
@@ -128,6 +132,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 박찬욱
      * 회원가입
      **/
     public static void joinMember() {
@@ -155,6 +160,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 박창현
      * 1. 예매
      **/
     public static void ticketing() {
@@ -213,6 +219,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 전상희
      * 2. 뮤지컬 차트 조회
      **/
     public static void musicalSelectAll() {
@@ -244,6 +251,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 이지은
      * 3.예매 내역 확인
      **/
     public static void ticketSelectByUserID() {
@@ -251,6 +259,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 이지은
      * 5. 마이페이지
      **/
     public static void userInfoUpdate() {
@@ -295,6 +304,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 이지은
      * 5-1. 개인 정보 조회
      **/
     public static void userInfoSelectByUserID() {
@@ -302,6 +312,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 이지은
      * 5-2. 비밀번호 변경
      **/
     public static void userPWUpdateByUserID() {
@@ -319,6 +330,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 이지은
      * 5-3. 이름 변경
      **/
     public static void userNameUpdateByUserID() {
@@ -330,6 +342,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 박찬욱
      * 5-4. 카드 등록/수정
      **/
     public static void userCardUpdate() {
@@ -354,6 +367,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 이지은
      * 5-4-1. 카드 등록
      **/
     public static void cardInsertByUserID() {
@@ -363,6 +377,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 이지은
      * 5-4-2. 카드 수정
      **/
     public static void cardUpdateByUserID() {
@@ -372,6 +387,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 박상희
      * 6. 예매 취소
      **/
     public static void ticketDelete() {
