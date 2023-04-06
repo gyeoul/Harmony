@@ -14,14 +14,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TicketDAOImpl implements TicketDAO {
+    /**
+     * 싱글톤 객체 생성
+     */
     private static final TicketDAO instance = new TicketDAOImpl();
 
+
     /**
-     * 외부에서 객체 생성 막음
-     **/
+     * 싱글톤 객체 생성을 위해 생성자 private으로 선언
+     */
     private TicketDAOImpl() {
     }
 
+    /**
+     * 싱글톤 객체 반환
+     */
     public static TicketDAO getInstance() {
         return instance;
     }
@@ -42,7 +49,7 @@ public class TicketDAOImpl implements TicketDAO {
             ps.setString(2, ticket.getSeatNum());
             ps.setInt(3, ticket.getMusicalId());
             result = ps.executeUpdate();
-            updateSeat(con, ticket.getSeatNum(), ticket.getMusicalId(),'Y');
+            updateSeat(con, ticket.getSeatNum(), ticket.getMusicalId(), 'Y');
         } catch (SQLException e) {
             e.printStackTrace();
             throw new DMLException("뮤지컬 예매 중 오류가 발생했습니다.");
@@ -86,7 +93,7 @@ public class TicketDAOImpl implements TicketDAO {
 
             result = ps.executeUpdate();
 
-            updateSeat(con, seatNum, musicalID,'N'); // 해당 티켓의 좌석 공석으로 전환
+            updateSeat(con, seatNum, musicalID, 'N'); // 해당 티켓의 좌석 공석으로 전환
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

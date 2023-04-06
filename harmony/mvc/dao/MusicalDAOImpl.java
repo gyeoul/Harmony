@@ -13,14 +13,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MusicalDAOImpl implements MusicalDAO {
+    /**
+     * 싱글톤 객체 생성
+     */
     private static final MusicalDAO instance = new MusicalDAOImpl();
 
     /**
-     * 외부에서 객체생성 막음
+     * 싱글톤 객체 생성을 위해 생성자 private으로 선언
      */
     private MusicalDAOImpl() {
     }
 
+    /**
+     * 싱글톤 객체 반환
+     */
     public static MusicalDAO getInstance() {
         return instance;
     }

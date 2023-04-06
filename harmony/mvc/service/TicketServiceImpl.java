@@ -9,12 +9,23 @@ import mvc.exception.SearchWrongException;
 
 import java.util.List;
 
-public class TicketServiceImpl implements TicketService{
+public class TicketServiceImpl implements TicketService {
+    /**
+     * 싱글톤 객체 생성
+     */
     private static final TicketService instance = new TicketServiceImpl();
 
+    /**
+     * 싱글톤 객체 생성을 위해 생성자 private으로 선언
+     */
     private final TicketDAO ticketDAO = TicketDAOImpl.getInstance();
 
-    private TicketServiceImpl() {}
+    /**
+     * 싱글톤 객체 반환
+     */
+    private TicketServiceImpl() {
+    }
+
     public static TicketService getInstance() {
         return instance;
     }
@@ -47,7 +58,7 @@ public class TicketServiceImpl implements TicketService{
      * 개별 유저 예매 내역 조회 - 유저가 예매한 티켓의 상세 정보
      **/
     @Override
-    public TicketDTO ticketSelectByTicketId(int ticketID){
+    public TicketDTO ticketSelectByTicketId(int ticketID) {
         TicketDTO ticketDTO = ticketDAO.ticketSelectByTicketId(ticketID);
 
         if (ticketDTO == null) {
