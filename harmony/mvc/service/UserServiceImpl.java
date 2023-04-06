@@ -29,6 +29,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 회원 가입
+     * 작성자 : 이지은
      */
     @Override
     public void userInsert(UsersDTO userDTO) throws DMLException {
@@ -39,6 +40,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 카드 등록/수정
+     * 작성자 :
      */
     @Override
     public void cardUpdateByUserID(String userID, String card) throws DMLException {

@@ -1,5 +1,9 @@
 package mvc.view;
 
+/**
+ * MenuView로 접속하기 위한 main 메소드
+ * 작성자 : 박상희 이지은
+ */
 public class MainView {
     public static void main(String[] args) {
         System.out.println("\n====================================================================================");

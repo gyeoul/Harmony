@@ -35,6 +35,7 @@ public class TicketDAOImpl implements TicketDAO {
 
     /**
      * 예매 등록
+     * 작성자 : 박창현
      **/
     @Override
     public int ticketInsert(TicketDTO ticket) {
