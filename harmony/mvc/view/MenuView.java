@@ -12,6 +12,7 @@ public class MenuView {
     static String userID; // 현재 사용자
 
     /**
+     * 작성자 : 이지은
      * 로그인/회원가입 선택
      **/
     public static void userCheck() {
@@ -45,6 +46,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 이지은
      * 메뉴 선택
      **/
     public static void menuChoice() {
@@ -94,8 +96,8 @@ public class MenuView {
     }
 
     /**
-     * 로그인
      * 작성자 : 박찬욱
+     * 로그인
      **/
     public static void login() {
         System.out.print("ID를 입력하시오 >> ");
@@ -109,8 +111,8 @@ public class MenuView {
     }
 
     /**
-     * 로그인 실패 시, 다시 로그인 시도 or 회원가입 둘 중 하나를 선택
      * 작성자 : 박찬욱
+     * 로그인 실패 시, 다시 로그인 시도 or 회원가입 둘 중 하나를 선택
      **/
     public static void loginChoice() {
         System.out.println("\n====================================================================================");
@@ -130,8 +132,8 @@ public class MenuView {
     }
 
     /**
-     * 회원가입
      * 작성자 : 박찬욱
+     * 회원가입
      **/
     public static void joinMember() {
         System.out.print("사용할 ID를 입력하시오 >> ");
@@ -158,8 +160,8 @@ public class MenuView {
     }
 
     /**
-     * 1. 예매
      * 작성자 : 박창현
+     * 1. 예매
      **/
     public static void ticketing() {
 
@@ -207,6 +209,7 @@ public class MenuView {
             System.out.println(e.getMessage());
             userCardUpdate();
         }
+
         // 결제 진행
         try {
             TicketController.ticketInsert(ticket);
@@ -219,6 +222,7 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 전상희
      * 2. 뮤지컬 차트 조회
      **/
     public static void musicalSelectAll() {
@@ -252,15 +256,14 @@ public class MenuView {
     /**
      * 작성자 : 박상희
      * 3.예매 내역 확인
-     * 작성자 : 이지은
      **/
     public static void ticketSelectByUserID() {
         TicketController.ticketSelectByMine(userID);
     }
 
     /**
-     * 5. 마이페이지
      * 작성자 : 이지은
+     * 5. 마이페이지
      **/
     public static void userInfoUpdate() {
         while (true) {
@@ -304,16 +307,16 @@ public class MenuView {
     }
 
     /**
-     * 5-1. 개인 정보 조회
      * 작성자 : 이지은
+     * 5-1. 개인 정보 조회
      **/
     public static void userInfoSelectByUserID() {
         UserController.userInfoSelectByUserID(userID);
     }
 
     /**
+     * 작성자 : 이지은
      * 5-2. 비밀번호 변경
-     * 작성자 :
      **/
     public static void userPWUpdateByUserID() {
         System.out.print("새로운 비밀번호를 입력해 주세요 >> ");
@@ -330,8 +333,8 @@ public class MenuView {
     }
 
     /**
-     * 5-3. 이름 변경
      * 작성자 : 이지은, 박찬욱
+     * 5-3. 이름 변경
      **/
     public static void userNameUpdateByUserID() {
         System.out.print("새로운 이름 입력해 주세요 >>");
@@ -342,8 +345,8 @@ public class MenuView {
     }
 
     /**
+     * 작성자 : 이지은, 박찬욱
      * 5-4. 카드 등록/수정
-     * 작성자 : 이지은
      **/
     public static void userCardUpdate() {
         System.out.println("\n====================================================================================");
@@ -367,8 +370,8 @@ public class MenuView {
     }
 
     /**
-     * 5-4-1. 카드 등록
      * 작성자 : 이지은
+     * 5-4-1. 카드 등록
      **/
     public static void cardInsertByUserID() {
         System.out.print("등록할 카드번호를 입력하시오 >> ");
@@ -377,8 +380,8 @@ public class MenuView {
     }
 
     /**
-     * 5-4-2. 카드 수정
      * 작성자 : 이지은, 박찬욱
+     * 5-4-2. 카드 수정
      **/
     public static void cardUpdateByUserID() {
         System.out.print("변경할 카드번호를 입력하시오 >> ");
