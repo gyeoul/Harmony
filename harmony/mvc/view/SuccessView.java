@@ -78,8 +78,7 @@ public class SuccessView {
         System.out.println("\n====================================================================================");
         System.out.print("                                    좌석 정보");
         System.out.println("\n====================================================================================");
-        System.out.println(":--------------------------------------------------:");
-
+        System.out.println(":----------------------------------:");
         for(int i=0; i<5; i++){
             StringBuilder sb = new StringBuilder();
             sb.append("|  ");
