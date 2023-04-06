@@ -30,6 +30,7 @@ public class TicketController {
     /**
      * 작성자 : 박상희
      * 예매 취소
+     * 작성자 : 박상희
      **/
     public static void ticketDelete(int ticketID, String userID) {
         try{
@@ -43,6 +44,7 @@ public class TicketController {
     /**
      * 작성자 : 박상희, 박창현
      * 개별 유저 예매 내역 조회 - 유저가 예매한 티켓의 상세 정보
+     * 작성자 : 박상희
      **/
     public static void ticketSelectByTicketId(int ticketID) {
         try {
@@ -56,6 +58,7 @@ public class TicketController {
     /**
      * 작성자 : 박상희, 박창현
      * 개별 유저 예매 내역 조회 - 유저가 예매한 예매 내역 리스트
+     * 작성자 : 박상희
      **/
     public static void ticketSelectByUserId(String userID) {
         try{
@@ -82,6 +85,7 @@ public class TicketController {
     /**
      * 작성자 : 박상희
      * 예매 목록(티켓 예매 번호, 제목) 조회
+     * 작성자 : 박상희
      **/
     public static void ticketSelectMusicalTitle(String userID) {
         try {

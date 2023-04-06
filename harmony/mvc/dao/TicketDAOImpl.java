@@ -105,8 +105,8 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     /**
-     * 작성자 : 박상희, 박창현
      * 개별 유저 예매 내역 조회 - 유저가 예매한 티켓의 상세 정보
+     * 작성자 : 박창현, 박상희
      **/
     @Override
     public TicketDTO ticketSelectByTicketId(int ticketID) {
@@ -180,8 +180,8 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     /**
-     * 작성자 : 박상희
      * 나의 예매 목록 조회
+     * 작성자 : 박상희
      **/
     @Override
     public List<MusicalTicketDTO> ticketSelectByMine(String userID) {
@@ -226,7 +226,9 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     /**
-     * 작성자 : 박상희, 박창현
+     * 좌석의 상태를 변경하기 위한 메소드
+     * 작성자 : 박창현, 전상희
+     * @param con java.sql.Connection
      */
     private void updateSeat(Connection con, String seatNum, int musicalID, char setValue) throws SQLException { // 티켓의 좌석 공석으로 전환
         PreparedStatement ps = null;
