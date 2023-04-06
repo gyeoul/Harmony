@@ -94,7 +94,7 @@ public class TicketDAOImpl implements TicketDAO {
 
             updateSeat(con, seatNum, musicalID, 'N'); // 해당 티켓의 좌석 공석으로 전환
         } catch (SQLException e) {
-            throws new DMLException("예매 취소 중 오류가 발생했습니다.");
+            throw new DMLException("예매 취소 중 오류가 발생했습니다.");
         } finally {
             DBManager.releaseConnection(con, ps);
         }
